@@ -7,7 +7,7 @@ Um dieses Projekt selbst zu kompilieren, benötigst Du:
 – Wenn Du es lokal auf einem Computer kompilieren lassen willst:
 1. Eine Kopie des Quelltexts (https://butterbrotbaer.github.io)
 2. Eine LaTeX-Distribution wie TeX Live (https://www.tug.org/texlive)
-3. Einen lokalen LaTeX-Editor wie VSCode (https://code.visualstudio.com) mit der LaTeX Workshop Extension
+3. Einen lokalen LaTeX-Editor wie VS Code (https://code.visualstudio.com) mit der LaTeX Workshop Extension
 
 – Wenn Du es online über einen Browser kompilieren lassen willst:
 1. Eine Kopie des Quelltexts (https://butterbrotbaer.github.io)
