@@ -9,6 +9,5 @@ Chronik der Andorversen.pdf
 *.fls
 *.log
 *.out
-*.synctex
-*.synctex.gz
+*.synctex*
 *.toc
