@@ -1,0 +1,13 @@
+# ALL FILENAMES LISTED IN THIS FILE ARE NOT TRACKED BY GIT.
+
+# Do not track the compiled pdf.
+Chronik der Andorversen.pdf
+
+# Do not track any files with one the following extension.
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
