@@ -1,7 +1,8 @@
 # ALL FILENAMES LISTED IN THIS FILE ARE NOT TRACKED BY GIT.
 
-# Do not track the compiled pdf.
+# Do not track the compiled pdfs.
 Chronik der Andorversen.pdf
+Das Erbe des Wunderkindes.pdf
 
 # Do not track any files with one the following extension.
 *.aux
