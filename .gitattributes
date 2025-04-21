@@ -1,7 +1,7 @@
 # ALL SOURCE FILES LISTED IN THIS FILE AS "export-ignore" ARE NOT EXPORTED.
 
 # If the next line is uncommented, then all "Chronik der Andorversen" files are not exported.
-# Chronik der Andorversen* export-ignore
+Chronik der Andorversen* export-ignore
 
 # If the next line is uncommented, then all "Das Erbe des Wunderkindes" files are not exported.
 # Das Erbe des Wunderkindes* export-ignore
