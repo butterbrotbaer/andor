@@ -2,13 +2,18 @@
 
 # Do not track the compiled pdfs.
 Chronik der Andorversen.pdf
+Alle Helden ueberall.pdf
 Das Erbe des Wunderkindes.pdf
 
 # Do not track any files with one the following extension.
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
 *.out
+*.run.xml
 *.synctex*
 *.toc
