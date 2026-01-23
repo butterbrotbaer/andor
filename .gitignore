@@ -17,3 +17,6 @@ Das Erbe des Wunderkindes.pdf
 *.run.xml
 *.synctex*
 *.toc
+
+# Do not track macOS' Desktop Services Stores.
+.DS_Store
