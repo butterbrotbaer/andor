@@ -4,6 +4,8 @@
 
 \usepackage[left=1.5cm,right=1.5cm, top=1cm,bottom=1cm,includeheadfoot]{geometry} %definiere Ränder und so
 
+\usepackage{amssymb} % für \blacktriangleright
+
 \usepackage[ngerman]{babel} % für deutsche Titelbezeichnungen
 
 \usepackage[autocite=superscript,  backend=biber,sortcites=true, style=numeric,]{biblatex}
@@ -162,7 +164,7 @@
 
 
 \title{Alle Helden überall\\Stand 2026}
-\author{Fan-Spielvariante von Butterbrotbär,\\basierend auf den \enquote{Die Legenden von Andor}-Spielen von Michael Menzel,\\Christoph Kling, Dorothea Michels, Andreas Kälber und Matthias Miller\\sowie vielen fruchtvollen Diskussionen der fantastisch fantasievollen Fans\\Albus, Bennie, Bewahrer Melkart, Cardiodrone, Dagain, Fenn-Fan, Galaphil,\\ Kar éVarin, Legolas Grünblatt, namenloser Wanderer, Phoenixpower,\\ Qurunatobra213, Ragnar, Steppenechse111777, Towa,\\und insbesondere Mivo, Orpheus und TroII.}
+\author{Fan-Spielvariante von Butterbrotbär,\\basierend auf den \enquote{Die Legenden von Andor}-Spielen von Michael Menzel,\\Christoph Kling, Dorothea Michels, Andreas Kälber und Matthias Miller\\sowie vielen fruchtvollen Diskussionen der fantastisch fantasievollen Fans\\Albus, Bennie, Bewahrer Melkart, Cardiodrone, Dagain, Fenn-Fan, Galaphil,\\GoldenerSchild, Kar éVarin, Legolas Grünblatt, namenloser Wanderer,\\Phoenixpower, Qurunatobra213, Ragnar, Steppenechse111777, Towa,\\und insbesondere Mivo, Orpheus und TroII.}
 \date{\vfill Dieses Dokument wurde erstellt mit \LaTeX{}.\\
 Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=11151}.}
 
@@ -481,13 +483,15 @@ Es muss ein "Kram" mitspielen.
 
 \fan{Diese Fan-Spielvariante garantiert Funktionalität, wenn jeder Held seine offiziellen oder gar keine Heldenkarten nutzt und bei mehreren gleichen Helden höchstens einer von ihnen die offiziellen Heldenkarten nutzt.}
 
-\fan{Auf eigene Verantwortung dürft ihr mehreren Helden dieselben Heldenkarten geben, Helden Karten anderer Helden nutzen lassen, selbst Heldenkarten erfinden oder Fan-Heldenkarten aus der Taverne wählen:}
+\fan{Auf eigene Verantwortung dürft ihr mehreren Helden dieselben Heldenkarten geben, Helden Karten anderer Helden nutzen lassen, selbst Heldenkarten erfinden oder Fan-Heldenkarten aus der Taverne wählen. Dort gibt es bereits Fan-Heldenkarten zum Download:}
 
-\bullet{} \fan{"Neue Helden in Die letzte Hoffnung" (Darhen)}
-\supercite{103303}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=103303#p103303}
+{\blacktriangleright \fan{\enquote{Neue Helden in Die letzte Hoffnung}} (Darhen)}
 
-\bullet{} \fan{"Alle Helden ins Graue Gebirge" (Butterbrotbär)}
-\supercite{56931}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=56931#p56931}
+{\blacktriangleright \fan{\enquote{Alle Helden ins Graue Gebirge}} (Butterbrotbär)}
+
+
 
 
 
@@ -2473,7 +2477,7 @@ Er hat:
 
 \fan{Wählt eine der folgenden Sonderfähigkeiten:}
 
-\bullet{} \textbf{Feld 71} (nur in "Die Legenden von Andor" geeignet):
+\bullet{} \textbf{Feld 71} (nur auf Grundspiel-Spielplänen geeignet):
 
 Der Zwerg darf auf Feld 71 Stärkepunkte für je 1 Gold kaufen (statt 2).
 
@@ -2637,8 +2641,8 @@ Er hat:
 
 \fan{Dies ist nur eine von vielen Möglichkeiten, Stinner außerhalb von "Die Reise in den Norden" zu spielen:}
 
-\bullet{} \fan{"Fan-Stinner in anderen Andor-Teilen"}
-\supercite{126785}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=126785#p126785}
+{\blacktriangleright \fan{\enquote{Fan-Stinner in anderen Andor-Teilen}}}
 
 
 
@@ -2803,9 +2807,10 @@ Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \hyperref[R
 Leert der Krieger einen Brunnen, erhält er 5 Willenspunkte (statt 3).
 
 
-\subsection{Feuerwächterin:}
+\subsection{Feuer:}
 
-Ein brennendes Feuer der \hyperref[Feuerwächterin]{Feuerwächterin} gibt dem Krieger +2 \hyperref[Bonusstärke]{Bonusstärke} (statt +1).
+Ein brennendes Feuer (auf seinem Feld oder von der \hyperref[Feuerwächterin]{Feuerwächterin} getragen) gibt dem Krieger +2 \hyperref[Bonusstärke]{Bonusstärke} (statt +1).
+\supercite{DeK:Begleitheft}
 
 
 \subsection{Wassermagierin:}
@@ -2892,15 +2897,6 @@ Leert der Krieger die Quelle auf Feld 37, erhält er nur das, was auf dem Quelle
 
 
 
-
-\begin{bgcolor}[color-DeK]
-\section{Die ewige Kälte (2022)}
-
-\subsection{Feuer:}
-
-Ein brennendes Feuer auf dem Feld des Kriegers gibt ihm +2 \hyperref[Bonusstärke]{Bonusstärke} (statt +1).
-
-\end{bgcolor}
 
 
 
@@ -6917,7 +6913,7 @@ Die Runenmeisterin kann die Quelle auf Feld 37 mit dem Brunnen-Symbol nicht auff
 \fan{Das Brunnen-Symbol darf ein erloschenes Feuer auf dem Spielplan entfachen (ohne Willenspunktekosten).}
 
 
-\fan{Ein erloschenes Feuer auf der Heldentafel der \hyperref[Feuerwächterin]{Feuerwächterin} kann so nicht entfacht werden.}
+\fan{Ein von der \hyperref[Feuerwächterin]{Feuerwächterin} getragenes Feuer kann so nicht entfacht werden.}
 
 
 
@@ -7010,9 +7006,9 @@ Sie hat:
 
 \subsection{\fan{Hadrisches Brennholz:}}
 
-\fan{Das Hadrische Brennholz ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. Nur die Feuerwächterin kann es als freie Handlungsmöglichkeit nutzen, und nur, wenn ihr großes Ablagefeld frei ist. Dann muss sie das Hadrische Brennholz aus dem Spiel geben und 2 Willenspunkte abgeben und darf 1 Feuerplättchen mit der brennenden Seite oben auf ihr großes Ablagefeld legen.}
+\fan{Das Hadrische Brennholz ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. Nur die Feuerwächterin kann es als freie Handlungsmöglichkeit nutzen, und nur, wenn ihr großes Ablagefeld frei ist. Dann muss sie das Hadrische Brennholz aus dem Spiel geben und 2 Willenspunkte abgeben und darf ein Feuerplättchen mit der brennenden Seite oben auf ihr großes Ablagefeld legen.}
 
-\fan{Das Hadrische Brennholz kann nicht genutzt werden, um ein Feuerplättchen auf ein Spielplanfeld zu legen.}
+\fan{Das Hadrische Brennholz kann nicht genutzt werden, um ein Feuer auf ein Spielplanfeld zu legen.}
 
 
 \subsection{Feuer:}
@@ -7022,14 +7018,14 @@ Sie hat:
 Solange die Feuerwächterin ein brennendes Feuer trägt, haben alle Helden, die auf ihrem Feld stehen, je +1 \hyperref[Bonusstärke]{Bonusstärke}. Der \hyperref[Krieger]{Krieger} hat +2 \hyperref[Bonusstärke]{Bonusstärke} (statt +1).
 \supercite{DeK:Begleitheft} 
 
-Die Feuerwächterin darf ein erloschenes Feuer auf ihrem großen Ablagefeld entfachen, indem sie 2 Willenspunkte abgibt.\supercite{DeK:Begleitheft} Andere Helden können dies nicht.\supercite{105294}
+Die Feuerwächterin darf ein von ihr getragenes erloschenes Feuer entfachen, indem sie 2 Willenspunkte abgibt.\supercite{DeK:Begleitheft} Andere Helden können dies nicht.\supercite{105294}
 
-Die Feuerwächterin kann ein Feuerplättchen von ihrem großen Ablagefeld nicht ablegen oder anderen Helden geben, sie darf es aber jederzeit aus dem Spiel nehmen.
+Die Feuerwächterin kann ein von ihr getragenes Feuer nicht ablegen oder anderen Helden geben, sie darf es aber jederzeit aus dem Spiel nehmen.
 \supercite{117803}
 
-Während die Feuerwächterin ein Feuerplättchen trägt, ist ihr großes Ablagefeld besetzt. \fan{Erhält die Feuerwächterin einen großen ovalen Gegenstand, darf sie sich entscheiden, ob sie das Feuerplättchen aus dem Spiel nimmt oder den großen Gegenstand auf ihrem Feld zurücklässt.}
+Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \fan{Erhält die Feuerwächterin einen großen ovalen Gegenstand, darf sie sich entscheiden, ob sie das Feuer aus dem Spiel nimmt oder den großen Gegenstand auf ihrem Feld zurücklässt.}
 
-\fan{Die \hyperref[Wassermagierin]{Wassermagierin} kann sich nicht von oder zu einem Feuerplättchen auf der Heldentafel der Feuerwächterin teleportieren.}
+\fan{Die \hyperref[Wassermagierin]{Wassermagierin} kann sich nicht von oder zu einem von der Feuerwächterin getragenen Feuer teleportieren.}
 
 
 
@@ -7037,7 +7033,7 @@ Während die Feuerwächterin ein Feuerplättchen trägt, ist ihr großes Ablagef
 
 \fan{Alle Hadrischen Brennhölzer sind ununterscheidbar und dürfen von allen Feuerwächterinnen genutzt werden. Eine Feuerwächterin darf mehrmals pro Legende ein Hadrisches Brennholz nutzen.}
 
-\fan{Eine Feuerwächterin kann ein brennendes Feuer keiner anderen Feuerwächterin geben.}
+\fan{Eine Feuerwächterin kann ein Feuer keiner anderen Feuerwächterin geben.}
 
 \fan{Auch wenn mehrere Feuerwächterinnen auf demselben Feld stehen und brennende Feuer tragen, erhält jeder Helden nur einmal \hyperref[Bonusstärke]{Bonusstärke} und bei Sonnenaufgang nur einmal 5 Willenspunkte.}
 
@@ -7060,7 +7056,7 @@ Während die Feuerwächterin ein Feuerplättchen trägt, ist ihr großes Ablagef
 
 \subsection{\fan{Ereigniskarte "Geheimer See" 5:}}
 
-\fan{Trägt die Feuerwächterin ein Feuerplättchen, geht dieses aus dem Spiel. Für den Rest der Legende kann sie kein Feuerplättchen mehr tragen.}
+\fan{Trägt die Feuerwächterin ein Feuer, geht dieses aus dem Spiel. Für den Rest der Legende kann sie kein Feuer mehr tragen.}
 
 \end{bgcolor}
 
@@ -7088,7 +7084,7 @@ Während die Feuerwächterin ein Feuerplättchen trägt, ist ihr großes Ablagef
 
 \subsection{\fan{Eule:}}
 
-\fan{Die Eule kann nicht an die Feuerwächterin geschickt werden, während sie ein Feuerplättchen trägt, da ihr großes Ablagefeld dann nicht frei ist.}
+\fan{Die Eule kann nicht an die Feuerwächterin geschickt werden, während sie Feuer trägt, da ihr großes Ablagefeld dann nicht frei ist.}
 
 \end{bgcolor}
 
@@ -7104,9 +7100,9 @@ Während die Feuerwächterin ein Feuerplättchen trägt, ist ihr großes Ablagef
 
 \fan{Die Feuerwächterin erhält am Anfang kein Hadrisches Brennholz.}
 
-Ist das große Ablagefeld der Feuerwächterin frei, darf sie ein normales Brennholz und 2 Willenspunkte abgeben, um ein brennendes Feuerplättchen auf ihr großes Ablagefeld zu legen. Sie kann keine Feuerplättchen vom Spielplan aufnehmen.
+Ist das große Ablagefeld der Feuerwächterin frei, darf sie ein normales Brennholz und 2 Willenspunkte abgeben, um ein Feuerplättchen mit der brennenden Seite oben auf ihr großes Ablagefeld zu legen. Sie kann keine Feuer vom Spielplan aufnehmen.
 
-Andere Helden können kein Feuerplättchen auf die Heldentafel der Feuerwächterin legen, auch nicht durch Abgabe von Brennholz und Willenspunkten.
+Andere Helden können kein Feuer auf das große Ablagefeld der Feuerwächterin legen, auch nicht durch Abgabe von Brennholz und Willenspunkten.
 \supercite{105294}
 
 
@@ -7119,24 +7115,23 @@ Bei Sonnenaufgang, beim Symbol "Wärmendes Feuer", wenn die Feuerwächterin ein 
 
 Beim Symbol "Die Feuer verlöschen", wenn die Feuerwächterin ein brennendes Feuer trägt, wird das Feuer auf die erloschene Seite gedreht. 
 
-Steht die Feuerwächterin bereits auf dem Feld eines brennenden Feuers, gibt ein Feuer auf ihrer Heldentafel weder Willenspunkte noch \hyperref[Bonusstärke]{Bonusstärke}.
+Steht die Feuerwächterin bereits auf dem Feld eines brennenden Feuers, gibt ein von ihr getragenes Feuer weder Willenspunkte noch \hyperref[Bonusstärke]{Bonusstärke}.
 \supercite{101489}
 
-\fan{Das Brunnen-Symbol der \hyperref[Runenmeisterin]{Runenmeisterin} kann ein erloschenes Feuer auf dem großen Ablagefeld der Feuerwächterin nicht entfachen.}
+\fan{Das Brunnen-Symbol der \hyperref[Runenmeisterin]{Runenmeisterin} kann ein von der Feuerwächterin getragenes Feuer nicht entfachen.}
 
-\fan{Die \hyperref[Wassermagierin]{Wassermagierin} kann sich nicht von oder zu einem Feuerplättchen auf der Heldentafel der Feuerwächterin teleportieren.}
 
 
 \subsection{Legende 4, Die Pranken des Winters:}
 
-Auch für ein brennendes Feuer auf der Heldentafel der Feuerwächterin dürft ihr Takotas Stärkestein um 1 nach links verschieben.
+Auch für ein von der Feuerwächterin getragenes brennendes Feuer dürft ihr Takotas Stärkestein um 1 nach links verschieben.
 \supercite{DeK4:Takota}
 
 
 \subsection{Mini-Erweiterung "Die Bruderfeuer":}
 
 
-Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Feld 460) oder dem Greifenfelsen (Feld 425), während sie ein brennendes Feuer trägt, wirkt der Effekt dieses Orts, auch wenn kein brennendes Feuerplättchen auf dem Feld liegt.
+Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Feld 460) oder dem Greifenfelsen (Feld 425), während sie ein brennendes Feuer trägt, wirkt der Effekt dieses Orts, auch wenn kein brennendes Feuer auf dem Feld liegt.
 \supercite{ME:Bruderfeuer}
 
 \end{bgcolor}
@@ -7151,9 +7146,9 @@ Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Fe
 
 \subsection{\fan{Geister:}}
 
-\fan{Steht die Feuerwächterin bei oder angrenzend zu Geistern, kann sie kein Feuerplättchen auf ihre Heldentafel legen, kann sie kein erloschenes Feuer auf ihrer Heldentafel entfachen und gibt ein Feuerplättchen auf ihrer Heldentafel weder Willenspunkte noch \hyperref[Bonusstärke]{Bonusstärke}.}
+\fan{Steht die Feuerwächterin bei oder angrenzend zu Geistern, kann sie kein Feuer auf ihr großes Ablagefeld legen, kann sie kein von ihr getragenes erloschenes Feuer entfachen und gibt ein von ihr getragenes Feuer weder Willenspunkte noch \hyperref[Bonusstärke]{Bonusstärke}.}
 
-\fan{Ein Feuerplättchen auf ihrer Heldentafel wird beim Sonnenaufgang auf die erloschene Seite gedreht, auch wenn sie bei oder angrenzend zu Geistern steht.}
+\fan{Ein von ihr getragenes Feuer wird beim Sonnenaufgang auf die erloschene Seite gedreht, auch wenn sie bei oder angrenzend zu Geistern steht.}
 
 \end{bgcolor}
 
@@ -8952,8 +8947,8 @@ Wählt am Anfang eine (!) der Spielvarianten "Erschwerte Kämpfe"\supercite{AG:B
 \bullet{} Bannkreis von Choranat (aus "Magische Helden")
 \supercite{MH:Begleitheft}
 
-\bullet{} \fan{Mithasis, erquickendes Kraut (Butterbrotbär\&Mivo)}
-\supercite{132952}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=132952#p132952}
+{\blacktriangleright \fan{Mithasis, erquickendes Kraut} (Butterbrotbär\&Mivo)}
 
 
 
@@ -8964,11 +8959,11 @@ Wählt am Anfang eine (!) der Spielvarianten "Erschwerte Kämpfe"\supercite{AG:B
 
 \bullet{} Neutrale Zeitsteine (aus "Neue Helden"\supercite{NH:Begleitheft}, "Dunkle Helden"\supercite{DH:Begleitheft}, "Magische Helden"\supercite{MH:Begleitheft} oder "Big Box"\supercite{BiBo:Bonus-Heft}).
 
-\bullet{} \fan{Farbige Zeitsteine bei 5 bis 6 Helden (Mivo)}
-\supercite{130491}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=130491#p130491}
+{\blacktriangleright \fan{Farbige Zeitsteine bei 5 bis 6 Helden} (Mivo)}
 
-\bullet{} \fan{Mithasis, erquickendes Kraut (Butterbrotbär\&Mivo)}
-\supercite{132952}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=132952#p132952}
+{\blacktriangleright \fan{Mithasis, erquickendes Kraut} (Butterbrotbär\&Mivo)}
 
 
 \end{nobgcolor}
@@ -9109,8 +9104,8 @@ Nutzt keine Spielvariante "Weniger Zeit". Wählt stattdessen nach den "a"-Karten
 \bullet{} Mondbeeren (aus "Magische Helden")
 \supercite{MH:Mondbeeren,MH:Begleitheft}
 
-\bullet{} \fan{Mithasis, erquickendes Kraut (Butterbrotbär\&Mivo)}
-\supercite{132952}
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=132952#p132952}
+{\blacktriangleright \fan{Mithasis, erquickendes Kraut} (Butterbrotbär\&Mivo)}
 
 
 
