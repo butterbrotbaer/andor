@@ -5,7 +5,7 @@ Chronik der Andorversen.pdf
 Alle Helden ueberall.pdf
 Das Erbe des Wunderkindes.pdf
 
-# Do not track any files with one the following extension.
+# Do not track any file with one of the following extensions.
 *.aux
 *.bbl
 *.bcf
