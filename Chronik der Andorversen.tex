@@ -15,6 +15,7 @@
 \usepackage{multicol}
 \usepackage[section]{placeins} %lasse float-Bilder nicht in den nächsten Abschnitt rutschen
 \usepackage{tikz}
+    \usetikzlibrary{arrows.meta,calc,fit}
 \usepackage{tocloft}
 \usepackage{xcolor}
 
@@ -180,7 +181,7 @@
 
 \setlength{\intextsep}{0pt}%für wrapfigure
 
-\title{Chronik der Andorversen\\Stand Februar 2026}
+\title{Chronik der Andorversen\\Stand 2026}
 \author{Werke von Michael Menzel, Stefanie Schmitt,\\Christoph Kling, Dorothea Michels, Andreas Kälber, Matthias Miller,\\Jens Baumeister, Timo Grubing, Peter Gustav Bartschat,\\Gerhard Hecht, Inka und Markus Brand, Stefan Blanck,\\Alex Zbiek, Jörg Ihle, Thorsten Suckow, Julian Colbus,\\ELANE, Zapf, Silke Lukas, Arne S. Reismueller,\\und allen anderen andorischen Autor*innen,\\zusammengestellt von Butterbrotbär}
 \date{}
 
@@ -210,9 +211,6 @@
     \textcolor{white}{\andorfont \contour{black}{Chronik der}}
 
     \textcolor{white}{\andorfont \contour{black}{Andorversen}}
-
-    \fontsize{36}{50}
-    \textcolor{white}{\andorfont \contour{black}{Stand Februar 2026}}
 \end{titlepage}
 
 
@@ -263,8 +261,83 @@ Liebe Grüße
 Butterbrotbär
 
 
-\fillbreak
 
+\end{multicols}
+
+
+
+
+\begin{center}
+    \begin{tikzpicture}
+
+        % Define box styles.
+        \tikzset{box/.style={inner sep=0px,line width=3px}}
+
+        % Define arrow style.
+        \tikzset{arr/.style={->,-latex,line width=3px,>={Stealth[scale=10]}}}
+
+        % Draw boxes.
+        \node[box] (DLvA) at (0,0){\hyperref[Produkt: Die Legenden von Andor (2012)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die Legenden von Andor (2012).png}}};
+        \node[box] (DRidN) at (4.1,-1.4){\hyperref[Produkt: Die Reise in den Norden (2014)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die Reise in den Norden (2014).png}}};
+        \node[box] (DlH) at (0,-2.7){\hyperref[Produkt: Die letzte Hoffnung (2016)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die letzte Hoffnung (2016).png}}};
+        \node[box] (DLvA-Erweiterungen) at (9.7,0.3)
+        {
+            \hyperref[Produkt: Der Sternenschild (2013)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Der Sternenschild (2013).png}}
+            \hyperref[Produkt: Die Bonus-Box (2024)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die Bonus-Box (2024).jpeg}}
+            \hyperref[Produkt: Alte Geister (2018)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Alte Geister (2018).png}}
+            \hyperref[Produkt: Düstere Zeiten (2020)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Düstere Zeiten (2020).png}}
+        };
+        \node[box] (NH) at (8.1,-2.6) {\hyperref[Produkt: Neue Helden (2014)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Neue Helden (2014).png}}};   
+        \node[box] (MH) at (9.7,-2.8) {\hyperref[Produkt: Magische Helden (2021)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Magische Helden (2021).png}}}; 
+        \node[box] (DH) at (11.3,-3) {\hyperref[Produkt: Dunkle Helden (2017)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Dunkle Helden (2017).png}}}; 
+        \node[box] (AJ) at (0,3.1){\hyperref[Produkt: Andor Junior (2020)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Andor Junior (2020).png}}};
+        \node[box] (GadS) at (4.7,3.1){\hyperref[Produkt: Die Gefahr aus dem Schatten (2022)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die Gefahr aus dem Schatten (2022).png}}};
+        \node[box] (DeK) at (0,-5.8){\hyperref[Produkt: Die ewige Kälte (2022)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Die ewige Kälte (2022).png}}};
+        \node[box] (DfL) at (0,-8.5) {\hyperref[Produkt: Das ferne Land (2025)]{\includegraphics[height=72px]{Chronik der Andorversen/Bilder/Das ferne Land (2025).png}}}; 
+        \node[box] (LdD) at (4.8,-5.8){\hyperref[Produkt: Die ewige Kälte (2022)]{\includegraphics[height=44px]{Chronik der Andorversen/Bilder/Das Licht der Dunkelklinge (2026)}}};
+        \node[box] (CuT) at (8.8,-8.9) {\hyperref[Produkt: Chada und Thorn (2015)]{\includegraphics[height=48px]{Chronik der Andorversen/Bilder/Chada und Thorn (2015).png}}};  
+        \node[box] (BdR) at (10.6,-8.6) {\hyperref[Produkt: Die Befreiung der Rietburg (2019)]{\includegraphics[height=66px]{Chronik der Andorversen/Bilder/Die Befreiung der Rietburg (2019).png}}};  
+        \node[box] (SQ-DP) at (12.1,-9) {\hyperref[Produkt: Dunkle Pfade (2021)]{\includegraphics[height=44px]{Chronik der Andorversen/Bilder/Dunkle Pfade (2021).png}}};  
+        
+        % Write text.
+        \node[anchor=north west] (Trilogie) at (1.7,1.3) {Die Original-Trilogie};
+        \node[anchor=north west] (Junior) at (1.7,4.4) {Andor Junior};
+        \node[anchor=north west] (Neue Ära) at (1.7,-4.5) {Die neue Ära};
+        \node[] (Eigenständige Spiele) at (0,5.6) {Eigenständige};
+        \node[] at (0,5.1) {große Spiele};
+        \node[] (Spin-Offs) at (8.8,-7.7) {Spin-Offs};
+
+        % Draw rectangles.
+        \node[box,inner sep=9px,draw=orange,fit=(DLvA-Erweiterungen)(NH)(MH)(DH)] (DLvA-Ergänzungen) {};
+        \node[box,inner sep=3px,draw=teal,fit=(NH)(MH)] (DRidN-Ergänzungen) {};
+        \node[box,inner sep=3px,draw=darkgray,fit=(MH)(DH)] (DlH-Ergänzungen) {};
+        \node[box,inner sep=9px,draw=white,fit=(AJ)(DLvA)(DlH)(DeK)(DfL)(Eigenständige Spiele)] {};
+        \node[box,inner sep=3px,draw=brown,fit=(DLvA)(DRidN)(DlH)(Trilogie)] {};
+        \node[box,inner sep=3px,draw=brown,fit=(AJ)(GadS)(Junior)] {};
+        \node[box,inner sep=3px,draw=brown,fit=(DeK)(DfL)(LdD)(Neue Ära)] {};
+        \node[box,inner sep=3px,draw=brown,fit=(CuT)(BdR)(SQ-DP)(Spin-Offs)] {};
+
+        % Draw arrows.
+        \draw[arr,orange] ($(DLvA.east)+(0,0.5)$) to [out=0,in=180]($(DLvA-Ergänzungen.west)+(0,1.5)$);
+        \draw[arr,teal] ($(DLvA.east)+(0,-0.5)$) to [out=0,in=180](DRidN.west);
+        \draw[arr,teal] (DRidN.east) to [out=0,in=180](DRidN-Ergänzungen.west);
+        \draw[arr,darkgray] (DlH.east) to [out=0,in=-90](DlH-Ergänzungen.south);  
+        \draw[arr,brown] (AJ.east) to [out=0,in=180](GadS.west); 
+        \draw[arr,brown] (DeK.east) to [out=0,in=180](LdD.west);
+
+    \end{tikzpicture}
+\end{center}
+
+
+\newpage
+
+
+
+
+
+
+
+\begin{multicols}{2}
 
 \tableofcontents
 
