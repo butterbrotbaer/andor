@@ -108,31 +108,24 @@
 
 \newcommand{\fan}[1]{\textit{#1}}
 
-\newcommand{\hypref}[1]{%
-    \hyperref[#1]{#1}%
-}
-
-\newcommand{\bildmitts}[2][height=0.5\textwidth,width=0.75\textwidth,keepaspectratio]{%
-    \begin{center}
-        \includegraphics[#1]{Bilder/#2}
-    \end{center}
-}
-
-\newcommand{\bildlinks}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
-    \begin{wrapfigure}{L}{0px}
-        \includegraphics[#1]{Bilder/#2}
-    \end{wrapfigure}
+\newcommand{\heldenfigur}[1]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[opacity=1, inner sep=1.5cm, anchor=north] at (current page.north) {%
+            \frame{\includegraphics[height=60px]{Alle Helden ueberall/Heldenfiguren/#1}}%
+        };
+    \end{tikzpicture}
+    
 }
 
 \newcommand{\hintergrund}[1]{%
     \AddToShipoutPictureBG{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Alle Helden ueberall/Hintergrund/#1}};%
+        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{Alle Helden ueberall/Hintergrund/#1}};%
     }
 }
 
 \newcommand{\titelseite}[1]{%
     \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Alle Helden ueberall/Hintergrund/#1}};%
+        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{Alle Helden ueberall/Hintergrund/#1}};%
     }
 }
 
@@ -193,41 +186,41 @@ Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neust
 
     \vspace{2pt}
 
-    \hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}
-    \hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}
-    \hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}
-    \hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}
-    \hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}
-    \hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}
-    \hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}
-    \hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}
-    \hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}
-    \hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}
+    \frame{\hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}}
+    \frame{\hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}}
+    \frame{\hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}}
+    \frame{\hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}}
+    \frame{\hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}}
+    \frame{\hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}}
+    \frame{\hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}}
+    \frame{\hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}}
+    \frame{\hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}}
+    \frame{\hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}}
 
     \vspace{2pt}
 
-    \hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}
-    \hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}
-    \hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}
-    \hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}
-    \hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}
-    \hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}
-    \hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}
-    \hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}
-    \hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}
+    \frame{\hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}}
+    \frame{\hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}}
+    \frame{\hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}}
+    \frame{\hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}}
+    \frame{\hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}}
+    \frame{\hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}}
+    \frame{\hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}}
+    \frame{\hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}}
+    \frame{\hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}}
 
     \vspace{2pt}
 
-    \hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}
-    \hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}
-    \hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}
-    \hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}
-    \hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}
-    \hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}
-    \hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}
-    \hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}
-    \hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}
-    \hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}
+    \frame{\hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}}
+    \frame{\hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}}
+    \frame{\hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}}
+    \frame{\hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}}
+    \frame{\hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}}
+    \frame{\hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}}
+    \frame{\hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}}
+    \frame{\hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}}
+    \frame{\hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}}
+    \frame{\hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}}
 \end{titlepage}
 
 \thispagestyle{plain}
@@ -1346,7 +1339,7 @@ Der Reiter kann einen Helden nicht \fan{auf ein oder von einem} Feld mit oder an
 
 \chapter{\fan{2.} Trieest (Taleena), der Feuerkrieger}
 \label{Feuerkrieger}
-
+\heldenfigur{Trieest.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1475,7 +1468,7 @@ Spricht eine Regel oder Karte vom \hyperref[Krieger]{Krieger}, ist der Feuerkrie
 
 \chapter{3. Jarid (Jarim), die Wassermagierin}
 \label{Wassermagierin}
-
+\heldenfigur{Jarid.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1656,6 +1649,7 @@ Die Wassermagierin kann sich nicht von oder zur Quelle auf Feld 37 teleportieren
 
 \chapter{4. Leander (Leane), der Seher}
 \label{Seher}
+\heldenfigur{Leander.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1952,6 +1946,7 @@ Muss der Seher wegen Shans Fluch einen Würfel abgeben, muss er jeweils den näc
 
 \chapter{5. Ijsdur (Ijsdora), der Eis-Dämon}
 \label{Eis-Dämon}
+\heldenfigur{Ijsdur.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2313,6 +2308,7 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 
 \chapter{6. Orfen (Marfa), der Wolfskrieger}
 \label{Wolfskrieger}
+\heldenfigur{Orfen.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2478,6 +2474,7 @@ Für seine \hyperref[Bonusstärke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 \chapter{7. Kram (Bait), der Zwerg}
 \label{Zwerg}
+\heldenfigur{Kram.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2639,6 +2636,7 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 \chapter{9. Stinner (Stianna), der Seekrieger}
 \label{Seekrieger}
+\heldenfigur{Stinner.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2791,6 +2789,7 @@ Durch dieses Versetzen werden Effekte wie beim Stehenbleiben aktiviert (z.B. Wra
 
 \chapter{14. Thorn (Mairen), der Krieger}
 \label{Krieger}
+\heldenfigur{Thorn.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -2961,6 +2960,7 @@ Leert der Krieger die Quelle auf Feld 37, erhält er nur das, was auf dem Quelle
 
 \chapter{14. Thorn (Mairen), der \fan{Ritter}}
 \label{Ritter}
+\heldenfigur{Thorn (Reiter).jpg}
 
 
 
@@ -3065,6 +3065,7 @@ Ihr dürft die Summe seiner Stärkepunkte und dieser Bonusstärke durch einen we
 
 \chapter{15. Bragor (Rhega), der Tarus}
 \label{Tarus}
+\heldenfigur{Bragor.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -3201,6 +3202,7 @@ Leert der Tarus die Quelle auf Feld 37, kann er keinen Stärkepunkt statt Willen
 
 \chapter{22. Fenn (Fennah), der Fährtenleser}
 \label{Fährtenleser}
+\heldenfigur{Fenn.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -3421,6 +3423,7 @@ Der Fährtenleser darf Messer und Horn im Kampf gegen Varkur nutzen, auch wenn i
 
 \chapter{23. Drukil (Drukia), der Hautwandler}
 \label{Hautwandler}
+\heldenfigur{Drukil.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -3978,6 +3981,7 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 
 \chapter{24. Avida (Avid), die Heilerin}
 \label{Heilerin}
+\heldenfigur{Avida.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -4072,6 +4076,7 @@ Steht die Heilerin bei oder angrenzend zu Geistern, kann sie im Kampf ihre Heilk
 
 \chapter{24. Santa Gor, der Weihnachts-Gor}
 \label{Weihnachts-Gor}
+\heldenfigur{Santa Gor.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4339,6 +4344,7 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \chapter{25. Chada (Pasco), die Bogenschützin}
 \label{Bogenschützin}
+\heldenfigur{Chada.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -4438,6 +4444,7 @@ Mit Mondbeeren geht das nicht.\supercite{MH:Mondbeeren,MH:Begleitheft}
 
 \chapter{26. Aćh (Aćhan), die Takuri-Hüterin}
 \label{Takuri-Hüterin}
+\heldenfigur{Aćh.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4637,6 +4644,7 @@ Die Spiegelscherben von der offiziellen Hoffnungskarte können Wachtrolle nicht 
 
 \chapter{29. Kheela (Kheelan), die Hüterin}
 \label{Hüterin}
+\heldenfigur{Kheela.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4864,6 +4872,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 \chapter{33. Grent (Grea), der Bergkrieger}
 \label{Bergkrieger}
+\heldenfigur{Grent.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -5114,6 +5123,7 @@ Während der Bergkrieger bei oder angrenzend zu Geistern steht, hat sein Würfel
 
 \chapter{34. Eara (Liphardus), die Zauberin}
 \label{Zauberin}
+\heldenfigur{Eara.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -5357,6 +5367,7 @@ Auch wenn die Zauberin durch Shans Fluch keinen Würfel mehr hat, darf sie im ge
 
 \chapter{34. Eara (Liphardus), die Dunkle Magierin}
 \label{Dunkle Magierin}
+\heldenfigur{Eara (dunkel).jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -5538,6 +5549,7 @@ Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Wille
 
 \chapter{37. Forn (Forr), der Halbskral}
 \label{Halbskral}
+\heldenfigur{Forn.jpg}
 
 
 
@@ -5773,6 +5785,7 @@ Tiefminen-Golems überspringen den Halbskral nicht.
 
 \chapter{38. Barz (Yaza), der Steppennomade}
 \label{Steppennomade}
+\heldenfigur{Barz.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -6323,6 +6336,7 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \chapter{39. Raash (Raashana), der Steppenreiter}
 \label{Steppenreiter}
+\heldenfigur{Raash.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -6391,6 +6405,7 @@ Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin},
 
 \chapter{50. Arbon (Talvora), der Bewahrer}
 \label{Bewahrer}
+\heldenfigur{Arbon.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -6615,6 +6630,7 @@ Der Bewahrer kann keine Maasavi schwächen.
 
 \chapter{52. Iril (Ilar), die Runenmeisterin}
 \label{Runenmeisterin}
+\heldenfigur{Iril.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -7019,6 +7035,7 @@ Die Runenmeisterin kann die Quelle auf Feld 37 mit dem Brunnen-Symbol nicht auff
 
 \chapter{60. Tenaya (Teyan), die Feuerwächterin}
 \label{Feuerwächterin}
+\heldenfigur{Tenaya (Feuerwächterin).jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -7211,6 +7228,7 @@ Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Fe
 
 \chapter{60. Tenaya (Teyan), die Feuerbezwingerin}
 \label{Feuerbezwingerin}
+\heldenfigur{Tenaya.jpg}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -7499,6 +7517,7 @@ Kreaturen bei oder angrenzend zu Geistern werden werden vom Bannfeuer nicht am L
 
 \chapter{60. Kirr, der Zeitzauberer}
 \label{Zeitzauberer}
+\heldenfigur{Kirr.jpg}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -7614,6 +7633,7 @@ Spricht eine Regel oder Karte von der \hyperref[Zauberin]{Zauberin}, ist der Zei
 
 \chapter{68. Darh (Darhen), die Beschwörerin}
 \label{Beschwörerin}
+\heldenfigur{Darh.jpg}
 
 
 
@@ -9550,65 +9570,65 @@ Ausnahme: Von den Bewegungsplättchen aus "Die letzte Hoffnung" darf nur das jew
 
     \vspace*{0.8cm}
     
-    \hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}
-    \hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}
-    \hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}
-    \hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}
+    \frame{\hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}}
+    \frame{\hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}}
+    \frame{\hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}}
+    \frame{\hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}}
 
     \vspace{2pt}
 
-    \hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}
+    \frame{\hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}
-    \hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}
-    \hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}
-    \hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}
+    \frame{\hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}}
+    \frame{\hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}}
+    \frame{\hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}}
+    \frame{\hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}
-    \hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}
+    \frame{\hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}}
+    \frame{\hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}
-    \hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}
+    \frame{\hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}}
+    \frame{\hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}
-    \hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}
-    \hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}
-    \hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}
+    \frame{\hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}}
+    \frame{\hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}}
+    \frame{\hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}}
+    \frame{\hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}
-    \hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}
+    \frame{\hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}}
+    \frame{\hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}
-    \hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}
-    \hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}
-    \hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}
+    \frame{\hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}}
+    \frame{\hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}}
+    \frame{\hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}}
+    \frame{\hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}
+    \frame{\hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}
-    \hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}
+    \frame{\hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}}
+    \frame{\hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}}
 
     \vspace{2pt}    
 
-    \hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}
-    \hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}
-    \hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}
+    \frame{\hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}}
+    \frame{\hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}}
+    \frame{\hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}}
 
 \end{center}
 
