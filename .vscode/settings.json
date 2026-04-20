@@ -1,0 +1,28 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name":     "lualatex",
+            "command":  "lualatex",
+            "args":     ["-file-line-error","-interaction=nonstopmode","-synctex=1","%DOC%.tex"],
+        },
+        {
+            "name":     "biber",
+            "command":  "biber",
+            "args":     ["%DOCFILE%"],
+        },
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name":     "Chronik der Andorversen Recipe",
+            "tools":    ["lualatex","lualatex"],
+        },
+        {
+            "name":     "Das Erbe des Wunderkindes Recipe",
+            "tools":    ["lualatex","lualatex"],
+        },
+        {
+            "name":     "Alle Helden ueberall Recipe",
+            "tools":    ["lualatex","biber","lualatex","lualatex"],
+        },
+    ],
+}
