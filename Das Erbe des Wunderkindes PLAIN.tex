@@ -1,0 +1,107 @@
+%!LW recipe = Das Erbe des Wunderkindes Recipe
+% Die vorherige Zeile teilt der LaTeX Workshop Extension von VS Code mit, nach welchem Rezept (Rezepte sind definiert in .vscode/settings.json) das PDF-Dokument erstellt werden soll. 
+
+\documentclass[10pt, a4paper, oneside]{book}
+\usepackage[left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm]{geometry} %definiere Ränder und so
+\usepackage[ngerman]{babel} % für deutsche Titelbezeichnungen
+\usepackage{graphicx} % für Bildereinfügen
+\usepackage{eso-pic} % unter anderem für die Hintergrundbilder
+\usepackage{tikz} % unter anderem für die Hintergrundbilder
+
+\usepackage{csquotes} % für Anführungszeichen
+    \MakeOuterQuote{"}
+
+\usepackage{multicol}
+
+\usepackage{soul} % für Befehle wie \st (durchgestrichen)
+
+\usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{\pagestyle{empty}}
+
+\usepackage{fontspec}
+\newfontfamily{\andorfont}{Andor-Schriftart}
+[Extension = .otf]
+
+\usepackage{titlesec}
+    \titlespacing*{\chapter}{0pt}{0pt}{0pt}
+    \titlespacing*{\section}{0pt}{0pt}{0pt}
+    \titleformat{\chapter}{\normalsize}{}{0pt}{}
+    \titleformat{\section}{\normalsize}{}{0pt}{}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} %keine Nummerierung für die chapter-header
+\renewcommand{\sectionmark}[1]{\markright{#1}} %keine Nummerierung für die section-header
+
+
+
+% Define some unneeded commands to simply pass empty.
+\newcommand{\az}[1]{}
+\newcommand{\jdh}[1]{}
+\newcommand{\bildmitts}[2][]{}
+\newcommand{\bildlinks}[2][]{}
+
+% Define some unneeded commands to simply pass their argument.
+\newcommand{\hypref}[1]{#1}
+
+% Redefine some other commands to simply pass empty.
+\renewcommand{\bigskip}{}
+\renewcommand{\footnote}[2][]{}
+\renewcommand{\st}[1]{}
+\renewcommand{\textsuperscript}[1]{}
+
+% Redefine some other commands to simply pass their argument.
+\renewenvironment{center}{}{}
+\renewcommand{\hyperref}[2][]{#2}
+\renewcommand{\textbf}{}
+\renewcommand{\textit}{}
+\renewcommand{\textsc}{}
+\renewcommand{\texttt}{}
+\renewcommand{\url}[1]{#1}
+
+
+
+\usepackage{environ}
+\usepackage[most]{tcolorbox} % für farbige Boxen
+\NewEnviron{chapterbox}{\newpage\BODY} %box für chapter-Anfänge
+
+
+
+\renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
+
+
+
+\begin{document}
+
+\fontsize{1}{2}\selectfont % Make fontsize tinier than \tiny.
+
+\include{Das Erbe des Wunderkindes/Tion erzählt von Mutter Natur (2021)}
+
+\include{Das Erbe des Wunderkindes/Die Agren, der Schildzwerg und der Feuerdrache (2020)}
+
+\include{Das Erbe des Wunderkindes/Der Giftzwerg und die Sphäre (2020)}
+
+\include{Das Erbe des Wunderkindes/Magische Abenteuer I – Der Steppennomade, der große See und das große Feuer (2022)}
+
+\include{Das Erbe des Wunderkindes/Magische Abenteuer II – Der verschwundene Feuertakuri (2022)}
+
+\include{Das Erbe des Wunderkindes/Die Legende der entzweiten Zeit (2023)}
+
+\include{Das Erbe des Wunderkindes/Magische Abenteuer lll – Runen im Schnee (2022)}
+
+\include{Das Erbe des Wunderkindes/Stürmische Rätselnacht in der Taverne (2019 bis 2020)}
+
+\include{Das Erbe des Wunderkindes/Der Feuerkrieger und die Wassermagierin (2023)}
+
+\include{Das Erbe des Wunderkindes/Quruns Erwachen (2021)}
+
+\include{Das Erbe des Wunderkindes/Der Giftzwerg und das Drachenherz (2023)}
+
+\include{Das Erbe des Wunderkindes/Ein König auf Abwegen (2021)}
+
+\include{Das Erbe des Wunderkindes/Ein gemütliches Gasthaus voller Geschichten (2025)}
+
+
+\end{document}
