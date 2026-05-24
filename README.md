@@ -1,4 +1,4 @@
-Quelltext verschiedener Andor-Projekte von Butterbrotbär. Mehr Informationen, der aktueller Stand und vorherige Versionen findet ihr auf https://butterbrotbaer.github.io
+Quelltext verschiedener Andor-Projekte von Butterbrotbär. Mehr Informationen, den aktuellen Stand und vorherige Versionen findet ihr auf https://butterbrotbaer.github.io
 
 
 
