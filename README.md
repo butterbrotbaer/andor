@@ -1,8 +1,10 @@
-Für mehr zu diesem Projekt, siehe https://butterbrotbaer.github.io
+Quelltext verschiedener Andor-Projekte von Butterbrotbär. Mehr Informationen, der aktueller Stand und vorherige Versionen findet ihr auf https://butterbrotbaer.github.io
 
 
 
-Um dieses Projekt selbst zu kompilieren, benötigst Du:
+# Kompilation 
+
+Um eines dieser Projekte selbst zu kompilieren, benötigst Du:
 
 – Wenn Du es lokal auf einem Computer kompilieren lassen willst:
 1. Eine Kopie des Quelltexts (https://butterbrotbaer.github.io)
@@ -15,10 +17,10 @@ Um dieses Projekt selbst zu kompilieren, benötigst Du:
 
 Anschließend kannst Du das erhaltene PDF komprimieren. Das geht mit einem Programm wie pdf24 (https://www.pdf24.org)
 
-Wenn du zwischen verschiedenen Compilern auswählen kannst, wähle LuaLaTeX.
+Wenn Du zwischen verschiedenen Compilern auswählen kannst, wähle LuaLaTeX.
 
 
 
 # Copyright
 
-Dieses Projekt enthält urheberrechtlich geschütztes Material von den offiziellen Internetauftritten der Marke "Die Legenden von Andor" des KOSMOS Verlags. Ich (Butterbrotbär) wandte mich an den Urheber, Michael Menzel, und erhielt die Erlaubnis, dieses Material in dieser Form nicht-kommerziell zu teilen. Alle anderen Rechte bleiben jedoch vorbehalten. Dieses Projekt ist ein Fan-Werk und wird nicht offiziell unterstützt.
+Diese Projekte enthalten urheberrechtlich geschütztes Material von den offiziellen Internetauftritten der Marke "Die Legenden von Andor" des KOSMOS Verlags. Ich (Butterbrotbär) wandte mich an Michael Menzel und erhielt die Erlaubnis, dieses Material in dieser Form nicht-kommerziell zu teilen. Alle anderen Rechte bleiben jedoch vorbehalten. Diese Projekte sind Fan-Werke und werden nicht offiziell unterstützt.
