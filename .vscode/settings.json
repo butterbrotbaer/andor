@@ -17,7 +17,7 @@
             "tools":    ["lualatex","lualatex"],
         },
         {
-            "name":     "Das Erbe des Wunderkindes Recipe",
+            "name":     "das-erbe-des-wunderkindes-recipe",
             "tools":    ["lualatex","lualatex"],
         },
         {
