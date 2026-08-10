@@ -42,6 +42,7 @@
 \newcommand{\jdh}[1]{}
 \newcommand{\bildmitts}[2][]{}
 \newcommand{\bildlinks}[2][]{}
+\newcommand{\trennzeichen}{}
 
 % Define some unneeded commands to simply pass their argument.
 \newcommand{\hypref}[1]{#1}
@@ -64,8 +65,9 @@
 
 
 \usepackage{environ}
-\usepackage[most]{tcolorbox} % für farbige Boxen
-\NewEnviron{chapterbox}{\newpage\BODY} %box für chapter-Anfänge
+    \usepackage[most]{tcolorbox} % für farbige Boxen
+    \NewEnviron{chapterbox}{\newpage\BODY} % box für chapter-Anfänge
+    \NewEnviron{commentbox}{\BODY} % box für Kommentare
 
 
 
@@ -88,6 +90,8 @@
 \include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer II – Der verschwundene Feuertakuri (2022)}
 
 \include{Das Erbe des Wunderkindes/Geschichten/Die Legende der entzweiten Zeit (2023)}
+
+\include{Das Erbe des Wunderkindes/Geschichten/Magisches Zwischenspiel – Ein folgenschwerer Tod (2022)}
 
 \include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer lll – Runen im Schnee (2022)}
 

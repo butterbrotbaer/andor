@@ -102,6 +102,13 @@
     \end{wrapfigure}
 }
 
+\newcommand{\trennzeichen}{%
+    \begin{center}%
+        \vspace*{-1em}
+        \andorfont\Huge{ô}
+    \end{center}
+}
+
 
 
 \renewcommand{\footnoterule}{%stretche footnote-Linie über die ganze Länge
@@ -123,15 +130,25 @@
 
 
 \usepackage{environ}
-\usepackage[most]{tcolorbox} % für farbige Boxen
-\NewEnviron{chapterbox} %box für chapter-Anfänge
-{   
-    \newpage
-    \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
-        \BODY
-        \vfill
-    \end{tcolorbox}
-}
+    \usepackage[most]{tcolorbox} % für farbige Boxen
+    \NewEnviron{chapterbox} % box für chapter-Anfänge
+    {   
+        \newpage
+        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+            \BODY
+            \vfill
+        \end{tcolorbox}
+    }
+    \NewEnviron{commentbox} % box für Kommentare
+    {   
+        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+            \BODY
+            \vfill
+        \end{tcolorbox}
+    }
+
+
+
 
 
 \renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
@@ -272,6 +289,8 @@ Butterbrotbär
 
 \include{Das Erbe des Wunderkindes/Geschichten/Die Legende der entzweiten Zeit (2023)}
 
+\include{Das Erbe des Wunderkindes/Geschichten/Magisches Zwischenspiel – Ein folgenschwerer Tod (2022)}
+
 \include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer lll – Runen im Schnee (2022)}
 
 \include{Das Erbe des Wunderkindes/Geschichten/Stürmische Rätselnacht in der Taverne (2019 bis 2020)}
@@ -373,7 +392,11 @@ Doch diese Erzählung soll nicht von den Ambacus berichten, sondern von ebenjene
 
 Es begab sich, dass sich dieser Krahderfürst eines Tages auf seinem steinernen Thron fläzte und es sich gut ergehen liess. Seine Bediensteten brachten ihm gerade sein viertes Stück Fleisch auf einem Silbertablett, als sein Blick auf seinen eigenen Schatten fiel, den das flackernde Fackellicht auf die Felswand warf. Der Krahderfürst bewegte seinen Körper und der Schatten folgte jeder seiner Bewegungen. Das enervierte den Fürsten. Seine Macht konnte nicht angetastet werden, jede Menschen-, Zwergen- und Drachenseele in- und ausserhalb seines Reichs fürchtete ihn, und doch war da sein Schatten, welcher auf demselben Thorn sass, dieselben Handlungen durchführte und dieselbe Autorität ausstrahlte. Und er konnte sich drehen und wenden, wie er wollte, der Schatten würde stets mit ihm verbunden bleiben. Der Krahderfürst sah seinen Schatten nun als Rivalen an und befahl ihm, von dannen ziehen.
 
-Am nächsten Morgen war sein Schatten verschwunden.\bigskip
+Am nächsten Morgen war sein Schatten verschwunden.
+
+
+
+\trennzeichen
 
 
 
@@ -385,7 +408,11 @@ Doch im Reich des Krahderfürsten vermochte der Dunkle Schatten sich wieder mit 
 
 Und es begab sich, dass der Krahderfürst in dem Masse schwächer und dünner wurde, in welchem sein ehemaliger Schatten wieder wuchs und erstarkte. Nun fürchtete sich der Krahderfürst, denn würde er nicht seine momentane Stärke beibehalten können, so dürfte er bald schon mit Überfällen aus den umliegenden Krahderreichen rechnen, oder noch schlimmer, mit einem Aufstand der ihm Unterlegenen.
 
-So schlug der Schatten ihm vor, selbst in die umliegenden Lande auszureisen, Unheil und Verderben über sie zu bringen, und sich so wieder zu kräftigen. Die einzige Bedingung war, dass der Schatten den Krahderfürsten spielen durfte, während der Krahderfürst selbst den Schatten spielen sollte. Der Krahderfürst willigte ein.\bigskip
+So schlug der Schatten ihm vor, selbst in die umliegenden Lande auszureisen, Unheil und Verderben über sie zu bringen, und sich so wieder zu kräftigen. Die einzige Bedingung war, dass der Schatten den Krahderfürsten spielen durfte, während der Krahderfürst selbst den Schatten spielen sollte. Der Krahderfürst willigte ein.
+
+
+
+\trennzeichen
 
 
 
@@ -401,13 +428,21 @@ Der Schatten sprach zu der Krahderkaiserin:
 
 „Wie grauenvoll“, sprach die Krahderkaiserin mitleidig, „Und es gibt nichts, was wir tun könnten, um ihn vom Gegenteil zu überzeugen?“
 
-„Nichts“, nickte der scheinheilige Schatten traurig, „Wir können es bloss auf uns nehmen, ihn von seinem verwirrten Elend zu erlösen.“\bigskip
+„Nichts“, nickte der scheinheilige Schatten traurig, „Wir können es bloss auf uns nehmen, ihn von seinem verwirrten Elend zu erlösen.“
+
+
+
+\trennzeichen
 
 
 
 Nun ist wichtig, zu erkennen, dass zwei mögliche Enden zu dieser Erzählung im Umlauf sind. In der Version, die die Krahder von ihren Sklaven den zukünftigen Königen ihres Reichs erzählen lassen, bäumt sich der Krahderfürst auf, erwürgt seinen zwielichtigen Schatten mit blossen Händen und erwählt die Krahderkaiserin zu seiner Gemahlin, welche ihm noch so gerne in sein düsteres Reich zurückfolgt, wo die beiden bis zu diesem Tage immer noch nicht gestorben sind, und somit noch heute glücklich leben.
 
-In einigen Städten der Ambacus allerdings, wenn keiner der Krahder in der Nähe war, flüsterten die Mütter ihren Kindern ein ganz anderes Ende zu:\bigskip
+In einigen Städten der Ambacus allerdings, wenn keiner der Krahder in der Nähe war, flüsterten die Mütter ihren Kindern ein ganz anderes Ende zu:
+
+
+
+\trennzeichen
 
 
 
@@ -469,7 +504,11 @@ So geschah es, dass ein edler Drache aus den Ostlanden durch das Graue Gebirge s
 
 
 
-Doch dies soll nicht heissen, dass Einköpfchen seine Geschwister nie mehr wiedersah. Denn es trug sich einige Sonnenumrundungen später zu, dass Einköpfchen glücklich durch die Lüfte flog, als es zwei traurige Drachengestalten weiter unten am Boden erkannte. Das waren Zweiköpfchen und Dreiköpfchen, und alle fünf Köpfe, die sie gemeinsam hatten, liessen sie hängen, denn sie litten nun selbst unter Hunger und bereuten, wie sie dem Einköpfchen übel mitgespielt hatten vor so langer Zeit. Und Einköpfchen, die gute Seele, die es war, verspürte keinen Groll mehr und hiess die beiden mit offenen Pranken willkommen, auf dass die drei Geschwister wieder vereint wären und gemeinsam die Welt bereisen konnten.\\bigskip
+Doch dies soll nicht heissen, dass Einköpfchen seine Geschwister nie mehr wiedersah. Denn es trug sich einige Sonnenumrundungen später zu, dass Einköpfchen glücklich durch die Lüfte flog, als es zwei traurige Drachengestalten weiter unten am Boden erkannte. Das waren Zweiköpfchen und Dreiköpfchen, und alle fünf Köpfe, die sie gemeinsam hatten, liessen sie hängen, denn sie litten nun selbst unter Hunger und bereuten, wie sie dem Einköpfchen übel mitgespielt hatten vor so langer Zeit. Und Einköpfchen, die gute Seele, die es war, verspürte keinen Groll mehr und hiess die beiden mit offenen Pranken willkommen, auf dass die drei Geschwister wieder vereint wären und gemeinsam die Welt bereisen konnten.
+
+
+
+\trennzeichen
 
 
 
