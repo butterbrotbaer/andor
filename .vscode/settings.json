@@ -21,7 +21,7 @@
             "tools":    ["lualatex","lualatex"],
         },
         {
-            "name":     "Alle Helden ueberall Recipe",
+            "name":     "alle-helden-ueberall-recipe",
             "tools":    ["lualatex","biber","lualatex","lualatex"],
         },
     ],
