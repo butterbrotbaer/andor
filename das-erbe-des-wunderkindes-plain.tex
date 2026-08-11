@@ -23,8 +23,7 @@
 \fancypagestyle{plain}{\pagestyle{empty}}
 
 \usepackage{fontspec}
-\newfontfamily{\andorfont}{andor-schriftart}
-[Extension = .otf]
+    \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=das-erbe-des-wunderkindes/]
 
 \usepackage{titlesec}
     \titlespacing*{\chapter}{0pt}{0pt}{0pt}
@@ -37,15 +36,16 @@
 
 
 
-% Define some unneeded commands to simply pass empty.
+% Define some commands to simply pass empty.
 \newcommand{\az}[1]{}
 \newcommand{\jdh}[1]{}
 \newcommand{\bildmitts}[2][]{}
 \newcommand{\bildlinks}[2][]{}
 \newcommand{\trennzeichen}{}
+\newcommand{\nurvollversion}[1]{}
 
-% Define some unneeded commands to simply pass their argument.
-\newcommand{\hypref}[1]{#1}
+% Define some commands to simply pass their argument.
+\newcommand{\nurplainversion}[1]{#1}
 
 % Redefine some other commands to simply pass empty.
 \renewcommand{\bigskip}{}
@@ -61,10 +61,6 @@
 \renewcommand{\textsc}{}
 \renewcommand{\texttt}{}
 \renewcommand{\url}[1]{#1}
-
-% Definiere Commands für TeX-Stellen nur in der Vollversion oder nur in der Plainversion.
-\newcommand{\nurvollversion}[1]{}
-\newcommand{\nurplainversion}[1]{#1}
 
 
 
