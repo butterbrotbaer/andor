@@ -1,6 +1,6 @@
 % Noch nicht genug? In einer der hiesigen Geschichten wird Thermosta erwähnt. Sie bot Feuermeisterin Nidwal einst einen gewissen Betrag für ein Fernohr an. Diese drei Zahlen verknüpft ergeben eine fünfstellige Zahl. Und wir alle wissen, was man in der Taverne mit fünfstelligen Zahlen so anstellen kann. ^^
 
-%!LW recipe = Das Erbe des Wunderkindes Recipe
+%!LW recipe = das-erbe-des-wunderkindes-recipe
 % Die vorherige Zeile teilt der LaTeX Workshop Extension von VS Code mit, nach welchem Rezept (Rezepte sind definiert in .vscode/settings.json) das PDF-Dokument erstellt werden soll. 
 
 \documentclass[10pt, a4paper, oneside]{book}
@@ -27,20 +27,15 @@
         pdfpagemode=FullScreen,
     }
 
-
-\newcommand{\hypref}[1]{%
-    \hyperref[#1]{#1}%
-}
-
 \newcommand{\hintergrund}[1]{%
     \AddToShipoutPictureBG{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Das Erbe des Wunderkindes/Hintergrund/#1}};%
+        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
     }
 }
 
 \newcommand{\titelseite}[1]{%
     \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Das Erbe des Wunderkindes/Hintergrund/#1}};%
+        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
     }
 }
 
@@ -48,8 +43,7 @@
 \setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnigs
 
 \usepackage{fontspec}
-\newfontfamily{\andorfont}{Andor-Schriftart}
-[Extension = .otf]
+    \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=das-erbe-des-wunderkindes/]
 
 \usepackage{sectsty} %section stiling
 \partfont{\fontsize{50}{60}\andorfont}
@@ -71,38 +65,47 @@
 
 \newcommand{\az}[1]{%fügt einen "nach andorischer Zeit"-Block ein
     \begin{center}
-        \includegraphics[width=180px]{Das Erbe des Wunderkindes/verzierung2.png}\\
+        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
         {\Huge #1} \\
         {nach andorischer Zeitrechnung}\\
-        \includegraphics[width=180px]{Das Erbe des Wunderkindes/verzierung1.png}
+        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
     \end{center}
     \extramarks{}{#1 a.Z.}
 }
 
 \newcommand{\jdh}[1]{%fügt einen "im Jahre des Herrn"-Block ein
     \begin{center}
-        \includegraphics[width=180px]{Das Erbe des Wunderkindes/verzierung2.png}\\
+        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
         {Im Jahre des Herrn}\\
         \vspace{5pt}
         {\Huge #1} \\
-        \includegraphics[width=180px]{Das Erbe des Wunderkindes/verzierung1.png}
+        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
     \end{center}
     \extramarks{}{A.D. #1}
 }
 
 \newcommand{\bildmitts}[2][height=0.5\textwidth,width=0.75\textwidth,keepaspectratio]{%
     \begin{center}
-        \includegraphics[#1]{Das Erbe des Wunderkindes/Bilder/#2}
+        \includegraphics[#1]{das-erbe-des-wunderkindes/bilder/#2}
     \end{center}
 }
 
 \newcommand{\bildlinks}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
     \begin{wrapfigure}{L}{0px}
-        \includegraphics[#1]{Das Erbe des Wunderkindes/Bilder/#2}
+        \includegraphics[#1]{das-erbe-des-wunderkindes/bilder/#2}
     \end{wrapfigure}
 }
 
+\newcommand{\trennzeichen}{%
+    \begin{center}%
+        \vspace*{-1em}
+        \andorfont\Huge{ô}
+    \end{center}
+}
 
+% Definiere Commands für TeX-Stellen nur in der Vollversion oder nur in der Plainversion
+\newcommand{\nurvollversion}[1]{#1}
+\newcommand{\nurplainversion}[1]{}
 
 \renewcommand{\footnoterule}{%stretche footnote-Linie über die ganze Länge
   \kern -3pt
@@ -123,15 +126,25 @@
 
 
 \usepackage{environ}
-\usepackage[most]{tcolorbox} % für farbige Boxen
-\NewEnviron{chapterbox} %box für chapter-Anfänge
-{   
-    \newpage
-    \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
-        \BODY
-        \vfill
-    \end{tcolorbox}
-}
+    \usepackage[most]{tcolorbox} % für farbige Boxen
+    \NewEnviron{chapterbox} % box für chapter-Anfänge
+    {   
+        \newpage
+        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+            \BODY
+            \vfill
+        \end{tcolorbox}
+    }
+    \NewEnviron{commentbox} % box für Kommentare
+    {   
+        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+            \BODY
+            \vfill
+        \end{tcolorbox}
+    }
+
+
+
 
 
 \renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
@@ -147,19 +160,19 @@
 
 \begin{document}
 
-\hintergrund{Hintergrund.jpg}
+\hintergrund{hintergrund.jpg}
 
 
 
 \begin{titlepage}
-    \titelseite{Andor Fan-Karte Inkarnate textlos.jpg}
+    \titelseite{andor-fan-karte-inkarnate-textlos.jpg}
     \centering
 
     \textbf{ }
 
     \vspace{11em}
     
-    \includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/BBBs Fan-Geschichten von Andor Logo.png}
+    \includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bbbs-fan-geschichten-von-andor-logo.png}
 
     \vspace{22em}
 
@@ -256,33 +269,35 @@ Butterbrotbär
 
 \chapter{Die Landkarte des Andorversums}
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Hintergrund/Andor Fan-Karte Inkarnate Text.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/hintergrund/andor-fan-karte-inkarnate-text.jpg}
 
 
 
-\include{Das Erbe des Wunderkindes/Geschichten/Tion erzählt von Mutter Natur (2021)}
+\include{das-erbe-des-wunderkindes/geschichten/2021-tion-erzaehlt-von-mutter-natur}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Die Agren, der Schildzwerg und der Feuerdrache (2020)}
+\include{das-erbe-des-wunderkindes/geschichten/2020-die-agren-der-schildzwerg-und-der-feuerdrache}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Der Giftzwerg und die Sphäre (2020)}
+\include{das-erbe-des-wunderkindes/geschichten/2020-der-giftzwerg-und-die-sphaere}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer I – Der Steppennomade, der große See und das große Feuer (2022)}
+\include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-i-der-steppennomade-der-grosse-see-und-das-grosse-feuer}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer II – Der verschwundene Feuertakuri (2022)}
+\include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-ii-der-verschwundene-feuertakuri}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Die Legende der entzweiten Zeit (2023)}
+\include{das-erbe-des-wunderkindes/geschichten/2023-die-legende-der-entzweiten-zeit}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Magische Abenteuer lll – Runen im Schnee (2022)}
+\include{das-erbe-des-wunderkindes/geschichten/2022-magisches-zwischenspiel-ein-folgenschwerer-tod}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Stürmische Rätselnacht in der Taverne (2019 bis 2020)}
+\include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-lll-runen-im-schnee}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Der Feuerkrieger und die Wassermagierin (2023)}
+\include{das-erbe-des-wunderkindes/geschichten/2019-2020-stuermische-raetselnacht-in-der-taverne}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Quruns Erwachen (2021)}
+\include{das-erbe-des-wunderkindes/geschichten/2023-der-feuerkrieger-und-die-wassermagierin}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Der Giftzwerg und das Drachenherz (2023)}
+\include{das-erbe-des-wunderkindes/geschichten/2021-quruns-erwachen}
 
-\include{Das Erbe des Wunderkindes/Geschichten/Ein König auf Abwegen (2021)}
+\include{das-erbe-des-wunderkindes/geschichten/2023-der-giftzwerg-und-das-drachenherz}
+
+\include{das-erbe-des-wunderkindes/geschichten/2021-ein-koenig-auf-abwegen}
 
 
 
@@ -373,7 +388,11 @@ Doch diese Erzählung soll nicht von den Ambacus berichten, sondern von ebenjene
 
 Es begab sich, dass sich dieser Krahderfürst eines Tages auf seinem steinernen Thron fläzte und es sich gut ergehen liess. Seine Bediensteten brachten ihm gerade sein viertes Stück Fleisch auf einem Silbertablett, als sein Blick auf seinen eigenen Schatten fiel, den das flackernde Fackellicht auf die Felswand warf. Der Krahderfürst bewegte seinen Körper und der Schatten folgte jeder seiner Bewegungen. Das enervierte den Fürsten. Seine Macht konnte nicht angetastet werden, jede Menschen-, Zwergen- und Drachenseele in- und ausserhalb seines Reichs fürchtete ihn, und doch war da sein Schatten, welcher auf demselben Thorn sass, dieselben Handlungen durchführte und dieselbe Autorität ausstrahlte. Und er konnte sich drehen und wenden, wie er wollte, der Schatten würde stets mit ihm verbunden bleiben. Der Krahderfürst sah seinen Schatten nun als Rivalen an und befahl ihm, von dannen ziehen.
 
-Am nächsten Morgen war sein Schatten verschwunden.\bigskip
+Am nächsten Morgen war sein Schatten verschwunden.
+
+
+
+\trennzeichen
 
 
 
@@ -385,7 +404,11 @@ Doch im Reich des Krahderfürsten vermochte der Dunkle Schatten sich wieder mit 
 
 Und es begab sich, dass der Krahderfürst in dem Masse schwächer und dünner wurde, in welchem sein ehemaliger Schatten wieder wuchs und erstarkte. Nun fürchtete sich der Krahderfürst, denn würde er nicht seine momentane Stärke beibehalten können, so dürfte er bald schon mit Überfällen aus den umliegenden Krahderreichen rechnen, oder noch schlimmer, mit einem Aufstand der ihm Unterlegenen.
 
-So schlug der Schatten ihm vor, selbst in die umliegenden Lande auszureisen, Unheil und Verderben über sie zu bringen, und sich so wieder zu kräftigen. Die einzige Bedingung war, dass der Schatten den Krahderfürsten spielen durfte, während der Krahderfürst selbst den Schatten spielen sollte. Der Krahderfürst willigte ein.\bigskip
+So schlug der Schatten ihm vor, selbst in die umliegenden Lande auszureisen, Unheil und Verderben über sie zu bringen, und sich so wieder zu kräftigen. Die einzige Bedingung war, dass der Schatten den Krahderfürsten spielen durfte, während der Krahderfürst selbst den Schatten spielen sollte. Der Krahderfürst willigte ein.
+
+
+
+\trennzeichen
 
 
 
@@ -401,13 +424,21 @@ Der Schatten sprach zu der Krahderkaiserin:
 
 „Wie grauenvoll“, sprach die Krahderkaiserin mitleidig, „Und es gibt nichts, was wir tun könnten, um ihn vom Gegenteil zu überzeugen?“
 
-„Nichts“, nickte der scheinheilige Schatten traurig, „Wir können es bloss auf uns nehmen, ihn von seinem verwirrten Elend zu erlösen.“\bigskip
+„Nichts“, nickte der scheinheilige Schatten traurig, „Wir können es bloss auf uns nehmen, ihn von seinem verwirrten Elend zu erlösen.“
+
+
+
+\trennzeichen
 
 
 
 Nun ist wichtig, zu erkennen, dass zwei mögliche Enden zu dieser Erzählung im Umlauf sind. In der Version, die die Krahder von ihren Sklaven den zukünftigen Königen ihres Reichs erzählen lassen, bäumt sich der Krahderfürst auf, erwürgt seinen zwielichtigen Schatten mit blossen Händen und erwählt die Krahderkaiserin zu seiner Gemahlin, welche ihm noch so gerne in sein düsteres Reich zurückfolgt, wo die beiden bis zu diesem Tage immer noch nicht gestorben sind, und somit noch heute glücklich leben.
 
-In einigen Städten der Ambacus allerdings, wenn keiner der Krahder in der Nähe war, flüsterten die Mütter ihren Kindern ein ganz anderes Ende zu:\bigskip
+In einigen Städten der Ambacus allerdings, wenn keiner der Krahder in der Nähe war, flüsterten die Mütter ihren Kindern ein ganz anderes Ende zu:
+
+
+
+\trennzeichen
 
 
 
@@ -469,7 +500,11 @@ So geschah es, dass ein edler Drache aus den Ostlanden durch das Graue Gebirge s
 
 
 
-Doch dies soll nicht heissen, dass Einköpfchen seine Geschwister nie mehr wiedersah. Denn es trug sich einige Sonnenumrundungen später zu, dass Einköpfchen glücklich durch die Lüfte flog, als es zwei traurige Drachengestalten weiter unten am Boden erkannte. Das waren Zweiköpfchen und Dreiköpfchen, und alle fünf Köpfe, die sie gemeinsam hatten, liessen sie hängen, denn sie litten nun selbst unter Hunger und bereuten, wie sie dem Einköpfchen übel mitgespielt hatten vor so langer Zeit. Und Einköpfchen, die gute Seele, die es war, verspürte keinen Groll mehr und hiess die beiden mit offenen Pranken willkommen, auf dass die drei Geschwister wieder vereint wären und gemeinsam die Welt bereisen konnten.\\bigskip
+Doch dies soll nicht heissen, dass Einköpfchen seine Geschwister nie mehr wiedersah. Denn es trug sich einige Sonnenumrundungen später zu, dass Einköpfchen glücklich durch die Lüfte flog, als es zwei traurige Drachengestalten weiter unten am Boden erkannte. Das waren Zweiköpfchen und Dreiköpfchen, und alle fünf Köpfe, die sie gemeinsam hatten, liessen sie hängen, denn sie litten nun selbst unter Hunger und bereuten, wie sie dem Einköpfchen übel mitgespielt hatten vor so langer Zeit. Und Einköpfchen, die gute Seele, die es war, verspürte keinen Groll mehr und hiess die beiden mit offenen Pranken willkommen, auf dass die drei Geschwister wieder vereint wären und gemeinsam die Welt bereisen konnten.
+
+
+
+\trennzeichen
 
 
 
@@ -864,7 +899,7 @@ Das Hadrische Stundenglas, 2 Bonus-SP und 3 Gold gehen allesamt an Darh.\bigskip
 
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 1 Anfang.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-1-anfang.jpg}
 
 \textit{Anfang von Tag 1.}\bigskip
 
@@ -1130,7 +1165,7 @@ Zug 31: Forn beendet seinen Tag.\bigskip
 
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 1 Ende.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-1-ende.jpg}
 
 
 
@@ -1154,7 +1189,7 @@ Legendenkarte C wird ausgelöst. Zwei Heilkräuter werden eingewürfelt auf 25 u
 Die Bedrohung ist ... Trommelwirbel ... der Belagerungsturm! Er erscheint auf 84 und wird jeden Sonnenaufgang so viele Felder bewegt, wie Kreaturen auf Spielfeldern stehen.\bigskip
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 2 Anfang.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-2-anfang.jpg}
 
 
 \textit{Anfang von Tag 2.}
@@ -1356,7 +1391,7 @@ Zug 20: Forn beendet seinen Tag.\bigskip
 
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 2 Ende.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-2-ende.jpg}
 
 \textit{Ende von Tag 2.}
 
@@ -1375,7 +1410,7 @@ Der 55-Brunnen werden aufgefrischt. Die 61-Zwergentür wird geschlossen. Es sind
 Der Erzähler läuft auf D.\bigskip
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 3 Anfang.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-3-anfang.jpg}
 
 \textit{Anfang von Tag 3.}\bigskip
 
@@ -1595,7 +1630,7 @@ Zug 30: Forn beendet seinen Tag.
 Zug 31: Darh beendet ihren Tag.\bigskip
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 3 Ende.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-3-ende.jpg}
 
 \textit{Ende von Tag 3.}
 
@@ -1613,7 +1648,7 @@ Die Brunnen werden wegen des Sternenschilds nicht aufgefrischt. Der Belagerungst
 
 Der Erzähler läuft auf K.\bigskip
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 4 Anfang.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-4-anfang.jpg}
 
 \textit{Anfang von Tag 4.}
 
@@ -1731,7 +1766,7 @@ Forn: 14 SP, 20 WP, 2x 4er-Heilkraut, Sternenschild\bigskip
 
 
 
-\includegraphics[width=\textwidth]{Das Erbe des Wunderkindes/Bilder/Tag 4 Endkampf.jpg}
+\includegraphics[width=\textwidth]{das-erbe-des-wunderkindes/bilder/tag-4-endkampf.jpg}
 
 \textit{Trollkampf an Tag 4. Schräg liegende Gegenstände werden soeben verbraucht.}\bigskip
 
@@ -1889,13 +1924,13 @@ Nachdem mir Kirr erst relativ spät eingefallen ist (heieiei, den Santa Gor hatt
 
 
 
-\include{Das Erbe des Wunderkindes/Geschichten/Ein gemütliches Gasthaus voller Geschichten (2025)}
+\include{das-erbe-des-wunderkindes/geschichten/2025-ein-gemuetliches-gasthaus-voller-geschichten}
 
 
 
 \begin{chapterbox}
     \chapter{Was ist ein Butterbrotbär?}
-    \label{Was ist ein Butterbrotbär?}
+    \label{was-ist-ein-butterbrotbaer}
     Bereits am 19. März 2018 fotografierte ich mein Profilbild und speicherte es als "Butterbrotbären.jpeg" auf meiner Festplatte ab. Ich vermute somit, dass ich bereits damals von einem Tavernenprofil träumte und dafür als Alliterationsliebhaber das Wort Butterbrotbär zusammenwürfelte.
     
     Am 26. Februar 2019 betrat ich dann wirklich die Taverne. Wie die "Sage vom Butterbrotbären" beweist, stellte ich mir zunächst unter einem Butterbrotbären noch einen großen Brummbären mit einem Hunger für Butterbrote vor. Inzwischen male ich mir meinen Forencharakter eher als tiny toastförmigen Teddybären aus. 
@@ -1939,7 +1974,7 @@ In den Kanon-fernen Fan-Tavernenpartys 2020 und 2021 war schon mehrmals ein Gast
 \begin{quote}
     Beitrag aus der Taverne, "1. Tavernenstammtischparty!":
     
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Bilder/Tavernenstammtischparty 2020 Gruppenbild.jpg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/bilder/tavernenstammtischparty-2020-gruppenbild.jpg}
 \end{quote}
 
 Ende 2019, als die Arbeit im Andorwiki nach einigen Jahren des Brachliegens wieder etwas anlief, schrieb ich, in Anlehnung an Tosts Sage von Tapsi dem Waldtost, meine eigene Sage:
@@ -1956,12 +1991,12 @@ Ende 2019, als die Arbeit im Andorwiki nach einigen Jahren des Brachliegens wied
     Nein, nein, es ist natürlich nicht so, dass ich beim Auswählen meines Nutzernamens einfach einige Wörter alliterativ zusammengewürfelt hätte, auf dass ihre Gesamtheit angenehm klinge. Vielmehr steckt hinter diesem Namen eine Geschichte – und selbige würde ich nun gerne mit euch teilen. So vernehmet die Sage vom Butterbrotbären. [...]
 \end{quote}
 
-Diese Erzählung wurde inzwischen als Teil von \hypref{Stürmische Rätselnacht in der Taverne (2019 bis 2020)} ins bärig gebutterte Andorversum aufgenommen. Wie in der Sage angetönt und in \hypref{Der Feuerkrieger und die Wassermagierin (2023)} konkretisiert, lebt in der Welt der bärig gebutterterte Geschichtchen der Alchemist Naraven im Südlichen Wald, blickt mit seinem Hadrischen Spiegel tief in der Vergangenheit und hält seine Erkenntnisse auf danwarischen Steintafeln fest. Der Butterbrotbär dieser Welt ist eines der vielen Tiere, welche Naraven zu seiner magisch versteckten Hütte führen können – ebenjener Brummbär aus der Sage vom Butterbrotbären, welcher gerne Naravens Steintafeln stibitzt und gegen Gildas Butterbrote tauscht – aber die Taverne nicht betreten darf, weil Bären bekanntlich draußen bleiben müssen:
+Diese Erzählung wurde inzwischen als Teil von \hyperref[2019-2020-stuermische-raetselnacht-in-der-taverne]{Stürmische Rätselnacht in der Taverne (2019 bis 2020)} ins bärig gebutterte Andorversum aufgenommen. Wie in der Sage angetönt und in \hyperref[2023-der-feuerkrieger-und-die-wassermagierin]{Der Feuerkrieger und die Wassermagierin (2023)} konkretisiert, lebt in der Welt der bärig gebutterterte Geschichtchen der Alchemist Naraven im Südlichen Wald, blickt mit seinem Hadrischen Spiegel tief in der Vergangenheit und hält seine Erkenntnisse auf danwarischen Steintafeln fest. Der Butterbrotbär dieser Welt ist eines der vielen Tiere, welche Naraven zu seiner magisch versteckten Hütte führen können – ebenjener Brummbär aus der Sage vom Butterbrotbären, welcher gerne Naravens Steintafeln stibitzt und gegen Gildas Butterbrote tauscht – aber die Taverne nicht betreten darf, weil Bären bekanntlich draußen bleiben müssen:
 
 \begin{quote}
     Beitrag aus der Taverne, "Wie vertragen Dunkle Helden Gildas Met???":
     
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Bilder/Bären müssen draußen bleiben.jpg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/bilder/baeren-muessen-draussen-bleiben.jpg}
 \end{quote}
 
 In der Welt von Frodos Mini-Erweiterung "Die Tavernengäste" lebt ebenfalls ein Butterbrotbär im Südlichen Wald. Dieser ist aber kleiner und weniger animalisch als derjenige aus der Sage. Er bietet ein beidseitig gebuttertes Bärenbrot an, welches einem Helden kurzzeitig Drukils Bärenstärke verleiht.
@@ -2016,7 +2051,7 @@ Der Tolle Troll, Barde der Kreaturen, führt ein Geschichtenbuch mit sich, auf d
     
     [Butterbrotbär:] Ha! Ich habe in den Untiefen unserer Skype-Verläufe noch ein Original des Covers des Geschichtenbuchs des Tollen Trolls aufgespürt! :P
     
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Bilder/Der Tolle Troll Geschichtenbuch Cover.jpg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/bilder/der-tolle-troll-geschichtenbuch-cover.jpg}
 \end{quote}
 
 In der ohnehin völlig verrückten Fan-Legende "Thoralds Trunkener Traum" tritt (neben einer Schlafenden Katze und einen an den Tollen TroII erinnernden PlüschtroII) ein kleiner Teddybär auf, welcher auf die Thorald vermissende Bäuerin aus "Der Sternenschild" und ihr Pendant Elga aus dem bärig gebutterten Andorversum verweist.
@@ -2050,7 +2085,7 @@ Mivo erzählte im Tavernentratsch-Thread einst davon, wie ein mysteriöser Bote 
     \textit{Er streckte die Hand aus und bekam ein zusammengefaltetes Pergament überreicht; der Bote grüßte und machte sich von dannen, ohne des Butterbrotbären Fragen abzuwarten. Letzterer betrachtete, nun doch etwas neugierig geworden, das Pergament in seinen Händen. Es war viel zu ordentlich gefaltet, um nicht wichtig zu sein. Eine Geheimbotschaft vielleicht oder eine Schatzkarte oder ... oder ...? Nur ungern brach er das wunderschöne Siegel, das Halbmond und Sterne zierten. Er öffnete das Pergament, faltete es ganz auf und glaubte seinen Augen kaum. Da stand: ...}\newline
     \textit{... nichts. :-P}
 
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Hintergrund/Hintergrund.jpg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/hintergrund/hintergrund.jpg}
 
     [Butterbrotbär:] \textit{Der Butterbrotbär kratzte sich mit der Pfote am Kopf. Der mysteriöse Bote war bereits blitzschnell abgesaust, ehe der Bär ihm ein Trinkgeld hätte übergeben können. Und nach der Urheber:in der Botschaft konnte man ihn nun ebenfalls nicht mehr fragen.}\newline
     \textit{Eine Geheimbotschaft, die sich nur durch Hitze enthüllte? Uralte Zwergenenrunen, welche sich bloß im Lichte des Mondes zeigten? Oder doch nur ein praktischer Scherz eine:r Andori, der der Rätselliebe der Tavernengäste bewusst war?}\newline
@@ -2058,7 +2093,7 @@ Mivo erzählte im Tavernentratsch-Thread einst davon, wie ein mysteriöser Bote 
     \textit{Der Bär gönnte sich einen weiteren Schluck seines abendlichen Getränks. Was auch immer es mit diesem Dokument auf sich hatte, er konnte sich noch länger damit befassen. Und selbst wenn es nur ein leeres Stück Pergament war: Die Qualität war hervorragend! Würdig der Chroniken der Bewahrer vom Baum der Lieder höchstpersönlich. Dafür ließe sich bestimmt eine gute Verwendung finden.}
 \end{quote}
 
-In der Welt der Fan-Geschichte \hypref{Ein gemütliches Gasthaus voller Geschichten (2025)}, in welcher die meisten bis und mit 2025 erschienenen Andor-Geschichten vorgetragen werden, trägt eine als \textit{kleiner Teddybär} und \textit{tiny toastförmiger Teddy mit einer Vorliebe für Butterbrote} beschriebene Person meine Geschichten vor. Da dieser Text erst weniger Seiten her ist, verzichte ich hier auf das Zitieren entsprechender Textstellen.\bigskip
+In der Welt der Fan-Geschichte \hyperref[2025-ein-gemuetliches-gasthaus-voller-geschichten]{Ein gemütliches Gasthaus voller Geschichten (2025)}, in welcher die meisten bis und mit 2025 erschienenen Andor-Geschichten vorgetragen werden, trägt eine als \textit{kleiner Teddybär} und \textit{tiny toastförmiger Teddy mit einer Vorliebe für Butterbrote} beschriebene Person meine Geschichten vor. Da dieser Text erst weniger Seiten her ist, verzichte ich hier auf das Zitieren entsprechender Textstellen.\bigskip
 
 Natürlich gibt es in unserer Welt einen großen Andor-Fan, welcher unter dem Nicknamen Butterbrotbär auftritt, diesen Quark hier verfasst und schon so überhebliche Titel wie "Hüter der Andorchronik" zugesprochen bekam.
 
@@ -2075,7 +2110,7 @@ Towa, welcher sein Tavernenprofil zufälligerweise am selben Tag wie ich eröffn
     
     [Towa:] Jetzt sind es schon 3 Jahre, die der Butterbrotbär und ich in der Taverne sind! :D Herzlichen Glückwunsch zum Jubiläum, lieber Butterbrotbär! :mrgreen: Da darf natürlich ein Rätsel nicht fehlen. ;) Es sind lauter Begriffe aus der Andor-Welt versteckt, die gefunden werden müssen. Alle Richtungen sind möglich. Und alle Felder, die zu keinem Wort gehören, bilden ein passendes Bild. :P
     
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Bilder/Towa Raetsel BBB.jpg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/bilder/towa-raetsel-bbb.jpg}
 \end{quote}
 
 
@@ -2092,7 +2127,7 @@ Und zu guter Letzt gibt es einen echten beigen Teddybären, welcher sich bereits
 \begin{quote}
     Beitrag vom Zuckerberg, "Robin Hood geht immer!":
     
-    \includegraphics[height=120px]{Das Erbe des Wunderkindes/Bilder/Robin Hood geht immer!.jpeg}
+    \includegraphics[height=120px]{das-erbe-des-wunderkindes/bilder/robin-hood-geht-immer.jpeg}
 \end{quote}
 
 Diesen Teddy kenne ich buchstäblich seit meiner Geburt, und er sieht aktuell aus einem Regal zu, wie ich diese Worte schreibe. :D\bigskip
@@ -2112,7 +2147,7 @@ Tja, und wenn ich nichts übersehen habe, war es das auch schon – bislang. ;)
 
 \newpage
 
-\hintergrund{Andor Fan-Karte Inkarnate Text.jpg}
+\hintergrund{andor-fan-karte-inkarnate-text.jpg}
 
 \thispagestyle{empty}%keine Header oder Footer auf dieser Seite
 
