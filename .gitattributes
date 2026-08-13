@@ -4,7 +4,7 @@
 #"chronik-der-andorversen*" export-ignore
 
 # If the next line is uncommented, then all "Alle Helden ueberall" files are not exported.
-#"alle-helden-ueberall*" export-ignore
+"alle-helden-ueberall*" export-ignore
 
 # If the next line is uncommented, then all "das-erbe-des-wunderkindes" files are not exported.
-#"das-erbe-des-wunderkindes*" export-ignore
+"das-erbe-des-wunderkindes*" export-ignore
