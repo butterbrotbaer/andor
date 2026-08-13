@@ -2,9 +2,9 @@
 
 # Do not track the compiled pdfs.
 chronik-der-andorversen.pdf
-Alle Helden ueberall.pdf
-Das Erbe des Wunderkindes.pdf
-Das Erbe des Wunderkindes PLAIN.pdf
+alle-helden-ueberall.pdf
+das-erbe-des-wunderkindes.pdf
+das-erbe-des-wunderkindes-plain.pdf
 
 # Do not track any file with one of the following extensions.
 *.aux
