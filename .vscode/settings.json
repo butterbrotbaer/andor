@@ -13,7 +13,7 @@
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name":     "Chronik der Andorversen Recipe",
+            "name":     "chronik-der-andorversen-recipe",
             "tools":    ["lualatex","lualatex"],
         },
         {
