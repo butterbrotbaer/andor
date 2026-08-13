@@ -95,7 +95,7 @@
 \usepackage{tocloft}
     \setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnis
 
-\usepackage{xcolor}
+\usepackage[dvipsnames,x11names]{xcolor}
     \definecolor{color-DLvA}{HTML}{FF8080}
     \definecolor{color-DRidN}{HTML}{40E0D0}
     \definecolor{color-DlH}{HTML}{C0C0C0}
@@ -110,13 +110,17 @@
 
 \newcommand{\fan}[1]{\textit{#1}}
 
-\newcommand{\heldenfigur}[1]{%
+\newcommand{\heldenfigur}[2]{%
     \begin{tikzpicture}[remember picture, overlay]
         \node[opacity=1, inner sep=1.5cm, anchor=north] at (current page.north) {%
-            \frame{\includegraphics[height=60px]{Alle Helden ueberall/Heldenfiguren/#1}}%
+            \color{#2}\fbox{\includegraphics[height=54pt]{Alle Helden ueberall/Heldenfiguren/#1}}%
         };
     \end{tikzpicture}%
     \vspace*{-\baselineskip}
+}
+
+\newcommand{\heldenfigurenlink}[3]{%
+    \color{#2}\fbox{\hyperref[#3]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/#1}}}%
 }
 
 \newcommand{\hintergrund}[1]{%
@@ -137,8 +141,8 @@
 
 
 \setlength{\parindent}{0cm} % damit Zeilen nicht eingerückt werden.
-
-
+\setlength{\fboxrule}{3pt}  % Dicke von \fbox
+\setlength{\fboxsep}{0pt}   % Padding von \fbox
 
 
 
@@ -158,9 +162,9 @@
 
 
 
-\title{Alle Helden überall\\Stand ????}
+\title{Alle Helden überall\\Stand Juli 2026}
 \author{Fan-Spielvariante von Butterbrotbär,\\basierend auf den \enquote{Die Legenden von Andor}-Spielen von Michael Menzel,\\Christoph Kling, Dorothea Michels, Andreas Kälber und Matthias Miller\\sowie vielen fruchtvollen Diskussionen der fantastisch fantasievollen Fans\\Albus, Bennie, Bewahrer Melkart, Cardiodrone, Dagain, Fenn-Fan, Galaphil,\\GoldenerSchild, Kar éVarin, Legolas Grünblatt, namenloser Wanderer,\\Phoenixpower, Qurunatobra213, Ragnar, Steppenechse111777, Towa,\\und insbesondere Mivo, Orpheus und TroII.}
-\date{\vfill Alle Helden überall v??.?\\Dieses Dokument wurde erstellt mit \LaTeX{}.\\Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=11151}.}
+\date{\vfill Alle Helden überall v26.3\\Dieses Dokument wurde erstellt mit \LaTeX{}.\\Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=11151}.}
 
 
 
@@ -177,7 +181,7 @@
 
     \textbf{ }
 
-    \vspace{400pt}
+    \vspace{380pt}
 
     \fontsize{108}{150}
     \textcolor{white}{\andorfont \contour{black}{Alle Helden}}
@@ -187,41 +191,41 @@
 
     \vspace{2pt}
 
-    \frame{\hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}}
-    \frame{\hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}}
-    \frame{\hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}}
-    \frame{\hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}}
-    \frame{\hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}}
-    \frame{\hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}}
-    \frame{\hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}}
-    \frame{\hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}}
-    \frame{\hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}}
-    \frame{\hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}}
+    \heldenfigurenlink{Trieest.jpg}{orange}{Feuerkrieger}
+    \heldenfigurenlink{Jarid.jpg}{RoyalBlue}{Wassermagierin}
+    \heldenfigurenlink{Leander.jpg}{Blue}{Seher}
+    \heldenfigurenlink{Ijsdur.jpg}{white}{Eis-Dämon}
+    \heldenfigurenlink{Orfen.jpg}{Blue}{Wolfskrieger}
+    \heldenfigurenlink{Kram.jpg}{yellow}{Zwerg}
+    \heldenfigurenlink{Stinner.jpg}{Wheat1}{Seekrieger}
+    \heldenfigurenlink{Thorn.jpg}{RoyalBlue}{Krieger}
+    \heldenfigurenlink{Thorn (Reiter).jpg}{RoyalBlue}{Ritter}
+    \heldenfigurenlink{Bragor.jpg}{brown}{Tarus}
 
     \vspace{2pt}
 
-    \frame{\hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}}
-    \frame{\hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}}
-    \frame{\hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}}
-    \frame{\hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}}
-    \frame{\hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}}
-    \frame{\hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}}
-    \frame{\hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}}
-    \frame{\hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}}
-    \frame{\hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}}
+    \heldenfigurenlink{Fenn.jpg}{orange}{Fährtenleser}
+    \heldenfigurenlink{Drukil.jpg}{brown}{Hautwandler}
+    \heldenfigurenlink{Avida.jpg}{RoyalBlue}{Heilerin}
+    \heldenfigurenlink{Santa Gor.jpg}{ForestGreen}{Weihnachts-Gor}
+    \heldenfigurenlink{Chada.jpg}{ForestGreen}{Bogenschützin}
+    \heldenfigurenlink{Aćh.jpg}{orange}{Takuri-Hüterin}
+    \heldenfigurenlink{Kheela.jpg}{white}{Hüterin}
+    \heldenfigurenlink{Grent.jpg}{Fuchsia}{Bergkrieger}
+    \heldenfigurenlink{Eara.jpg}{Fuchsia}{Zauberin}
 
     \vspace{2pt}
 
-    \frame{\hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}}
-    \frame{\hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}}
-    \frame{\hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}}
-    \frame{\hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}}
-    \frame{\hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}}
-    \frame{\hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}}
-    \frame{\hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}}
-    \frame{\hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}}
-    \frame{\hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}}
-    \frame{\hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}}
+    \heldenfigurenlink{Eara (dunkel).jpg}{Fuchsia}{Dunkle Magierin}
+    \heldenfigurenlink{Forn.jpg}{red}{Halbskral}
+    \heldenfigurenlink{Barz.jpg}{HotPink1}{Steppennomade}
+    \heldenfigurenlink{Raash.jpg}{brown}{Steppenreiter}
+    \heldenfigurenlink{Arbon.jpg}{Gray}{Bewahrer}
+    \heldenfigurenlink{Iril.jpg}{Blue}{Runenmeisterin}
+    \heldenfigurenlink{Tenaya (Feuerwächterin).jpg}{ForestGreen}{Feuerwächterin}
+    \heldenfigurenlink{Tenaya.jpg}{ForestGreen}{Feuerbezwingerin}
+    \heldenfigurenlink{Kirr.jpg}{Fuchsia}{Zeitzauberer}
+    \heldenfigurenlink{Darh.jpg}{Wheat1}{Beschwörerin}
 \end{titlepage}
 
 \thispagestyle{plain}
@@ -250,9 +254,9 @@
 
 Zum einen versammelt es alle offiziellen Regeln zum Spielen der verschiedenen offiziellen Helden in den Legenden aus den verschiedenen offiziellen Andor-Produkten und Internetauftritten.
 
-Zum anderen ergänzt es diese gesammelten Regeln um Vorschläge für Hausregeln, mit denen endlich alle offiziellen Helden in (fast) allen offiziellen Legenden gespielt werden können.
+\fan{Zum anderen ergänzt es diese gesammelten Regeln um Vorschläge für Hausregeln, mit denen endlich alle offiziellen Helden in (fast) allen offiziellen Legenden gespielt werden können.}
 
-Zur Unterscheidung sind offizielle Regeln jeweils gerade geschrieben, während Fan-Hausregeln \fan{kursiv} sind.\bigskip
+Zur Unterscheidung sind offizielle Regeln jeweils gerade geschrieben, \fan{während Fan-Hausregeln kursiv sind.}\bigskip
 
 
 \textbf{Dieses Dokument ist ein Work in Progress.} Ich werde Schreibfehler und Regelfehler begangen haben, suboptimale Formulierungen gewählt und Inkonsistenzen übersehen. Bitte, werdet aktiv! Gebt Rückmeldungen, idealerweise unter \url{https://legenden-von-andor.de/forum/viewtopic.php?f=8&t=11151}, und verfasst eure eigenen Versionen dieses Dokuments, mit euren eigenen liebsten Hausregeln.
@@ -382,7 +386,7 @@ Ihr dürft \fan{(fast) alle} Legenden mit 2 bis 6 Helden spielen. Im Spiel mit 5
 
 Es gibt einzelne Ausnahmen:
 
-\bullet{} Legende 3, "Die Tage des Widerstands", darf mit der Solo-Variante auch mit 1 Held gespielt werden.
+\bullet{} Legende 3, "Die Tage des Widerstands", darf mit der Solo-Variante auch mit nur 1 Held gespielt werden.
 
 \bullet{} Die Solo-Legenden "Der Vorbote des Feuers" und "Die Jagd" können nur mit 1 Held gespielt werden, und nur mit dem \hyperref[Wolfskrieger]{Wolfskrieger}.
 
@@ -431,9 +435,11 @@ Regeln gelten für Helden aller Geschlechter, egal welche Geschlechter bei der R
 
 Diese Regeln gelten, außer es steht explizit anders:
 
-\bullet{} Die \hyperref[Ablagen und Leisten]{Regeln für Ablagen und Leisten}.
+\bullet{} Die \hyperref[Ablagen und Leisten]{Regeln für Ablagen/Leisten}.
 
 \bullet{} Die \hyperref[Bonusstärke]{Regeln für Bonusstärke}.
+
+\bullet{} Die \hyperref[Gegenstände und Sonderplättchen]{Regeln für Gegenstände/\fan{Sonderplättchen}}.
 
 \bullet{} Die \hyperref[Helfer]{Regeln für \fan{Helfer}}.
 
@@ -448,7 +454,7 @@ Diese Regeln gelten, außer es steht explizit anders:
 
 \bullet{} \fan{Wirft ein Held im Kampf (nicht im \hyperref[Fernkämpfer]{Fernkampf}) Würfel, muss er einen beliebigen seiner geworfenen Würfel zu seinem Kampfwert addieren. Dies darf auch ein Würfel sein, der nicht den höchsten Wert hat. Mit einem Helm oder Reiterhelm darf er beliebig viele gleiche Würfelwerte addieren. Er muss aber nicht alle gleichen Würfelwerte addieren.}
 
-\bullet{} \fan{Goldmünzen können jederzeit gegen Goldmünzen gleicher Summe aus dem Vorrat ausgetauscht werden. }
+\bullet{} \fan{Goldmünzen dürfen überall und jederzeit gegen Goldmünzen gleicher Summe aus dem Vorrat getauscht werden. }
 
 \bullet{} Spielmaterial ist wiederkehrend, aber begrenzt. Spielmaterial, das aus dem Spiel geht, geht in den Vorrat und mag später erneut ins Spiel kommen. Sollte Spielmaterial ins Spiel kommen, das es aktuell im Vorrat nicht mehr gibt, geschieht stattdessen nichts.\newline
 Ausnahme: Sternchen sind unbegrenzt. Sollen mehr Sternchen ins Spiel kommen, als es im Vorrat gibt, nutzt anderes ungenutztes Material (schlimmstenfalls aus anderen Spielen) als Ersatz.\newline
@@ -522,7 +528,8 @@ Es muss ein "Kram" mitspielen.
 
 \href{https://legenden-von-andor.de/forum/viewtopic.php?p=136266#p136266}
 {\blacktriangleright \fan{\enquote{Alle Helden überall – Die letzte Hoffnung}} (Mivo)}
-(Hierran orientieren sich die hiesigen Hausregeln.)
+
+Die hiesigen Hausregeln orientieren sich an letzteren.
 
 
 
@@ -579,7 +586,7 @@ Die zweite Sonderfähigkeit jedes Helden wird im Laufe von Legende 11 aktiviert 
 
 \fan{Plättchen, die durch eine Geschenkaufgabe auf Feld 219 abgelegt werden, gehen sofort aus dem Spiel.}
 
-\fan{Wurde der Verhexte enttarnt, kann er seine Sonderfähigkeiten nicht mehr nutzen.}
+\fan{Wurde der verhexte Held enttarnt, kann er seine Sonderfähigkeiten nicht mehr nutzen.}
 
 
 
@@ -1037,7 +1044,7 @@ Kämpft der Fernkämpfer als Einhornreiter, darf er weitere Würfel nur in umgek
 
 
 \begin{bgcolor}[color-DeK]
-\section{Die ewige Kälte (2022)}
+\section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Askimar-Klinge:}}
 
@@ -1345,7 +1352,12 @@ Der Reiter kann einen Helden nicht \fan{auf ein oder von einem} Feld mit oder an
 
 \chapter{\fan{2.} Trieest (Taleena), der Feuerkrieger}
 \label{Feuerkrieger}
-\heldenfigur{Trieest.jpg}
+\heldenfigur{Trieest.jpg}{orange}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Blanko-Held (2019, \url{https://legenden-von-andor.de/feuerkrieger/}) und aus Herz aus Eis (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1380,7 +1392,7 @@ Der Feuerkrieger darf im Kampf, direkt nach seinem Würfeln (nach einem etwaigen
 
 \fan{Hätte der Feuerkrieger keine oder eine negative Anzahl Heldenwürfel, addiert er keinen Würfelwert zu seinem Kampfwert.}
 
-Ein durch seinen Lavastein zu seinem Kampfwert addierten Würfel kann nicht auf andere Arten (z.B. mit einem Helm oder Eisernen Handschuh in "Die letzte Hoffnung") zu seinem Kampfwert addiert werden \fan{und kann nicht mit dem Trank der Hexe verdoppelt werden}.
+Ein durch seinen Lavastein zu seinem Kampfwert addierten Würfel kann nicht auf andere Arten (z.B. mit einem Helm \fan{oder Eisernen Handschuh in "Die letzte Hoffnung"}) zu seinem Kampfwert addiert werden \fan{und kann nicht mit dem Trank der Hexe verdoppelt werden}.
 
 Er kann diese Fähigkeit nicht im \hyperref[Fernkämpfer]{Fernkampf} nutzen.
 \supercite{112103}
@@ -1444,7 +1456,7 @@ Spricht eine Regel oder Karte vom \hyperref[Krieger]{Krieger}, ist der Feuerkrie
 
 \subsection{\fan{Geister:}}
 
-\fan{Steht der Feuerkrieger auf oder angrenzend zu Geistern, kann er im Kampf durch seinen Lavastein keinen Würfel addieren.}
+\fan{Steht der Feuerkrieger bei oder angrenzend zu Geistern, kann er im Kampf durch seinen Lavastein keinen Würfel addieren.}
 
 \fan{Es ist egal, ob sein Gegner bei oder angrenzend zu Geistern steht.}
 
@@ -1474,7 +1486,12 @@ Spricht eine Regel oder Karte vom \hyperref[Krieger]{Krieger}, ist der Feuerkrie
 
 \chapter{3. Jarid (Jarim), die Wassermagierin}
 \label{Wassermagierin}
-\heldenfigur{Jarid.jpg}
+\heldenfigur{Jarid.jpg}{RoyalBlue}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Bonus-Heldin (2019, \url{https://legenden-von-andor.de/zusatzheld-jarim-jarid/}).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1523,6 +1540,13 @@ Sie kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik)
 \fan{Die Wassermagierin darf sich auch teleportieren, wenn sie festgehalten wird (z.B. von Skeletten in "Die letzte Hoffnung" oder Spornen in "Das ferne Land"). Festhaltende Plättchen und Figuren werden nicht mitteleportiert. Ausnahme: Tuavahr in "Die ewige Kälte".}
 
 
+
+\subsection{\fan{Große blaue Einführungsplättchen:}}
+
+\fan{Die Wassermagierin kann sich nicht von oder zu großen blauen Einführungsplättchen teleportieren.}
+
+
+
 \end{nobgcolor}
 
 
@@ -1540,7 +1564,7 @@ Sie kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik)
 
 
 
-
+\columnbreak
 
 
 \begin{bgcolor}[color-DlH]
@@ -1655,7 +1679,12 @@ Die Wassermagierin kann sich nicht von oder zur Quelle auf Feld 37 teleportieren
 
 \chapter{4. Leander (Leane), der Seher}
 \label{Seher}
-\heldenfigur{Leander.jpg}
+\heldenfigur{Leander.jpg}{Blue}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Dunkle Helden (2017).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -1710,12 +1739,6 @@ Legt der Seher in der letzten Kampfrunde seinen letzten Würfel weg, darf er mit
 
 
 
-\subsection{Bonuswürfel:}
-
-Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (z.B. durch \fan{den Streifenmarder in "Die Reise in den Norden" oder} Meres in "Die steinernen Drei"\supercite{AG:Begleitheft}). Dennoch wirft der Gegner einen Würfel weniger.
-
-\fan{Wirft der Seher einen Ersatzwürfel (z.B. den großen weißen Würfel der \hyperref[Hüterin]{Hüterin}), legt er keinen Würfel von seiner Würfelleiste weg.}
-\supercite{49630}
 
 
 
@@ -1735,12 +1758,31 @@ Ein auf eine "1" gedrehter (z.B. von der \hyperref[Zauberin]{Zauberin}) \fan{ode
 
 
 
-
-
-
 \subsection{Doch nicht so blind?}
 
 \fan{Der Seher darf ein Fernrohr nutzen.}
+
+
+\columnbreak
+
+
+\subsection{Bonuswürfel:}
+
+Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (z.B. durch \fan{den Streifenmarder in "Die Reise in den Norden" oder} Meres in "Die steinernen Drei"\supercite{AG:Begleitheft}). Dennoch wirft der Gegner einen Würfel weniger.
+
+\fan{Wirft der Seher einen Ersatzwürfel (z.B. den großen weißen Würfel der \hyperref[Hüterin]{Hüterin}), legt er keinen Würfel von seiner Würfelleiste weg.}
+\supercite{49630}
+
+
+
+
+
+
+\subsection{\fan{Mehrere Seher:}}
+
+\fan{Jeder Seher hat seine eigene Würfelleiste.}
+
+
 
 
 \end{nobgcolor}
@@ -1834,7 +1876,7 @@ Der Seher kann den Eisernen Handschuh nicht nutzen, um mehrere Würfel seiner W�
 
 \subsection{Legende 17, Die letzte Hoffnung:}
 
-Da es keine Ereigniskarten gibt, kann der Seher seine zweite Sonderfähigkeit nicht nutzen.
+Es gibt keine Ereigniskarten. Der Seher kann seine zweite Sonderfähigkeit nicht nutzen.
 \supercite{DH:Begleitheft}
 
 \end{bgcolor}
@@ -1952,7 +1994,12 @@ Muss der Seher wegen Shans Fluch einen Würfel abgeben, muss er jeweils den näc
 
 \chapter{5. Ijsdur (Ijsdora), der Eis-Dämon}
 \label{Eis-Dämon}
-\heldenfigur{Ijsdur.jpg}
+\heldenfigur{Ijsdur.jpg}{white}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Magische Helden (2021).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2032,7 +2079,9 @@ Dreht den Eiskristall danach auf die blaue Seite.
 
 \subsection{Eisblitze:}
 
-Eisblitze sind keine Gegenstände. Der Eis-Dämon kann sie nicht wie Gegenstände ablegen oder aufnehmen. Würde er mehr Eisblitze erhalten, als er tragen kann, verfallen überzählige.
+Eisblitze sind \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}}. 
+
+Würde der Eis-Dämon mehr Eisblitze erhalten, als er tragen kann, verfallen überzählige.
 \supercite{MH:Begleitheft}
 
 
@@ -2047,7 +2096,7 @@ Jederzeit während seines Zugs darf der Eis-Dämon 1 Eisblitz von seiner Ablage 
 \supercite{MH:Kälte}
 Dann legt er den Kampfblitz rechts an seinen Stärkestein auf seine Stärkeleiste. Solange der Kampfblitz dort liegt, hat er +5 \hyperref[Bonusstärke]{Bonusstärke}.
 \supercite{MH:Begleitheft}
-Wir der Stärkestein des Eis-Dämons bewegt, bewegt den Kampfblitz mit.
+Wird der Stärkestein des Eis-Dämons bewegt, bewegt den Kampfblitz mit.
 \supercite{88778} 
 \fan{Erreicht der Eis-Dämon 8 oder mehr Stärkepunkte, entfernt den Kampfblitz.}
 
@@ -2060,7 +2109,7 @@ Jederzeit während seines Zugs darf der Eis-Dämon zwei verschiedene Spielplanfe
 \supercite{MH:Begleitheft}
 Das geht nur, wenn beide gewählten Felder bis zu 4.7 cm pro verwendetem Eisblitz entfernt sind. 
 
-Solange die Eisbrücke im Spiel ist, gelten die beiden Felder als angrenzend für Helden, von Helden bewegte Figuren und \hyperref[Helfer]{Helfer}. 
+Solange die Eisbrücke im Spiel ist, gelten die beiden Felder als angrenzend für Helden, von Helden mitbewegte Plättchen und Figuren, \hyperref[Helfer]{\fan{Helfer}} und als eigene Aktion bewegbare Figuren. 
 \supercite{88780}
 
 Es können mehrere Eisbrücken gleichzeitig im Spiel sein.
@@ -2089,9 +2138,7 @@ Jeder Held kann eine Eisbrücke nutzen, egal wie viele Willenspunkte er hat, auc
 
 \subsection{\fan{Mehrere Eis-Dämonen:}}
 
-\fan{Legt am Anfang 5 Eisblitze pro Eis-Dämon bereit, aber nur ein Eiskristall-Plättchen auf das Sonnenaufgang-Feld. Dieses gilt für alle Eis-Dämonen.}
-
-\fan{Jeder Eis-Dämon kann Eisblitze von seiner Heldentafel nicht anderen Eis-Dämonen geben und einen Kampfblitz nur auf seine eigene Stärkeleiste legen.}
+\fan{Legt am Anfang 5 Eisblitze pro Eis-Dämon bereit, aber nur ein Eiskristall-Plättchen auf das Sonnenaufgang-Feld. Dieses gilt für alle Eis-Dämonen. Jeder Eis-Dämon kann einen Kampfblitz nur auf seine eigene Stärkeleiste legen.}
 
 
 \end{nobgcolor}
@@ -2121,9 +2168,6 @@ Eisbrücken dürfen zu Feld 83 gebaut werden.
 \subsection{Legende 5, Der Zorn des Drachens:}
 
 \fan{Der Eis-Dämon darf über eine Eisbrücke die von Kreaturen besetzte Rietburg (Feld 0) betreten. Andere Helden können dies nicht. Wird die Eisbrücke, über die der Eis-Dämon die Rietburg betrat, entfernt, während er gemeinsam mit Kreaturen dort steht, wird seine Heldenfigur sofort zum anderen Ende der Eisbrücke versetzt.}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" kann der Eis-Dämon keinen Eisblitz in Stärke tauschen.}
-
 
 
 
@@ -2171,7 +2215,7 @@ Kreaturen können mit der Fackel von Cavern nicht entlang Eisbrücken versetzt w
 
 
 
-\columnbreak
+
 
 
 \begin{bgcolor}[color-DRidN]
@@ -2218,7 +2262,7 @@ Spielt ihr mit der offiziellen Heldenkarte, legt am Anfang 6 Eisblitze bereit (s
 
 \subsection{Legende 15, Der vergiftete Geist:}
 
-\fan{Wird der Eis-Dämon enttarnt, gehen Eisblitze von seiner Heldentafel aus dem Spiel. Eisbrücken bleiben aber liegen, bis der Eiskristall sie entfernt. Er kann Eisblitze nicht in Stärke tauschen.}
+\fan{Wird der Eis-Dämon enttarnt, gehen Eisblitze von seiner Heldentafel aus dem Spiel. Eisbrücken bleiben aber liegen, bis der Eiskristall sie entfernt.}
 
 
 
@@ -2255,6 +2299,10 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 
 \fan{Der Eiskristall kann nicht durch die Kraft des roten Mondes abgedeckt werden, auch nicht, wenn das Ereigniskarten-Symbol abgedeckt wird.}
 
+\subsection{Takuri-Spiegel:}
+
+\fan{Der Takuri-Spiegel kann keine besiegte Kreatur von Feld 80 versetzen. Ist wegen einer Eisbrücke eine andere Figur auf Feld 80, darf der Takuri-Spiegel eine Kreatur oder andere Figur auf Feld 80 versetzen. Liegt die versetzte Kreatur, so markiert sie (z.B. mit einem Sternchen) zur Erinnerung, dass sie nicht besiegt ist und wieder aufstehen wird.}
+
 \end{bgcolor}
 
 
@@ -2266,12 +2314,6 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 \subsection{\fan{Eisbrücke:}}
 
 \fan{Eisbrücken dürfen zu Feld 83 gebaut werden.}
-
-
-\subsection{\fan{Händler:}}
-
-\fan{Der Eis-Dämon kann Eisblitze nicht bei Händlern tau-
-schen.}
 
 \end{bgcolor}
 
@@ -2285,7 +2327,7 @@ schen.}
 
 \subsection{\fan{Eisbrücke:}}
 
-\fan{Eisbrücken dürfen auch zur Pfahlbausiedlung (Feld 453) gebaut werden. Die Grenze von Feld 453 ist zwischen der Pfahlbausiedlung und dem See, nicht am äußeren Seeufer.}
+\fan{Eisbrücken dürfen auch zur Pfahlbausiedlung (Feld 453) gebaut werden. Der Rand von Feld 453 liegt zwischen der Pfahlbausiedlung und dem See, nicht am äußeren Seeufer.}
 
 \fan{Eisbrücken dürfen zwischen zwei Feldern des Schachtelbodens gebaut werden, aber nicht zwischen dem Spielplan und dem Schachtelboden.}
 
@@ -2320,7 +2362,12 @@ schen.}
 
 \chapter{6. Orfen (Marfa), der Wolfskrieger}
 \label{Wolfskrieger}
-\heldenfigur{Orfen.jpg}
+\heldenfigur{Orfen.jpg}{Blue}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Bonus-Held (2012, \url{https://legenden-von-andor.de/zusatzheld-orfen-der-wolfskrieger/}) und aus Die Bonus-Box (2017/2024), Das Geheimnis des Königs (2019) und Big Box (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2467,7 +2514,7 @@ Für seine \hyperref[Bonusstärke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 \subsection{\fan{Geister:}}
 
-\fan{Steht der Wolfskrieger auf oder angrenzend zu Geistern, erhält er keine \hyperref[Bonusstärke]{Bonusstärke} durch Geländekunde und Trollhass. Es ist egal, ob sein Gegner bei oder angrenzend zu Geistern steht.}
+\fan{Steht der Wolfskrieger bei oder angrenzend zu Geistern, erhält er keine \hyperref[Bonusstärke]{Bonusstärke} durch Geländekunde und Trollhass. Es ist egal, ob sein Gegner bei oder angrenzend zu Geistern steht.}
 
 
 \end{bgcolor}
@@ -2486,7 +2533,12 @@ Für seine \hyperref[Bonusstärke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 \chapter{7. Kram (Bait), der Zwerg}
 \label{Zwerg}
-\heldenfigur{Kram.jpg}
+\heldenfigur{Kram.jpg}{yellow}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Die Legenden von Andor (2012), Die letzte Hoffnung (2016), Das Geheimnis des Königs (2019), Die ewige Kälte (2022), Big Box (2023) und Herz aus Eis (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2538,7 +2590,7 @@ Erhält der Zwerg fürs Besiegen eines auf der Kreaturenanzeige abgebildeten Geg
 
 \bullet{} \textbf{Zwergenwut} (\fan{für alle Legenden geeignet}):
 
-Der Zwerg darf im Kampf, direkt nach seinem Würfeln, beliebig viele Willenspunkte abgeben, um so viel \hyperref[Bonusstärke]{Bonusstärke} zu erhalten. 
+Der Zwerg darf im Kampf, direkt nach seinem Würfeln, beliebig viele Willenspunkte abgeben, um nur in dieser Kampfrunde so viel \hyperref[Bonusstärke]{Bonusstärke} zu erhalten. 
 \supercite{GdK}
 
 
@@ -2566,7 +2618,6 @@ Es muss ein "Kram" mitspielen.
 
 Steht der Zwerg auf einem Höhlenfeld, hat er +5 \hyperref[Bonusstärke]{Bonusstärke} und 3 Würfel, egal wie viele Willenspunkte er hat.
 \supercite{DlH:Begleitheft,DlH11:Heldenkarte_Zwerg}
-
 Das gilt auch, wenn der Höhlenplättchen-Platz auf dem Höhlenfeld mit einem roten X\supercite{DlH13:a} oder Sternchen\supercite{DlH15:a} abgedeckt ist.
 
 
@@ -2626,7 +2677,7 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 \subsection{\fan{Geister:}}
 
-\fan{Steht der Zwerg auf oder angrenzend zu Geistern, kann er seine Sonderfähigkeit nicht nutzen.}
+\fan{Steht der Zwerg bei oder angrenzend zu Geistern, kann er seine Sonderfähigkeit nicht nutzen.}
 
 \fan{Es ist egal, ob sein Gegner bei oder angrenzend zu Geistern steht.}
 
@@ -2648,7 +2699,12 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 \chapter{9. Stinner (Stianna), der Seekrieger}
 \label{Seekrieger}
-\heldenfigur{Stinner.jpg}
+\heldenfigur{Stinner.jpg}{Wheat1}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Die Reise in den Norden (2014).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -2660,6 +2716,8 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 \subsection{\fan{Aufbau:}}
 
 \fan{Der Seekrieger erhält den treuen Streifenmarder.}
+
+\fan{Falls keine Trinkschläuche bereitgelegt würden, legt alle Trinkschläuche der Box bereit.}
 
 
 
@@ -2680,7 +2738,7 @@ Er hat:
 
 \subsection{\fan{Treuer Streifenmarder:}}
 
-\fan{Der treue Streifenmarder ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. Nur der Seekrieger darf ihn 1x pro Tag einsetzen, vor einer Kampfrunde gegen einen Gegner (keinen Endgegner) mit 2 oder mehr Würfeln. Dann wirft der Gegner nur in dieser Kampfrunde einen Würfel weniger und der Seekrieger darf diesen Würfel mit seinen Heldenwürfeln werfen. Klaut der treue Streifenmarder einem Gegner einen großen schwarzen oder großen grauen Würfel, kann der Seekrieger diesen nur anstatt all seiner Heldenwürfel werfen und nicht mit dem Trank der Hexe verdoppeln.}
+\fan{Der treue Streifenmarder ist ein kleiner rechteckiger \hyperref[Gegenstände und Sonderplättchen]{Gegenstand}. Nur der Seekrieger darf ihn 1x pro Tag einsetzen, vor einer Kampfrunde gegen einen Gegner (keinen Endgegner) mit 2 oder mehr Würfeln. Dann wirft der Gegner nur in dieser Kampfrunde einen Würfel weniger und der Seekrieger darf diesen Würfel mit seinen Heldenwürfeln werfen. Klaut der treue Streifenmarder einem Gegner einen großen schwarzen oder großen grauen Würfel, kann der Seekrieger diesen nur anstatt all seiner Heldenwürfel werfen und nicht mit dem Trank der Hexe verdoppeln.}
 
 \fan{Jeden Sonnenaufgang, wenn der Seekrieger den treuen Streifenmarder trägt, darf er einen halbvollen Trinkschlauch erhalten.}
 
@@ -2696,37 +2754,25 @@ Er hat:
 
 
 
+\subsection{\fan{Mehrere Seekrieger:}}
+
+\fan{Jeder Seekrieger erhält am Anfang einen treuen Streifenmarder. Die treuen Streifenmarder sind alle ununterscheidbar. Jeder Seekrieger darf jeden treuen Streifenmarder nutzen. Pro Kampfrunde kann insgesamt nur ein treuer Streifenmarder genutzt werden. Bei Sonnenaufgang dürfen mehrere Streifenmarder demselben Seekrieger je einen halbvollen Trinkschlauch geben.}
+
+
+
 \subsection{Kein Krieger aus Andor:}
 
 Spricht eine Regel oder Karte vom \hyperref[Krieger]{Krieger}, ist der Seekrieger nicht gemeint.
 
 
 
-
-\subsection{\fan{Mehrere Seekrieger:}}
-
-\fan{Die treuen Streifenmarder sind alle ununterscheidbar. Jeder Seekrieger kann jeden treuen Streifenmarder nutzen. Pro Kampfrunde kann insgesamt nur ein treuer Streifenmarder genutzt werden.}
-
 \end{nobgcolor}
 
 
 
-\begin{bgcolor}[color-DLvA]
-\section{\fan{Die Legenden von Andor (2012)}}
+\columnbreak
 
 
-
-
-
-\subsection{\fan{Ausscheiden:}}
-
-\fan{Scheidet der Seekrieger aus (z.B. weil er in Cavern auf 0 Willenspunkte fiel), während er einen treuen Streifenmarder trägt, geht dieser aus dem Spiel.}
-
-\subsection{\fan{Legende 5, Der Zorn des Drachens:}}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" darf der Seekrieger den treuen Streifenmarder oder einen von ihm erhaltenen Trinkschlauch in Stärke tauschen.}
-
-\end{bgcolor}
 
 
 \begin{bgcolor}[color-DRidN]
@@ -2748,28 +2794,19 @@ Durch dieses Versetzen werden Effekte wie beim Stehenbleiben aktiviert (z.B. Wra
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
-\section{\fan{Die letzte Hoffnung (2016)}}
-
-
-\subsection{\fan{Legende 15, Der vergiftete Geist:}}
-
-\fan{Wird der Seekrieger enttarnt, darf er den treuen Streifenmarder und von ihm erhaltene Trinkschläuche in Stärke tauschen.}
-
-\end{bgcolor}
+\begin{bgcolor}[color-AG]
+\section{Alte Geister (2018):}
 
 
 
+\subsection{\fan{Bonus-Legende "Die vierte Statue":}}
 
+\fan{Legt am Anfang zusätzlich einen halbvollen Trinkschlauch bereit. Der Streifenmarder kann dem Seekrieger nur genau dieses Plättchen geben, keinen der 4 anderen Trinkschläuche. Nach der Benutzung wird dieser halbvolle Trinkschlauch jeweils wieder bereitgelegt.}
 
-\begin{bgcolor}[color-DeK]
-\section{\fan{Die ewige Kälte (2022)}}
-
-\subsection{\fan{Händler:}}
-
-\fan{Der Seekrieger darf seinen treuen Streifenmarder und von ihm erhaltene Trinkschläuche bei Händlern tauschen.}
+\fan{Spielt ihr mit mehreren Seekriegern: Jeden Sonnenaufgang kann nur einer der Seekrieger den halbvollen Trinkschlauch erhalten.}
 
 \end{bgcolor}
+
 
 
 
@@ -2801,10 +2838,11 @@ Durch dieses Versetzen werden Effekte wie beim Stehenbleiben aktiviert (z.B. Wra
 
 \chapter{14. Thorn (Mairen), der Krieger}
 \label{Krieger}
-\heldenfigur{Thorn.jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Thorn.jpg}{RoyalBlue}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Ritter]{Thorn (Mairen), der \fan{Ritter}}.
+    \footnotesize
+    Aus Die Legenden von Andor (2012), Das Geheimnis des Königs (2019), Die ewige Kälte (2022), Big Box (2023) und Herz aus Eis (2023). Siehe auch \hyperref[Ritter]{Thorn (Mairen), der \fan{Ritter}}.
 \end{center}
 
 
@@ -2842,12 +2880,6 @@ Er hat:
 
 
 
-\subsection{Noch kein Ritter:}
-
-Spricht eine Ereigniskarte vom Krieger, sind davon immer der Krieger und der \hyperref[Ritter]{\fan{Ritter}} betroffen.
-
-Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \hyperref[Ritter]{\fan{Ritter}} gemeint, nicht der Krieger. Sprechen andere Regeln vom Krieger, ist damit der Krieger gemeint.
-
 
 
 
@@ -2863,6 +2895,24 @@ Erhält er Willenspunkte durch die Sonderfähigkeit der \hyperref[Wassermagierin
 
 Ein brennendes Feuer (auf seinem Feld oder von der \hyperref[Feuerwächterin]{Feuerwächterin} getragen) gibt dem Krieger +2 \hyperref[Bonusstärke]{Bonusstärke} (statt +1).
 \supercite{DeK:Begleitheft}
+
+
+
+\subsection{Große blaue Einführungsplättchen:}
+
+\fan{Der Krieger erhält auch bei großen blauen Einführungsplättchen "Brunnen"/"Quelle" 5 Willenspunkte, egal was auf dem Plättchen steht.}
+
+
+
+
+
+\subsection{Noch kein Ritter:}
+
+Spricht eine Ereigniskarte vom Krieger, sind davon immer der Krieger und der \hyperref[Ritter]{\fan{Ritter}} betroffen.
+
+Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \hyperref[Ritter]{\fan{Ritter}} gemeint, nicht der Krieger. Sprechen andere Regeln vom Krieger, ist damit der Krieger gemeint.
+
+
 
 
 \end{nobgcolor}
@@ -2883,6 +2933,11 @@ Leert der Krieger einen Nord-Brunnen, erhält er:
 \bullet{} 6 Willenspunkte (unverändert).
 
 \end{bgcolor}
+
+
+
+
+\columnbreak
 
 
 \begin{bgcolor}[color-DlH]
@@ -2976,10 +3031,11 @@ Leert der Krieger die Quelle auf Feld 37, erhält er nur das, was auf dem Quelle
 
 \chapter{14. Thorn (Mairen), der \fan{Ritter}}
 \label{Ritter}
-\heldenfigur{Thorn (Reiter).jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Thorn (Reiter).jpg}{RoyalBlue}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Krieger]{Thorn (Mairen), der Krieger}.
+    \footnotesize
+    Aus Die letzte Hoffnung (2016). Siehe auch \hyperref[Krieger]{Thorn (Mairen), der Krieger}.
 \end{center}
 
 
@@ -3000,12 +3056,6 @@ Der Name wird wie "Torn" gesprochen.
 \supercite{33469}
 
 
-
-\subsection{Noch immer ein Krieger:}
-
-Spricht eine Ereigniskarte vom Krieger, sind davon immer der \hyperref[Krieger]{Krieger} und der \fan{Ritter} betroffen.
-
-Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \fan{Ritter} gemeint. Sprechen andere Regeln vom Krieger, ist der \fan{Ritter} damit nicht gemeint.
 
 
 
@@ -3036,6 +3086,22 @@ Er hat:
 \subsection{Treues Pferd Ambra:}
 
 Der \fan{Ritter} ist ein \hyperref[Reiter]{Reiter}.
+
+
+
+
+
+\subsection{Noch immer ein Krieger:}
+
+Spricht eine Ereigniskarte vom Krieger, sind davon immer der \hyperref[Krieger]{Krieger} und der \fan{Ritter} betroffen.
+
+Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \fan{Ritter} gemeint. Sprechen andere Regeln vom Krieger, ist der \fan{Ritter} damit nicht gemeint.
+
+
+
+
+
+
 
 \end{nobgcolor}
 
@@ -3084,7 +3150,12 @@ Ihr dürft die Summe seiner Stärkepunkte und dieser Bonusstärke durch einen we
 
 \chapter{15. Bragor (Rhega), der Tarus}
 \label{Tarus}
-\heldenfigur{Bragor.jpg}
+\heldenfigur{Bragor.jpg}{brown}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Neue Helden (2014) und Big Box (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -3124,17 +3195,30 @@ Der Tarus ist ein \hyperref[Fernkämpfer]{Fernkämpfer}. Die Fernkampf-Regeln ge
 \supercite{NH:Begleitheft}
 
 
-\subsection{Kein Bogenschütze:}
-
-Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin}, ist der Tarus nicht gemeint.
-
 
 
 \subsection{Wasser bringt Stärke:}
 
 Leert der Tarus mit 15 oder mehr Willenspunkten ein Brunnen-/\fan{Quellen}plättchen, darf er 1 Stärkepunkt statt der Willenspunkte erhalten.
 
-Erhält er Willenspunkte durch die Sonderfähigkeit der \hyperref[Wassermagierin]{Wassermagierin}, kann er keinen Stärkepunkt statt Willenspunkten erhalten.
+\fan{Wurde das Plättchen an diesem Tag durch die \hyperref[Runenmeisterin]{Runenmeisterin} aufgefrischt, kann der Tarus keinen Stärkepunkt statt Willenspunkten erhalten.}
+\supercite{137438}
+
+Erhält der Tarus Willenspunkte durch die Sonderfähigkeit der \hyperref[Wassermagierin]{Wassermagierin}, kann er keinen Stärkepunkt statt Willenspunkten erhalten.
+
+
+
+
+\subsection{\fan{Große blaue Einführungsplättchen:}}
+
+\fan{Hat der Tarus 15 oder mehr Willenspunkte, darf er auch bei großen blauen Einführungsplättchen "Brunnen"/"Quelle" 1 Stärkepunkt statt der Willenspunkte erhalten.}
+
+
+
+
+\subsection{Kein Bogenschütze:}
+
+Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin}, ist der Tarus nicht gemeint.
 
 
 
@@ -3160,7 +3244,7 @@ Wählt der Tarus beim Leeren eines Nord-Brunnens 1 Stärkepunkt statt der Willen
 
 
 
-
+\columnbreak
 
 
 \begin{bgcolor}[color-AG]
@@ -3221,7 +3305,12 @@ Leert der Tarus die Quelle auf Feld 37, kann er keinen Stärkepunkt statt Willen
 
 \chapter{22. Fenn (Fennah), der Fährtenleser}
 \label{Fährtenleser}
-\heldenfigur{Fenn.jpg}
+\heldenfigur{Fenn.jpg}{orange}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Neue Helden (2014) und Big Box (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -3259,7 +3348,7 @@ Er hat:
 
 \subsection{Rabe, Messer und Horn:}
 
-Nur der Fährtenleser kann Rabe, Messer und Horn tragen. Sie gelten nicht als Gegenstände und können nicht abgelegt oder abgegeben werden.
+Nur der Fährtenleser kann Rabe, Messer und Horn tragen. Sie sind \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}}.
 \supercite{6952}
 
 Jeden Sonnenaufgang werden diese Plättchen aufgedeckt.
@@ -3311,7 +3400,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 
 \subsection{\fan{Mehrere Fährtenleser:}}
 
-\fan{Ein Fährtenleser kann seinen Raben, sein Messer und sein Horn keinem anderen Fährtenleser geben. Ein Fährtenleser kann mit seinem Messer nur einen eigenen Würfel neu werfen.}
+\fan{Jeder Fährtenleser erhält am Anfang seine eigenen Raben, Messer und Horn. Er kann mit seinem Messer nur einen eigenen Würfel neu werfen.}
 
 
 
@@ -3321,27 +3410,10 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 \begin{bgcolor}[color-DLvA]
 \section{Die Legenden von Andor (2012)}
 
-\subsection{Ausscheiden:}
-
-\fan{Scheidet der Fährtenleser aus (z.B. weil er in Cavern auf 0 Willenspunkte fiel), gehen Rabe, Messer und Horn aus dem Spiel.}
-
-
 \subsection{Legende 3, Die Tage des Widerstands:}
 
 \fan{Nutzt Varkur die Dunkle Magie "Die Schwächung der Helden", kann der Fährtenleser das Horn nicht im Endkampf nutzen.}
 
-
-\subsection{Legende 5, Der Zorn des Drachens:}
-
-Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" kann der Fährtenleser Rabe, Messer und Horn nicht in Stärke tauschen.
-\supercite{6952}
-
-
-
-\subsection{Bonus-Legende "Die Befreiung der Mine":}
-
-Der Fährtenleser darf Messer und Horn im Kampf gegen Varkur nutzen, auch wenn im Kampf gegen ihn keine Gegenstände genutzt werden können (d.h. wenn Varkur bei der Karte "Varkurs Versteck" in der Waffenkammer auftaucht).
-\supercite{6952}
 
 
 \subsection{Ereigniskarte "Geheimer See" 9:}
@@ -3366,19 +3438,6 @@ Der Fährtenleser darf Messer und Horn im Kampf gegen Varkur nutzen, auch wenn i
 
 
 
-\columnbreak
-
-
-
-\begin{bgcolor}[color-DlH]
-\section{\fan{Die letzte Hoffnung (2016)}}
-
-
-\subsection{\fan{Legende 15, Der vergiftete Geist:}}
-
-\fan{Wird der Fährtenleser enttarnt, kann er Rabe, Messer und Horn nicht in Stärke tauschen.}
-
-\end{bgcolor}
 
 
 
@@ -3405,15 +3464,7 @@ Der Fährtenleser darf Messer und Horn im Kampf gegen Varkur nutzen, auch wenn i
 
 
 
-
-\begin{bgcolor}[color-DeK]
-\section{\fan{Die ewige Kälte (2022)}}
-
-\subsection{\fan{Rabe, Messer und Horn:}}
-
-\fan{Der Steppennomade kann Rabe, Messer und Horn nicht bei Händlern tauschen.}
-
-\end{bgcolor}
+\columnbreak
 
 
 \begin{bgcolor}[color-DfL]
@@ -3442,7 +3493,12 @@ Der Fährtenleser darf Messer und Horn im Kampf gegen Varkur nutzen, auch wenn i
 
 \chapter{23. Drukil (Drukia), der Hautwandler}
 \label{Hautwandler}
-\heldenfigur{Drukil.jpg}
+\heldenfigur{Drukil.jpg}{brown}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Dunkle Helden (2017).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -3591,7 +3647,7 @@ Der Bär kann nicht von einem \hyperref[Reiter]{Reiter} mitbewegt werden.
 
 Als Waldfeld gelten:
 
-\bullet{} In Andor (Spielplan-Vorderseite) die Felder 22–25, 47–60 und 62–63.
+\bullet{} In Andor (Spielplan-Vorderseite) die Felder 22–25, 47–60 und 62–63,
 \supercite{232}
 
 \bullet{} In Cavern (Spielplan-Rückseite) die Felder 43–47, 49–52, 54–63, 65 und 70.
@@ -3667,7 +3723,7 @@ Feld 0 von Cavern (Spielplan-Rückseite) darf er gefahrlos betreten.
 
 \fan{Hat der Bär 1 bis 9 Willenspunkte, gilt folgendes:}
 
-\bullet{\fan{Steht das Schiff nicht angrenzend an ein Landfeld, während er an Bord ist, muss er passen.}}
+\bullet{} \fan{Steht das Schiff nicht angrenzend an ein Landfeld, während er an Bord ist, muss er passen.}
 
 \bullet{} \fan{Da er keine Schneeplättchen aktivieren kann, muss er nicht stehen bleiben, wenn er ein Feld mit Schneeplättchen betritt.}
 
@@ -3700,12 +3756,12 @@ Der Hautwandler hat ein besonderes Ablagefeld für seinen Armreif.
 
 \subsection{Zweite Sonderfähigkeit: Armreif}
 
-Der Hautwandler erhält den kleinen runden Gegenstand Armreif, den nur Hautwandler tragen können.
+Der Hautwandler erhält den kleinen runden \hyperref[Gegenstände und Sonderplättchen]{Gegenstand} Armreif.
 
 Er darf als eigene Aktion für 1 Stunde den Armreif abgeben, um seine Heldenfigur zu wechseln, von Mensch zu Bär bzw. von Bär zu Mensch.
 \supercite{DH11:Heldenkarte_Hautwandler}
 
-\fan{Spielt ihr mit mehreren Hautwandlern: Alle Armreife sind ununterscheidbar. Alle Hautwandler dürfen alle Armreife tragen, aber höchstens einen auf einmal. Ein Hautwandler darf im Laufe einer Legende mehrere Armreife nutzen.}
+\fan{Spielt ihr mit mehreren Hautwandlern: Jeder Hautwandler mit dieser zweiten Sonderfähigkeit erhält einen Armreif. Alle Armreife sind ununterscheidbar. Ein Hautwandler kann höchstens einen Armreif auf einmal tragen, darf im Laufe einer Legende aber mehrere Armreife nutzen.}
 
 
 
@@ -3866,7 +3922,7 @@ Der Hautwandler darf das Schwarze Einhorn nur zähmen, wenn er \fan{am Ende des 
 
 \subsection{Legende 2, Fremde Heimat:}
 
-\fan{Der Bär kann die Aktion "Bauern rekrutieren" nur nutzen und das Boot nur fahren, wenn er 10 bis 14 Willenspunkte hat.}
+\fan{Der Bär kann das Boot nur fahren, wenn er 10 bis 14 Willenspunkte hat.}
 
 \fan{Der Bär darf das Boot betreten, verlassen und von einem anderen Helden im Boot gefahren werden, egal wie viele Willenspunkte er hat. Das Boot gilt für den Stärkepunkte-Verlust als eigenes Feld. Das Boot gilt nie als Waldfeld, auch wenn es auf ein Waldfeld zeigt.}
 
@@ -3890,6 +3946,7 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 \end{bgcolor}
 
 
+\columnbreak
 
 \begin{nobgcolor}
 
@@ -3924,9 +3981,8 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 
 \subsection{\fan{Bär:}}
 
-\fan{Der Bär kann ein Seefeld nie betreten, egal ob ein Eisplättchen darauf liegt.}
 
-\fan{Ausnahme: Sollte er auf einem Seefeld oder Feld 460 stehen, darf er Seefelder auf einem kürzesten Weg zum Ufer betreten, egal ob dort Eisplättchen liegen.}
+\fan{Der Bär kann kann Seefelder nicht betreten, egal ob dort Eisplättchen liegen. Nur wenn er bereits auf einem Seefeld oder Feld 460 steht, darf er Seefelder auf einem kürzesten Weg zum Ufer betreten, erneut egal ob dort Eisplättchen liegen.}
 
 \fan{Der Bär kann Eisplättchen weder aktivieren noch aufdecken und muss auf Feldern mit Eisplättchen nicht stehen bleiben.}
 
@@ -3956,7 +4012,7 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 
 \fan{Als Waldfeld gelten:}
 
-\bullet{} \fan{In Azturien (Spielplan-Vorderseite) die Felder 500–502, 506, 508, 513–514, 516–517, 519, 521–522, 535, 539–541, 551, 553, 556–557 und 559–562.}
+\bullet{} \fan{In Azturien (Spielplan-Vorderseite) alle Felder mit 3 oder mehr Baumkronen, also die Felder 500, 502, 506, 508, 513–514, 516–517, 519, 521–522, 535, 539–541, 551, 556–557 und 559–562,}
 
 \bullet{} \fan{Im Land der Steppe (Spielplan-Rückseite) die Felder 405, 412, 415–416, 424 und 443.}
 
@@ -3999,7 +4055,12 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 
 \chapter{24. Avida (Avid), die Heilerin}
 \label{Heilerin}
-\heldenfigur{Avida.jpg}
+\heldenfigur{Avida.jpg}{RoyalBlue}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Das ferne Land (2025).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -4094,7 +4155,12 @@ Steht die Heilerin bei oder angrenzend zu Geistern, kann sie im Kampf ihre Heilk
 
 \chapter{24. Santa Gor, der Weihnachts-Gor}
 \label{Weihnachts-Gor}
-\heldenfigur{Santa Gor.jpg}
+\heldenfigur{Santa Gor.jpg}{ForestGreen}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Bonus-Held (2021, \url{https://legenden-von-andor.de/zusatzheld-santa-gor/}).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4138,16 +4204,6 @@ Der Weihnachts-Gor kann jedes Feld nur einmal pro Legende beschenken. Nutzt Mark
 
 
 
-\subsection{Kein Halbskral:}
-
-Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von Kreaturen übersprungen und kann im Kampf keine gleichen Würfelwerte addieren.
-
-
-
-\subsection{Neugier:}
-
-\fan{Der Weihnachts-Gor darf \hyperref[Aufdecken]{von nah aufdeckbare} Plättchen auf seinem Feld aufdecken, auch wenn er sie nicht tragen kann.}
-
 
 
 \subsection{\fan{Mehrere Weihnachts-Gors:}}
@@ -4160,6 +4216,27 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 \fan{Nur derjenige Weihnachts-Gor, der aktuell den Geschenkesack trägt, darf Geschenke bescheren. Solange er den Geschenkesack trägt, kann er keine bescherten Gegenstände aufnehmen.}
 
 \fan{Jeder Weihnachts-Gor, der den Geschenkesack nicht trägt, hat 3 kleine rechteckige Ablagefelder (links neben dem Heldenbild). Er darf dort auch Orweyns Hammer aus "Die Reise in den Norden" oder die Spitzhacke aus "Düstere Zeiten" tragen. Er darf bescherte Gegenstände aufnehmen, auch wenn er selbst sie bescherte. Erhält er den Geschenkesack, muss er alle Gegenstände, die er nun nicht mehr tragen kann, auf seinem Feld zurücklassen.}
+
+
+\columnbreak
+
+
+\subsection{\fan{Neugier:}}
+
+\fan{Der Weihnachts-Gor darf \hyperref[Aufdecken]{von nah aufdeckbare} Plättchen auf seinem Feld aufdecken, auch wenn er sie nicht tragen kann.}
+
+
+
+
+
+\subsection{Kein Halbskral:}
+
+Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von Kreaturen übersprungen und kann im Kampf keine gleichen Würfelwerte addieren.
+
+
+
+
+
 
 
 \end{nobgcolor}
@@ -4175,6 +4252,13 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 \bullet{} \fan{In Andor (Spielplan-Vorderseite) die Felder 0, 2, 6, 15, 17–19, 24, 28, 32, 40, 57, 64, 71–72 und 83,}
 
 \bullet{} \fan{In Cavern (Spielplan-Rückseite) die Felder 6, 24–25, 27–28, 40, 42, 45, 61, 63–65, 68–69 und 71.}
+
+
+\subsection{\fan{Legende 1, Die Ankunft der Helden:}}
+
+\fan{Es gibt keine Ausrüstungstafel. Legt am Anfang alle Trinkschläuche bereit. Der Weihnachts-Gor darf Trinkschläuche bescheren.}
+
+
 
 
 \subsection{Legende 2, Die Heilung des Königs:}
@@ -4241,6 +4325,15 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 
 
+\subsection{\fan{Legende 11, Das Graue Gebirge:}}
+
+\fan{Es gibt keine Ausrüstungstafel. Während der Erzähler auf "b" oder später steht, darf der Weihnachts-Gor Trinkschläuche bescheren.}
+
+
+
+
+
+
 
 \end{bgcolor}
 
@@ -4272,7 +4365,7 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \subsection{Bonus-Legende "Die vierte Statue":}
 
-\fan{Es gibt keine Ausrüstungstafel. Der Weihnachts-Gor beschert Gegenstände von Feld 71.}
+Es gibt keine Ausrüstungstafel. \fan{Der Weihnachts-Gor beschert Gegenstände von Feld 71.}
 
 \end{bgcolor}
 
@@ -4312,7 +4405,16 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \subsection{\fan{Geschenke bescheren:}}
 
-\fan{Bleibt der Weihnachts-Gor auf einem Feld mit einem Gebäude stehen, darf er einen Gegenstand aus dem Vorrat oder von einem Händlerfeld auf dieses Feld legen, der auf einem Händlerfeld abgebildet ist. Dieser darf wie üblich erst vom Weihnachts-Gor getragen werden, nachdem ein anderer Held ihn aufgenommen hat. Das Feld wird wie üblich als beschenkt markiert.}
+\fan{Es gibt keine Ausrüstungstafel. Bleibt der Weihnachts-Gor auf einem Feld mit einem Gebäude stehen, darf er einen Gegenstand aus dem Vorrat oder von einem Händlerfeld auf dieses Feld legen, der auf einem Händlerfeld abgebildet ist. Dieser darf wie üblich erst vom Weihnachts-Gor getragen werden, nachdem ein anderer Held ihn aufgenommen hat. Das Feld wird wie üblich als beschenkt markiert.}
+
+
+\subsection{\fan{Legende 1, Der Winterstein:}}
+
+
+\fan{Das Händlerfeld wird blockiert. Legt am Anfang alle Trinkschläuche neben dem Spielplan bereit. Der Weihnachts-Gor kann nur Trinkschläuche bescheren.}
+
+
+
 
 \end{bgcolor}
 
@@ -4326,9 +4428,9 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \fan{\bullet{} In Azturien (Spielplan-Vorderseite) die Felder 501, 502, 505–512, 515, 518, 521–523, 530–532, 536, 539, 542, 550–551, 553, 563 und 599.}
 
-\fan{\bullet{} Im Land der Steppe (Spielplan-Rückseite) die Felder 401, 403, 405, 409, 412–413, 415, 419, 425–426, 437, 442.}
+\fan{\bullet{} Im Land der Steppe (Spielplan-Rückseite) die Felder 401, 403, 405, 409, 412–413, 415, 419, 425–426, 437, 442 und 453.}
 
-\fan{Im Schachtelboden gelten keine Felder als Gebäude.}
+\fan{Im Schachtelboden gelten keine Felder als Feld mit Gebäude.}
 
 
 
@@ -4347,6 +4449,18 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \fan{Würde der Weihnachts-Gor einen Ruinengeist aktivieren, geht das aktivierte Plättchen stattdessen ohne Effekt aus dem Spiel.}
 
+
+
+
+\subsection{\fan{Legende 1, Der wahre Meister:}}
+
+
+\fan{Es gibt keine Ausrüstungstafel. Legt am Anfang alle Trinkschläuche bereit. Der Weihnachts-Gor darf Trinkschläuche bescheren.}
+
+
+
+
+
 \end{bgcolor}
 
 
@@ -4362,7 +4476,12 @@ Anders als der \hyperref[Halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \chapter{25. Chada (Pasco), die Bogenschützin}
 \label{Bogenschützin}
-\heldenfigur{Chada.jpg}
+\heldenfigur{Chada.jpg}{ForestGreen}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Die Legenden von Andor (2012), Die letzte Hoffnung (2016), Das Geheimnis des Königs (2019) und Big Box (2023).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -4432,7 +4551,7 @@ Der Trank der Hexe kostet die Bogenschützin 1 Gold weniger.
 
 \subsection{Zweite Sonderfähigkeit: Rekas Schülerin}
 
-Die Bogenschützin erhält den Kessel. Der Kessel ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. 
+Die Bogenschützin erhält den Kessel. Der Kessel ist ein kleiner rechteckiger \hyperref[Gegenstände und Sonderplättchen]{Gegenstand}.
 
 Nur die Bogenschützin kann, wenn sie den Kessel trägt, die Aktion "Trank brauen" wählen. Dann gibt sie 1 oder mehr Sternkraut sowie 1 Stunde ab, um pro 1 Sternkraut 1 halb vollen Trank der Hexe oder pro 2 Sternkraut 1 vollen Trank der Hexe zu erhalten (in beliebiger Kombination, sie darf also z.B. für 4 Sternkräuter 1 vollen und 2 halb volle Tränke der Hexe erhalten). 
 \supercite{DlH:Begleitheft,DlH11:Heldenkarte_Bogenschütze}
@@ -4462,7 +4581,12 @@ Mit Mondbeeren geht das nicht.\supercite{MH:Mondbeeren,MH:Begleitheft}
 
 \chapter{26. Aćh (Aćhan), die Takuri-Hüterin}
 \label{Takuri-Hüterin}
-\heldenfigur{Aćh.jpg}
+\heldenfigur{Aćh.jpg}{orange}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Magische Helden (2021).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4518,7 +4642,7 @@ Der Takuri-Marker kann folgende Werte haben: +0/+2/+3/+5/+7.
 
 \subsection{Treuer Takuri Turr:}
 
-Die Takuri-Hüterin hat einen \hyperref[Helfer]{\fan{Helfer}}, die Figur "Takuri".
+Die Takuri-Hüterin hat einen \hyperref[Helfer]{\fan{Helfer}}, die Figur "Takuri", den sie aber nicht als eigene Aktion bewegen kann.
 
 Steht der Takuri auf dem Feld eines kämpfenden Helden, gibt er den Wert des Takuri-Markers als \hyperref[Bonusstärke]{Bonusstärke}.
 \supercite{MH:Takuri}
@@ -4542,7 +4666,7 @@ Das darf sie jederzeit, insbesondere nach einem Kampf zwischen der Belohnung und
 
 \subsection{Tulgorische Steinflöte:}
 
-Die tulgorische Steinflöte ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. 
+Die Steinflöte ist ein kleiner rechteckiger \hyperref[Gegenstände und Sonderplättchen]{Gegenstand}.
 Nur die Takuri-Hüterin darf die Steinflöte von der Vorderseite auf die Rückseite drehen, um den Takuri auf ein beliebiges Spielplanfeld zu versetzen.
 Bei Sonnenaufgang wird die Steinflöte auf die Vorderseite gedreht.
 Trägt die Takuri-Hüterin die Steinflöte auf ihrer Rückseite, darf sie als freie Handlungsmöglichkeit 2 Stunden abgeben, um sie wieder auf die Vorderseite zu drehen. Das darf sie mehrmals pro Tag.
@@ -4550,41 +4674,27 @@ Trägt die Takuri-Hüterin die Steinflöte auf ihrer Rückseite, darf sie als fr
 
 
 
+\subsection{Neutrale Zeitsteine:}
+
+Im Spiel mit neutralen Zeitsteinen darf die Takuri-Hüterin vor dem Auffrischen der Flöte auswählen, welchen ihrer möglichen Zeitsteine sie 2 Stunden vorsetzt.
 
 
 
 \subsection{\fan{Mehrere Takuri-Hüterinnen:}}
 
-\fan{Alle Steinflöten sind ununterscheidbar und dürfen von allen Takuri-Hüterinnen genutzt oder aufgefrischt werden. Jede Takuri-Hüterin hat aber ihren eigenen Takuri, den nur sie bewegen oder besänftigen kann. Ihr dürft den Takuri Standfüße in unterschiedlichen Farben geben.}
+\fan{Jede Takuri-Hüterin erhält am Anfang eine Steinflöte. Alle Steinflöten sind ununterscheidbar und dürfen von allen Takuri-Hüterinnen genutzt oder aufgefrischt werden. Jede Takuri-Hüterin hat ihren eigenen Takuri-Marker und eigenen Takuri, den nur sie bewegen oder besänftigen kann. Ihr dürft den Takuri Standfüße in unterschiedlichen Farben geben.}
 
 
 
 
+\subsection{Keine Hüterin der Flusslande:}
 
-\subsection{Neutrale Zeitsteine:}
+Spricht eine Regel oder Karte aus "Magische Helden" von der Hüterin, ist die Takuri-Hüterin gemeint. Spricht eine andere Regel oder Karte von der Hüterin, ist die \hyperref[Hüterin]{Hüterin} gemeint und nicht die Takuri-Hüterin.
 
-Im Spiel mit neutralen Zeitsteinen darf die Takuri-Hüterin vor dem Auffrischen der Flöte auswählen, welchen Zeitstein sie 2 Stunden vorsetzen will.
+
+
 
 \end{nobgcolor}
-
-
-
-\begin{bgcolor}[color-DLvA]
-\section{Die Legenden von Andor (2012)}
-
-\subsection{Ausscheiden:}
-
-\fan{Scheidet die Takuri-Hüterin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), geht ihr Takuri aus dem Spiel.}
-
-
-\subsection{Legende 5, Der Zorn des Drachens:}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" darf die Takuri-Hüterin die tulgorische Steinflöte in Stärke tauschen.}
-
-
-\end{bgcolor}
-
-
 
 
 
@@ -4596,17 +4706,16 @@ Im Spiel mit neutralen Zeitsteinen darf die Takuri-Hüterin vor dem Auffrischen 
 
 \subsection{Zweite Sonderfähigkeit: Takuri-Federn}
 
-Die Takuri-Hüterin erhält die zwei Takuri-Federn, welche auf der Nahrungsablage getragen werden. Nur die Takuri-Hüterin kann Takuri-Federn tragen. Sie darf 1 Takuri-Feder abgeben, damit sie alle Überstunden an diesem Tag keine Willenspunkte kosten.
+Die Takuri-Hüterin erhält die zwei \hyperref[Gegenstände und Sonderplättchen]{\fan{Gegenstände}} Takuri-Federn, welche auf der Goldablage getragen werden. Nur die Takuri-Hüterin kann 1 Takuri-Feder abgeben, damit sie alle Überstunden an diesem Tag keine Willenspunkte kosten.
 \supercite{MH11:Heldenkarte_Takuri-Hüterin}
 
-\fan{Spielt ihr mit mehreren Takuri-Hüterinnen: Alle Takuri-Federn sind ununterscheidbar und dürfen von allen Takuri-Hüterinnen getragen, getauscht und genutzt werden. Eine Takuri-Hüterin darf beliebig oft pro Legende Takuri-Federn nutzen.}
+\fan{Spielt ihr mit mehreren Takuri-Hüterinnen: Jede Takuri-Hüterin mit dieser zweiten Sonderfähigkeit erhält 2 Takuri-Federn. Alle Takuri-Federn sind ununterscheidbar und dürfen von jeder Takuri-Hüterin genutzt werden. Eine Takuri-Hüterin darf im Laufe einer Legende auch mehr als zweimal Takuri-Federn nutzen.}
 
 
 \subsection{Legende 15, Der vergiftete Geist:}
 
 Für das offizielle Geschenk der Takuri-Hüterin darf sie die Steinflöte auch auf die Rückseite drehen, ohne den Takuri zu versetzen.
 \supercite{MH:Begleitheft}
-\fan{Wird die Takuri-Hüterin enttarnt, gehen von ihr getragene Takuri-Federn und ihr Takuri aus dem Spiel, ohne zu Stärke zu werden. Sie darf die tulgorische Steinflöte in Stärke tauschen.}
 
 
 \subsection{Legende 17, Die letzte Hoffnung:}
@@ -4614,24 +4723,15 @@ Für das offizielle Geschenk der Takuri-Hüterin darf sie die Steinflöte auch a
 Die Spiegelscherben von der offiziellen Hoffnungskarte können Wachtrolle nicht über Sprungfelder versetzen. 
 \supercite{MH:Begleitheft}
 
-\fan{Mit den Spiegelscherben können Gegner nicht über Eisbrücken des \hyperref[Eis-Dämon]{Eis-Dämons} versetzt werden.}
+\fan{Auch festgehaltene Helden (z.B. durch Skelette oder Spornen) dürfen versetzt werden.}
+\fan{Gegner können nicht über Eisbrücken des \hyperref[Eis-Dämon]{Eis-Dämons} versetzt werden.}
 
-\fan{Mit den Spiegelscherben dürfen auch festgehaltene Helden (z.B. durch Skelette oder Spornen) versetzt werden.}
-
-\end{bgcolor}
-
-
-
-\begin{bgcolor}[color-DeK]
-\section{\fan{Die ewige Kälte (2022)}}
-
-\subsection{\fan{Tulgorische Steinflöte:}}
-
-\fan{Die Takuri-Hüterin kann die Steinflöte nur auf ihrer Vorderseite bei Händlern tauschen.}
-
+\fan{Spielt ihr mit mehreren Takuri-Hüterinnen, darf jede Takuri-Hüterin Spiegelscherben nutzen, unabhängig von ihrer Hoffnungskarte.}
 
 \end{bgcolor}
 
+
+\columnbreak
 
 
 
@@ -4642,9 +4742,9 @@ Die Spiegelscherben von der offiziellen Hoffnungskarte können Wachtrolle nicht 
 
 \subsection{\fan{Geister:}}
 
-\fan{Steht die Takuri-Hüterin bei oder angrenzend zu Geistern, kann sie die tulgorische Steinflöte nicht nutzen. Steht der Takuri bei oder angrenzend zu Geistern, gibt er keine \hyperref[Bonusstärke]{Bonusstärke}. Für seine Bonusstärke ist es egal, ob die Takuri-Hüterin bei oder angrenzend zu Geistern steht.}
+\fan{Steht die Takuri-Hüterin bei oder angrenzend zu Geistern, kann sie die Steinflöte nicht nutzen. Steht der Takuri bei oder angrenzend zu Geistern, gibt er keine \hyperref[Bonusstärke]{Bonusstärke}. Für seine Bonusstärke ist es egal, ob die Takuri-Hüterin bei oder angrenzend zu Geistern steht.}
 
-\fan{Der Takuri-Marker wird bewegt, wenn der Erzähler vorgesetzt wird, egal ob der Takuri bei oder angrenzend zu Geistern steht. Die Takuri-Hüterin darf den Takuri-Marker von +7 auf +5 zurücksetzen und die tulgorische Steinflöte auf die Vorderseite drehen, auch wenn sie oder der Takuri bei oder angrenzend zu Geistern stehen.}
+\fan{Der Takuri-Marker wird bewegt, wenn der Erzähler vorgesetzt wird, egal ob der Takuri bei oder angrenzend zu Geistern steht. Die Takuri-Hüterin darf den Takuri-Marker von +7 auf +5 zurücksetzen und die Steinflöte auf die Vorderseite drehen, auch wenn sie oder der Takuri bei oder angrenzend zu Geistern stehen.}
 
 \end{bgcolor}
 
@@ -4662,7 +4762,12 @@ Die Spiegelscherben von der offiziellen Hoffnungskarte können Wachtrolle nicht 
 
 \chapter{29. Kheela (Kheelan), die Hüterin}
 \label{Hüterin}
-\heldenfigur{Kheela.jpg}
+\heldenfigur{Kheela.jpg}{white}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Neue Helden (2014) und Big Box (2023).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -4703,7 +4808,7 @@ Die Hüterin hat eine \hyperref[Helfer]{\fan{Helferin}}, die Figur "Wassergeist"
 
 Der große weiße Würfel hat die Seiten 4/5/5/6/6/7.
 
-Ein Held, der mit dem Feld des Wassergeists steht, darf im Kampf, \fan{wenn er 1 oder mehr seiner Heldenwürfel werfen würde}, stattdessen den großen weißen Würfel statt aller seiner Heldenwürfel werfen.
+Ein Held, der mit dem Feld des Wassergeists steht, darf im Kampf, \fan{wenn er 1 oder mehr seiner Heldenwürfel werfen würde}, stattdessen den großen weißen Würfel statt all seiner Heldenwürfel werfen.
 
 Im gemeinsamen Kampf darf in jeder Kampfrunde höchstens 1 Held den großen weißen Würfel nutzen.
 \supercite{5300}
@@ -4732,20 +4837,15 @@ Das Messer des \hyperref[Fährtenleser]{Fährtenlesers} kann ihn nicht neu werfe
 \fan{Jede Hüterin hat einen eigenen Wassergeist, den nur sie bewegen kann. Ihr dürft den Wassergeistern Standfüße in unterschiedlichen Farben geben. Stehen mehrere Wassergeister auf demselben Feld, dürfen im gemeinsamen Kampf bis zu so viele Helden auf diesem Feld den großen weißen Würfel nutzen.}
 
 
+
+
+\subsection{Keine Takuri-Hüterin:}
+
+Spricht eine Regel oder Karte aus "Magische Helden" von der Hüterin, ist damit die \hyperref[Takuri-Hüterin]{Takuri-Hüterin} gemeint und nicht Kheela (Kheelan).
+
 \end{nobgcolor}
 
-
-\begin{bgcolor}[color-DLvA]
-\section{Die Legenden von Andor (2012)}
-
-\subsection{Ausscheiden:}
-
-Scheidet die Hüterin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), geht ihr Wassergeist aus dem Spiel.
-\supercite{35653}
-
-\end{bgcolor}
-
-
+\columnbreak
 
 \begin{bgcolor}[color-StSch]
 \section{Der Sternenschild (2013)}
@@ -4766,6 +4866,12 @@ Scheidet die Hüterin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), ge
 \subsection{Treuer Wassergeist Vara:}
 
 Der Wassergeist startet nicht immer bei der Hüterin, sondern immer auf dem Meeresfeld, auf dem das Schiff startet. 
+\supercite{DRidN:Begleitheft}
+
+Er darf Meeres- und Klippenfelder betreten.
+\supercite{10815,DRidN:Begleitheft,DRidN:FAQ} 
+
+Das Schiff kann er nicht betreten.
 \supercite{DRidN:Begleitheft}
 
 
@@ -4793,12 +4899,6 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 
 
-\subsection{\fan{Legende 15, Der vergiftete Geist:}}
-
-\fan{Wird die Hüterin enttarnt, geht ihr Wassergeist aus dem Spiel.}
-
-
-
 \end{bgcolor}
 
 
@@ -4820,7 +4920,6 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 \end{bgcolor}
 
 
-
 \begin{bgcolor}[color-DZ]
 \section{Düstere Zeiten (2020)}
 
@@ -4837,7 +4936,6 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 
 
-\columnbreak
 
 
 \begin{bgcolor}[color-DeK]
@@ -4890,7 +4988,12 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 \chapter{33. Grent (Grea), der Bergkrieger}
 \label{Bergkrieger}
-\heldenfigur{Grent.jpg}
+\heldenfigur{Grent.jpg}{Fuchsia}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Bonus-Held (2023) und aus Das ferne Land (2025).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -5079,7 +5182,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf die Stunde der Ka
 \supercite{AG:Begleitheft}
 \fan{Es ist durch Würfeleffekt 4 aber möglich, dass der Bergkrieger mehrere Kartographie-Marker am selben Tag aktiviert.}
 
-\fan{Wird der Zeitstein durch Würfeleffekt 4 auf eine Überstunde mit Gold und Kreatur verschoben, erhält er das Gold und die Kreatur wird eingewürfelt.}
+\fan{Wird der Zeitstein durch Würfeleffekt 4 rückwärts auf eine Überstunde mit Gold und Kreatur verschoben, erhält er das Gold und die Kreatur wird eingewürfelt.}
 
 
 \subsection{Bonus-Legende "Die vierte Statue":}
@@ -5141,10 +5244,11 @@ Während der Bergkrieger bei oder angrenzend zu Geistern steht, hat sein Würfel
 
 \chapter{34. Eara (Liphardus), die Zauberin}
 \label{Zauberin}
-\heldenfigur{Eara.jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Eara.jpg}{Fuchsia}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Dunkle Magierin]{Eara (Liphardus), die Dunkle Magierin}.
+    \footnotesize
+    Aus Die Legenden von Andor (2012), Die letzte Hoffnung (2016), Adventures of Hadria (2017), Das Geheimnis des Königs (2019), Die ewige Kälte (2022), Big Box (2023) und Herz aus Eis (2023). Siehe auch \hyperref[Dunkle Magierin]{Eara (Liphardus), die Dunkle Magierin}.
 \end{center}
 
 \begin{multicols*}{2}\raggedcolumns
@@ -5209,7 +5313,8 @@ Sie darf auch den Runenwürfel der \hyperref[Runenmeisterin]{Runenmeisterin} dre
 
 \subsection{Legende 3, Die Tage des Widerstands:}
 
-\fan{Nutzt Varkur die Dunkle Magie "Die Schwächung der Helden", kann die Zauberin im Endkampf keinen Würfel auf die gegenüberliegende Seite drehen.}
+Nutzt Varkur die Dunkle Magie "Die Schwächung der Helden", kann die Zauberin im Endkampf keinen Würfel auf die gegenüberliegende Seite drehen.
+\supercite{DLvA3:Die_Schwächung_der_Helden}
 
 
 \subsection{Ereigniskarte "Geheimer See" 9:}
@@ -5257,8 +5362,6 @@ Die Zauberin kann die großen schwarzen Würfel des Seeriesen\supercite{DRidN10:
 
 
 
-\columnbreak
-
 
 \begin{bgcolor}[color-DlH]
 \section{Die letzte Hoffnung (2016)}
@@ -5276,9 +5379,7 @@ Sie hat 3 besondere Ablagefelder für Zauberbücher.
 
 \subsection{Zweite Sonderfähigkeit: Zaubersprüche}
 
-Die Zauberin erhält die drei Zauberbücher mit der geschlossenen Seite oben.
-
-Zauberbücher gelten als Gegenstände und dürfen abgelegt und aufgenommen werden, aber nur die Zauberin kann sie tragen.
+Die Zauberin erhält die 3 verschiedenen \hyperref[Gegenstände und Sonderplättchen]{Gegenstände} Zauberbücher mit der geschlossenen Seite oben.
 
 Nur sie kann die Aktion "Zauberspruch nachlesen" wählen. Dann gibt sie 1 bis 3 Stunden ab und dreht pro Stunde 1 geschlossenes Zauberbuch, das sie trägt, auf die offene Seite. 
 
@@ -5301,6 +5402,10 @@ Endgegner oder der Urtroll\supercite{DlH:FAQ} können so nicht versetzt werden.
 
 Die Zauberin verteilt \fan{bis zu} so viele Willenspunkte wie die Einerstelle ihrer Feldzahl auf die Heldengruppe, egal wo die Helden stehen und ob sie ihren Tag bereits beendet haben.
 
+
+\columnbreak
+
+
 \subsection{Portalzauber (blau):} 
 
 Die Zauberin versetzt sich und bis zu 1 anderen Helden, der auf ihrem Feld steht und seinen Tag noch nicht beendet hat, auf das Feld des Lagers oder Trosswagens. Das geht auch, wenn sie oder der andere Held festgehalten sind (z.B. von Skeletten oder Spornen).
@@ -5309,9 +5414,6 @@ Die Zauberin versetzt sich und bis zu 1 anderen Helden, der auf ihrem Feld steht
 
 Ein mitteleportierter Held kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik) mitnehmen. Teleportiert die Zauberin keinen Helden mit, darf sie jedoch ein mitbewegbares Plättchen \fan{oder eine mitbewegbare Figur} mitteleportieren.\supercite{41284} 
 
-
-\subsection{\fan{Mehrere Zauberinnen:}}
-\fan{Zauberbücher verschiedener Zauberinnen sind ununterscheidbar. Zauberinnen können geschlossene und offene Zauberbücher miteinander tauschen, beliebige Zauberbücher nachlesen und beliebige Zauberbücher, die sie tragen, nutzen.}
 
 
 
@@ -5322,11 +5424,6 @@ Ein mitteleportierter Held kann keine mitbewegbaren Plättchen (z.B. Bauern) ode
 
 
 
-\subsection{Legende 15, Der vergiftete Geist:}
-
-Wird die Zauberin enttarnt, darf sie Zauberbücher in Stärke tauschen.
-\supercite{DlH15:Verhext?}
-
 
 
 
@@ -5335,6 +5432,11 @@ Wird die Zauberin enttarnt, darf sie Zauberbücher in Stärke tauschen.
 \fan{Der Lichtzauber kann auch einen Wachtroll versetzen. Während der Erzähler auf "j" oder vorher steht, bewegt sich ein versetzter Wachtroll durch Bewegungsplättchen zurück zu seinem Ort.}
 
 \fan{Bringen mehrere Zauberinnen oder \hyperref[Dunkle Magierin]{Dunkle Magierinnen} durch ihre offiziellen Heldenkarten einen Schatten ins Spiel, nutzt verschiedene Figuren. Jede Zauberin oder Dunkle Magierin kann nur ihren eigenen Schatten bewegen und nur mit ihrem eigenen Schatten die Position tauschen. Ihr dürft den Schatten unterschiedlich farbige Standfüße geben.}
+
+
+
+\subsection{\fan{Mehrere Zauberinnen:}}
+\fan{Jede Zauberin mit ihrer offiziellen zweiten Sonderfähigkeit erhält 3 verschiedene Zauberbücher. Zauberbücher verschiedener Zauberinnen sind ununterscheidbar. Zauberinnen dürfen beliebige Zauberbücher, die sie tragen, nachlesen oder nutzen.}
 
 \end{bgcolor}
 
@@ -5388,10 +5490,11 @@ Auch wenn die Zauberin durch Shans Fluch keinen Würfel mehr hat, darf sie im ge
 
 \chapter{34. Eara (Liphardus), die Dunkle Magierin}
 \label{Dunkle Magierin}
-\heldenfigur{Eara (dunkel).jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Eara (dunkel).jpg}{Fuchsia}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Zauberin]{Eara (Liphardus), die Zauberin}.
+    \footnotesize
+    Als Bonus-Heldin (2016, \url{https://legenden-von-andor.de/zusatzheld-die-dunkle-eara/}). Siehe auch \hyperref[Zauberin]{Eara (Liphardus), die Zauberin}.
 \end{center}
 
 \begin{multicols*}{2}\raggedcolumns
@@ -5428,6 +5531,12 @@ Die Dunkle Magierin kann den schwarzen Augenwürfel nicht drehen.
 
 
 
+\subsection{\fan{Mehrere Dunkle Magierinnen:}}
+
+\fan{Kämpfen mehrere Dunkle Magierinnen gemeinsam, darf jede einen anderen Würfel des Gegners drehen.}
+
+
+
 
 \subsection{Keine Zauberin mehr:}
 
@@ -5435,9 +5544,6 @@ Spricht eine Regel oder Karte von der \hyperref[Zauberin]{Zauberin}, ist die Dun
 
 
 
-\subsection{\fan{Mehrere Dunkle Magierinnen:}}
-
-\fan{Kämpfen mehrere Dunkle Magierinnen gemeinsam, darf jede einen anderen Würfel des Gegners drehen.}
 
 
 \end{nobgcolor}
@@ -5506,10 +5612,8 @@ Stellt am Anfang die Figur "Schatten" zur Dunklen Magierin. Er ist ein \hyperref
 Die Dunkle Magierin darf jederzeit, außer sie hat ihren Tag bereits beendet, einen großen grauen Würfel werfen. Die Heldengruppe muss insgesamt so viele Willenspunkte abgeben. Es dürfen auch Helden Willenspunkte abgeben, die ihren Tag bereits beendet haben. Dann tauscht die Dunkle Magierin die Position ihrer Heldenfigur mit der des Schattens. \fan{Das geht auch, wenn sie festgehalten wird (z.B. von Skeletten oder Spornen).}
  
 
-Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Willenspunkte ab, die Position der Heldenfigur und des Schattens werden nicht getauscht und der Schatten wird bis zum nächsten Sonnenaufgang hingelegt. Solange kann er nicht bewegt werden.
+Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Willenspunkte ab, die Heldenfigur und der Schatten werden nicht getauscht und der Schatten wird bis zum nächsten Sonnenaufgang hingelegt. Solange kann er nicht bewegt werden.
 \supercite{Dunkle_Eara:Regelkarte,Dunkle_Eara:Heldenkarte}
-
-\fan{Wurde die Dunkle Magierin in Legende 15 enttarnt, muss ab dann nur sie selbst statt die Heldengruppe die Willenspunkte abgeben.}
 
 
 \fan{Bringen mehrere Dunkle Magierinnen oder \hyperref[Zauberin]{Zauberinnen} durch ihre offiziellen Heldenkarten einen Schatten ins Spiel, nutzt verschiedene Figuren. Jede Dunkle Magierin oder Zauberin kann nur ihren eigenen Schatten bewegen und nur mit ihrem eigenen Schatten die Position tauschen. Ihr dürft den Schatten unterschiedlich farbige Standfüße geben.}
@@ -5521,13 +5625,6 @@ Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Wille
 
 \fan{Kann die Dunkle Magierin wegen ihrer Erschöpfungskarte das Lager nicht mehr betreten, darf ihr Schatten weiterhin das Lager betreten. Sie kann sich aber nicht durch Schattentausch zum Lager versetzen.}
 \supercite{40196}
-
-
-
-
-\subsection{Legende 15, Der vergiftete Geist:}
-
-\fan{Wird die Dunkle Magierin enttarnt, geht ihr Schatten aus dem Spiel.}
 
 
 
@@ -5574,7 +5671,12 @@ Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Wille
 
 \chapter{37. Forn (Forr), der Halbskral}
 \label{Halbskral}
-\heldenfigur{Forn.jpg}
+\heldenfigur{Forn.jpg}{red}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Dunkle Helden (2017).
+\end{center}
 
 
 
@@ -5628,7 +5730,7 @@ Steht der Halbskral auf einem Feld, auf dem nur eine Kreatur stehen kann, wird j
 
 Endgegner überspringen den Halbskral nicht.\supercite{DZ:Begleitheft}
 
-\fan{Ist eine Blockade entlang der Pfeile (z.B. eine mit rotem X abgedeckte Brücke), überspringt die Kreatur den Halbskral nicht.}
+\fan{Ist eine Blockade entlang der Pfeile (z.B. eine mit rotem X abgedeckte Brücke), überspringt die Kreatur den Halbskral nicht, sondern bleibt auf seinem Feld.}
 
 
 
@@ -5640,7 +5742,7 @@ Endgegner überspringen den Halbskral nicht.\supercite{DZ:Begleitheft}
 \end{nobgcolor}
 
 
-\columnbreak
+
 
 
 \begin{nobgcolor}
@@ -5654,8 +5756,11 @@ Endgegner überspringen den Halbskral nicht.\supercite{DZ:Begleitheft}
 
 
 
+\columnbreak
+
+
 \begin{bgcolor}[color-DRidN]
-\section{Die Reise in den Norden (2014)}
+\section{\fan{Die Reise in den Norden (2014)}}
 
 
 \subsection{\fan{Skralgeschwindigkeit:}}
@@ -5720,7 +5825,6 @@ Läuft der Halbskral entlang der Alten Zwergenstraße (egal in welche Richtung),
 \end{bgcolor}
 
 
-\columnbreak
 
 
 \begin{bgcolor}[color-AG]
@@ -5810,7 +5914,12 @@ Tiefminen-Golems überspringen den Halbskral nicht.
 
 \chapter{38. Barz (Yaza), der Steppennomade}
 \label{Steppennomade}
-\heldenfigur{Barz.jpg}
+\heldenfigur{Barz.jpg}{HotPink1}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Magische Helden (2021).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -5866,11 +5975,11 @@ Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin},
 
 \subsection{Treues Lasttier Sabri:}
 
-Der Steppennomade hat eine \hyperref[Helfer]{\fan{Helferin}}, die Figur "Sabri".  Bewegt sich der Erzähler (\fan{egal ob vorwärts oder rückwärts}), läuft Sabri 1 Schritt auf dem kürzesten Weg zum Steppennomaden.
+Der Steppennomade hat eine \hyperref[Helfer]{\fan{Helferin}}, die Figur "Sabri", die er aber nicht als eigene Aktion bewegen kann. Bewegt sich der Erzähler (\fan{egal ob vorwärts oder rückwärts}), läuft Sabri 1 Schritt auf dem kürzesten Weg zum Steppennomaden.
 \supercite{MH:Steppennomade}
 Sie ignoriert Kreaturen.
 \supercite{MH:Begleitheft}
-\fan{Gibt es keinen Weg zum Steppennomaden, läuft Sabri auf ein beliebiges angrenzendes Feld.}
+\fan{Gibt es keinen Weg zum Steppennomaden oder steht sie bereits bei ihm, läuft Sabri nicht.}
 
 
 
@@ -5879,12 +5988,14 @@ Sie ignoriert Kreaturen.
 
 \subsection{Magische Pulver:}
 
-\fan{Pulver gelten nicht als Gegenstände. Der Steppennomade kann sie nicht auf einem Feld ablegen.} Steht der Steppennomade auf Sabris Feld, darf er Pulver von seiner Heldentafel mit Sabri tauschen.
+Die Pulver sind \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}}.
+
+Steht der Steppennomade auf Sabris Feld, darf er Pulver von seiner Heldentafel mit Sabri tauschen.
 \supercite{MH:Steppennomade,MH:Begleitheft}
 
 Der Steppennomade darf als freie Handlungsmöglichkeit ein Pulver von seiner Heldentafel nutzen, indem er einen seiner Heldenwürfel bis zum Tagesende abgibt.
 \supercite{MH:Begleitheft}
-Er kann jedes Pulver höchstens 1x pro Tag nutzen, benutzte Pulver aber immer noch tragen oder tauschen.
+Er kann jedes Pulver höchstens 1x pro Tag nutzen, benutzte Pulver aber immer noch tragen oder mit Sabri tauschen.
 \supercite{88552}
 \fan{So abgegebene Würfel fehlen ihm, auch wenn der \hyperref[Fährtenleser]{Fährtenleser} sein Horn nutzt}.
 
@@ -5926,8 +6037,9 @@ Im Spiel mit 4 neutralen Zeitsteinen hat das Meditationspulver keinen Effekt.
 
 \subsection{Umwandlungspulver (gelb):}
 
-Der Steppennomade gibt einen kleinen Gegenstand aus dem Spiel, den er auf einem kleinen rechteckigen Ablagefeld oder auf seiner Helmablage trägt, \fan{egal auf welcher Seite der Gegenstand liegt}. Danach darf er einen beliebigen Gegenstand von der Ausrüstungstafel erhalten.
+Der Steppennomade gibt einen \hyperref[Gegenstände und Sonderplättchen]{Gegenstand} aus dem Spiel, den er auf einem kleinen rechteckigen Ablagefeld oder seiner Helmablage trägt, \fan{egal auf welcher Seite der Gegenstand liegt}. Danach darf er einen anderen \fan{(z.B. nicht einen vollen für einen halbvollen Trinkschlauch)} Gegenstand von der Ausrüstungstafel erhalten. 
 \supercite{MH:Pulver}
+
 Das geht nicht während einer Aktion eines Helden.
 \supercite{88552}
 
@@ -5970,11 +6082,12 @@ Hat er all seine Heldenwürfel abgegeben, kann er bis zum Tagesende auch keinen 
 
 \fan{Jeder Steppennomade hat seine eigene Sabri, die sich nur auf ihn zubewegt. Ihr dürft den Sabris Standfüße in unterschiedlichen Farben geben.}
 
-\fan{Jeder Steppennomade wählt am Anfang, welche 3 verschiedenen Pulver er erhält und welche 2 anderen verschiedene Pulver er auf seine Sabri steckt. Pulver verschiedener Steppenomaden sind aber ununterscheidbar. Jeder Steppennomade darf jedes Pulver tragen und nutzen sowie miteinander und mit jeder Sabri tauschen.}
+\fan{Jeder Steppennomade wählt am Anfang, welche 3 verschiedenen Pulver er erhält und welche 2 anderen verschiedene Pulver er auf seine Sabri steckt. Jeder Steppennomade kann Pulver nur mit seiner Sabri tauschen, nicht mit anderen Steppennomaden oder anderen Sabris.}
+
+\fan{Hat eine durch Schwächungspulver geschwächte Kreatur danach 4 oder mehr Willenspunkte, darf sie von einem anderen Schwächungspulver weiter geschwächt werden.}
 
 
 \end{nobgcolor}
-
 
 
 
@@ -5989,25 +6102,18 @@ Der Steppennomade kann durch das Umwandlungspulver keinen Trank der Hexe erhalte
 
 
 
+\subsection{\fan{Legende 1, Die Ankunft der Helden:}}
+
+\fan{Es gibt keine Ausrüstungstafel. Das Umwandlungspulver hat keinen Effekt.}
 
 
-
-\subsection{Ausscheiden:}
-
-\fan{Scheidet der Steppenomade aus (z.B. weil er in Cavern auf 0 Willenspunkte fiel), gehen alle von ihm getragenen Pulver, seine Sabri und von seiner Sabri getragene Pulver aus dem Spiel.}
 
 
 \subsection{Legende 3, Die Tage des Widerstands:}
 
-\fan{Nutzt Varkur die Dunkle Magie "Die Schwächung der Helden", wirft der Steppennomade in jeder Endkampfrunde nur einen rosa Würfel und dreht ihn auf die gegenüberliegende Seite, wenn diese kleiner ist. Gab er bereits alle Würfel ab, wirft er stattdessen gar keinen Würfel.}
-
+\fan{Nutzt Varkur die Dunkle Magie "Die Schwächung der Helden", wirft der Steppennomade genau einen rosa Würfel, außer er gab er bereits alle Würfel ab.}
 
 \fan{Bei dem Dunklen Magier "Der verhexte Prinz" (aus "Varkurs Erwachen") löst das Meditationspulver keine Prinz-Bewegung aus, auch wenn es einen Zeitstein auf der 3. Stunde austauscht.}
-
-
-\subsection{Legende 5, Der Zorn des Drachens:}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" kann der Steppennomade kein Pulver in Stärke tauschen.}
 
 
 \subsection{Goldene Ereigniskarte 6:}
@@ -6059,6 +6165,7 @@ Der Steppennomade kann durch das Umwandlungspulver keinen Trank der Hexe erhalte
 
 
 
+
 \begin{bgcolor}[color-DRidN]
 \section{Die Reise in den Norden (2014)}
 
@@ -6066,6 +6173,9 @@ Der Steppennomade kann durch das Umwandlungspulver keinen Trank der Hexe erhalte
 \subsection{Treues Lasttier Sabri:}
 
 Startet der Steppennomade auf dem Schiff, startet Sabri auch auf dem Schiff. 
+\supercite{MH:Begleitheft}
+
+Sabri darf Bootsstrecken in einem Schritt nutzen.
 \supercite{MH:Begleitheft}
 
 
@@ -6161,6 +6271,12 @@ Das Schwächungspulver darf vor einem Einsatz des Feuerschilds genutzt werden, a
 
 
 
+\subsection{Legende 11, Das Graue Gebirge:}
+
+Es gibt keine Ausrüstungstafel. \fan{Mit dem Umwandlungspulver kann der Steppennomade nur Trinkschläuche erhalten, und das erst, während der Erzähler auf "b" oder später steht.}
+
+
+
 
 
 \subsection{Legende 14, Der Meister des Trolls:}
@@ -6172,9 +6288,6 @@ Wird bei seiner offiziellen Erschöpfungskarte ein drittes Pulver zu Sabri geleg
 \subsection{Legende 15, Der vergiftete Geist:}
 
 Bei seiner offiziellen Geschenkaufgabe darf der Steppennomade ausnahmsweise Pulver auf Feld 219 ablegen.
-
-\fan{Wird der Steppennomade enttarnt, gehen alle von ihm getragenen Pulver, seine Sabri und von seiner Sabri getragene Pulver aus dem Spiel. Er kann Pulver nicht in Stärke tauschen.}
-
 
 \end{bgcolor}
 
@@ -6253,7 +6366,7 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \subsection{Bonus-Legende "Die vierte Statue":}
 
-\fan{Es gibt keine Ausrüstungstafel. Mit dem Umwandlungspulver darf der Steppennomade einen Gegenstand von Feld 71 erhalten.}
+Es gibt keine Ausrüstungstafel. \fan{Mit dem Umwandlungspulver darf der Steppennomade einen Gegenstand von Feld 71 erhalten.}
 
 \end{bgcolor}
 
@@ -6289,9 +6402,6 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 \begin{bgcolor}[color-DeK]
 \section{\fan{Die ewige Kälte (2022)}}
 
-\subsection{\fan{Magische Pulver:}}
-
-\fan{Der Steppennomade kann Pulver nicht bei Händlern tauschen.}
 
 \subsection{\fan{Bannpulver (blau):}}
 
@@ -6311,6 +6421,14 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \fan{Der Steppennomade darf durch Blaubachbeeren + rotes Blutkraut den Würfelwert 10 erhalten, auch wenn er alle seine Heldenwürfel abgegeben hat.}
 
+
+
+\subsection{\fan{Legende 1, Der Winterstein:}}
+
+
+\fan{Das Händlerfeld wird blockiert. Das Umwandlungspulver hat keinen Effekt.}
+
+
 \end{bgcolor}
 
 
@@ -6324,7 +6442,7 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \subsection{\fan{Bannpulver (grün):}}
 
-\fan{In Azturien (Spielplan-Vorderseite), wenn Ereigniskarten auf dem Ereigniskarten-Feld liegen, darf das Bannpulver Gors, Gorlots, Kreideskrale und Trolle hinlegen, egal welche auf der obersten Ereigniskarte abgebildet sind. Liegende Kreaturen werden bei der nächsten Ausführung ihres Symbols auf einer Ereigniskarte aufgestellt, egal wie viele Tage nach dem Hinlegen dies geschieht. Wachtrolle und Sumpftrolle können dann nicht hingelegt werden, da sie nicht auf Ereigniskarten abgebildet sind.}
+\fan{In Azturien (Spielplan-Vorderseite), wenn Ereigniskarten auf dem Ereigniskarten-Feld liegen, darf das Bannpulver Gors, Gorlots, Kreideskrale und Trolle hinlegen, egal welche auf der obersten Ereigniskarte abgebildet sind. Liegende Kreaturen werden bei der nächsten Ausführung ihres Symbols auf einer Ereigniskarte aufgestellt, egal wie viele Tage nach dem Hinlegen dies geschieht. Wachtrolle und Sumpftrolle können dann nicht hingelegt werden, da sie auf keiner Ereigniskarte abgebildet sind.}
 
 \fan{In Azturien (Spielplan-Vorderseite), wenn keine Ereigniskarten auf dem Ereigniskarten-Feld liegen, darf das Bannpulver alle Kreaturen hinlegen, die auf dem Ereigniskartenfeld abgebildet sind, auch Wachtrolle und Sumpftrolle.}
 
@@ -6344,6 +6462,17 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \fan{Der Steppennomade kann Pulver mit Sabri tauschen, auch wenn sie bei oder angrenzend zu Geistern stehen.}
 
+
+
+
+\subsection{\fan{Legende 1, Der wahre Meister:}}
+
+
+\fan{Es gibt keine Ausrüstungstafel. Das Umwandlungspulver hat keinen Effekt.}
+
+
+
+
 \end{bgcolor}
 
 
@@ -6362,7 +6491,12 @@ Shron ignoriert liegende Kreaturen. Das Feld einer liegenden Kreatur wird bei se
 
 \chapter{39. Raash (Raashana), der Steppenreiter}
 \label{Steppenreiter}
-\heldenfigur{Raash.jpg}
+\heldenfigur{Raash.jpg}{brown}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Das ferne Land (2025).
+\end{center}
 
 \begin{multicols*}{2}\raggedcolumns
 
@@ -6415,6 +6549,12 @@ Der Steppenreiter ist ein \hyperref[Fernkämpfer]{Fernkämpfer}.
 Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin}, ist der Steppenreiter nicht gemeint.
 
 
+\subsection{Nicht Barz:}
+
+Spricht eine Regel oder Karte vom \hyperref[Steppennomade]{Steppennomaden}, ist der Steppenreiter nicht gemeint.
+
+
+
 \end{nobgcolor}
 
 
@@ -6431,7 +6571,12 @@ Spricht eine Regel oder Karte von der \hyperref[Bogenschützin]{Bogenschützin},
 
 \chapter{50. Arbon (Talvora), der Bewahrer}
 \label{Bewahrer}
-\heldenfigur{Arbon.jpg}
+\heldenfigur{Arbon.jpg}{Gray}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Neue Helden (2014) und Big Box (2023).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -6656,7 +6801,12 @@ Der Bewahrer kann keine Maasavi schwächen.
 
 \chapter{52. Iril (Ilar), die Runenmeisterin}
 \label{Runenmeisterin}
-\heldenfigur{Iril.jpg}
+\heldenfigur{Iril.jpg}{Blue}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Magische Helden (2021).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -6775,6 +6925,17 @@ Die Effekte der Speichensymbole sind:\supercite{MH:Runen,MH:Begleitheft}
 
 
 
+\subsection{\fan{Zu viel Wasser bringt keine Stärke:}}
+
+\fan{An einem von der Runenmeisterin aufgefrischten Brunnen-/Quellenplättchen kann der \hyperref[Tarus]{Tarus} bis Tagesende keinen Stärkepunkt statt Willenspunkten erhalten.}
+\supercite{137438}
+
+
+\columnbreak
+
+\subsection{Große blaue Einführungsplättchen:}
+
+\fan{Die Runenmeisterin kann große blaue Einführungsplättchen nicht mit dem Brunnen-Symbol auffrischen.}
 
 
 
@@ -6793,7 +6954,7 @@ Spricht eine Regel oder Karte vom \hyperref[Zwerg]{Zwerg}, ist die Runenmeisteri
 
 \subsection{\fan{Zusätzliche Runensteine:}}
 
-\fan{Ihr dürft am Anfang mancher Legenden, in denen keine Runensteine eingewürfelt würden, dennoch Runensteine einwürfeln. Mischt dann verdeckt drei zusätzliche Runensteine (blau, gelb und grün; wie üblich kleine rechteckige Gegenstände, die von anderen Helden getragen werden dürfen). Bestimmt mit je 1 Kreaturenwürfel (10er-Stelle) und Heldenwürfel (1er-Stelle) die Positionen von 2 dieser Runensteine. Nehmt den dritten Runenstein verdeckt aus dem Spiel.}
+\fan{Ihr dürft am Anfang mancher Legenden, in denen keine Runensteine eingewürfelt würden, dennoch Runensteine einwürfeln. Mischt dann verdeckt drei zusätzliche Runensteine (blau, gelb und grün; wie üblich kleine rechteckige \hyperref[Gegenstände und Sonderplättchen]{Gegenstände}). Bestimmt mit je 1 Kreaturenwürfel (10er-Stelle) und Heldenwürfel (1er-Stelle) die Positionen von 2 dieser Runensteine. Nehmt den dritten Runenstein verdeckt aus dem Spiel.}
 \supercite{128652}
 
 \fan{Das gilt für:}
@@ -6970,7 +7131,7 @@ Die Genesungsaufgabe "2 Quellen leeren" ist auch erfüllt, wenn an einem Tag zwe
 
 \subsection{Legende 3, Die steinernen Drei:}
 
-Die Runenmeisterin kann die Quelle auf Feld 37 mit dem Brunnen-Symbol nicht auffrischen.
+Die Runenmeisterin kann die Quelle auf Feld 37 nicht mit dem Brunnen-Symbol auffrischen.
 \supercite{AG:Begleitheft,88563}
 
 
@@ -7061,10 +7222,11 @@ Die Runenmeisterin kann die Quelle auf Feld 37 mit dem Brunnen-Symbol nicht auff
 
 \chapter{60. Tenaya (Teyan), die Feuerwächterin}
 \label{Feuerwächterin}
-\heldenfigur{Tenaya (Feuerwächterin).jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Tenaya (Feuerwächterin).jpg}{ForestGreen}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Feuerbezwingerin]{Tenaya (Teyan), die Feuerbezwingerin}.
+    \footnotesize
+    Aus Die ewige Kälte (2022). Siehe auch \hyperref[Feuerbezwingerin]{Tenaya (Teyan), die Feuerbezwingerin}.
 \end{center}
 
 \begin{multicols*}{2}\raggedcolumns
@@ -7102,7 +7264,7 @@ Sie hat:
 
 \subsection{\fan{Hadrisches Brennholz:}}
 
-\fan{Das Hadrische Brennholz ist ein kleiner rechteckiger Gegenstand, der von anderen Helden getragen werden darf. Nur die Feuerwächterin kann es als freie Handlungsmöglichkeit nutzen, und nur, wenn ihr großes Ablagefeld frei ist. Dann muss sie das Hadrische Brennholz aus dem Spiel geben und 2 Willenspunkte abgeben und darf ein Feuerplättchen mit der brennenden Seite oben auf ihr großes Ablagefeld legen.}
+\fan{Das Hadrische Brennholz ist ein kleiner rechteckiger \hyperref[Gegenstände und Sonderplättchen]{Gegenstand}. Nur die Feuerwächterin kann es als freie Handlungsmöglichkeit nutzen, und nur, wenn ihr großes Ablagefeld frei ist. Dann muss sie das Hadrische Brennholz aus dem Spiel geben und 2 Willenspunkte abgeben und darf ein Feuerplättchen mit der brennenden Seite oben als \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}} auf ihr großes Ablagefeld legen.}
 
 \fan{Das Hadrische Brennholz kann nicht genutzt werden, um ein Feuer auf ein Spielplanfeld zu legen.}
 
@@ -7116,7 +7278,7 @@ Solange die Feuerwächterin ein brennendes Feuer trägt, haben alle Helden, die 
 
 Die Feuerwächterin darf ein von ihr getragenes erloschenes Feuer entfachen, indem sie 2 Willenspunkte abgibt.\supercite{DeK:Begleitheft} Andere Helden können dies nicht.\supercite{105294}
 
-Die Feuerwächterin kann ein von ihr getragenes Feuer nicht ablegen oder anderen Helden geben, sie darf es aber jederzeit aus dem Spiel nehmen.
+Die Feuerwächterin darf ein von ihr getragenes Feuer jederzeit aus dem Spiel nehmen.
 \supercite{117803}
 
 Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \fan{Erhält die Feuerwächterin einen großen ovalen Gegenstand, darf sie sich entscheiden, ob sie das Feuer aus dem Spiel nimmt oder den großen Gegenstand auf ihrem Feld zurücklässt.}
@@ -7127,9 +7289,7 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 \columnbreak
 \subsection{\fan{Mehrere Feuerwächterinnen:}}
 
-\fan{Alle Hadrischen Brennhölzer sind ununterscheidbar und dürfen von allen Feuerwächterinnen genutzt werden. Eine Feuerwächterin darf mehrmals pro Legende ein Hadrisches Brennholz nutzen.}
-
-\fan{Eine Feuerwächterin kann ein Feuer keiner anderen Feuerwächterin geben.}
+\fan{Legt am Anfang 1 Feuerplättchen pro Feuerwächterin bereit. Jede Feuerwächterin erhält ein Hadrisches Brennholz. Alle Hadrischen Brennhölzer sind ununterscheidbar und dürfen von allen Feuerwächterinnen genutzt werden. Eine Feuerwächterin darf mehrmals pro Legende ein Hadrisches Brennholz nutzen.}
 
 \fan{Auch wenn mehrere Feuerwächterinnen auf demselben Feld stehen und brennende Feuer tragen, erhält jeder Helden nur einmal \hyperref[Bonusstärke]{Bonusstärke} und bei Sonnenaufgang nur einmal 5 Willenspunkte.}
 
@@ -7140,35 +7300,12 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 \begin{bgcolor}[color-DLvA]
 \section{\fan{Die Legenden von Andor (2012)}}
 
-\subsection{\fan{Ausscheiden:}}
-
-\fan{Scheidet die Feuerwächterin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), geht ein von ihr getragenes Feuer aus dem Spiel.}
-
-\subsection{\fan{Legende 5, Der Zorn des Drachens:}}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" kann die Feuerwächterin kein von ihr getragenes Feuer in Stärke tauschen.}
-
-
-
 \subsection{\fan{Ereigniskarte "Geheimer See" 5:}}
 
 \fan{Trägt die Feuerwächterin ein Feuer, geht dieses aus dem Spiel. Für den Rest der Legende kann sie kein Feuer mehr tragen.}
 
 \end{bgcolor}
 
-
-
-
-
-\begin{bgcolor}[color-DlH]
-\section{\fan{Die letzte Hoffnung (2016)}}
-
-
-\subsection{\fan{Legende 15, Der vergiftete Geist:}}
-
-\fan{Wird die Feuerwächterin enttarnt, geht ein von ihr getragenes Feuer aus dem Spiel. Sie kann es nicht in Stärke tauschen.}
-
-\end{bgcolor}
 
 
 
@@ -7196,7 +7333,7 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 
 \fan{Die Feuerwächterin erhält am Anfang kein Hadrisches Brennholz.}
 
-Ist das große Ablagefeld der Feuerwächterin frei, darf sie ein normales Brennholz und 2 Willenspunkte abgeben, um ein Feuerplättchen mit der brennenden Seite oben auf ihr großes Ablagefeld zu legen. Sie kann keine Feuer vom Spielplan aufnehmen.
+Ist das große Ablagefeld der Feuerwächterin frei, darf sie ein normales Brennholz und 2 Willenspunkte abgeben, um ein Feuerplättchen mit der brennenden Seite oben als \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}} auf ihr großes Ablagefeld zu legen. Sie kann keine Feuer vom Spielplan aufnehmen.
 
 Andere Helden können kein Feuer auf das große Ablagefeld der Feuerwächterin legen, auch nicht durch Abgabe von Brennholz und Willenspunkten.
 \supercite{105294}
@@ -7237,7 +7374,9 @@ Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Fe
 \section{\fan{Das ferne Land (2025)}}
 
 
+\subsection{\fan{Checkliste:}}
 
+\fan{Die Feuerwächterin erhält keine Feuerzauber.}
 
 
 \subsection{\fan{Geister:}}
@@ -7258,10 +7397,11 @@ Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Fe
 
 \chapter{60. Tenaya (Teyan), die Feuerbezwingerin}
 \label{Feuerbezwingerin}
-\heldenfigur{Tenaya.jpg}
-\vspace*{-1.5\baselineskip}
+\heldenfigur{Tenaya.jpg}{ForestGreen}
+\vspace*{-1.8\baselineskip}
 \begin{center}
-    Siehe auch \hyperref[Feuerwächterin]{Tenaya (Teyan), die Feuerwächterin}.
+    \footnotesize
+    Aus Das ferne Land (2025). Siehe auch \hyperref[Feuerwächterin]{Tenaya (Teyan), die Feuerwächterin}.
 \end{center}
 
 \begin{multicols*}{2}\raggedcolumns
@@ -7303,13 +7443,11 @@ Sie hat:
 
 \subsection{Feuerzauber:}
 
-Nur die Feuerbezwingerin kann die 3 Feuerzauber tragen. 
-
-Die Feuerzauber sind keine Gegenstände und können nicht abgelegt werden.
+Die 3 Feuerzauber sind \hyperref[Gegenstände und Sonderplättchen]{\fan{Sonderplättchen}}.
 
 Die Feuerbezwingerin darf 2 Willenspunkte abgeben, um einen gelöschten Feuerzauber auf die brennende Seite zu drehen und seinen Effekt zu aktivieren.
 
-Bei Sonnenaufgang, direkt vor dem Erzähler-Symbol, darf sie alle Feuerzauber aufdecken, egal ob das Erzähler-Symbol ausgeführt wird.
+Bei Sonnenaufgang, direkt vor dem Erzähler-Symbol, werden alle Feuerzauber auf die gelöschte Seite gedreht, egal ob das Erzähler-Symbol ausgeführt wird.
 
 
 \subsection{Bannfeuer (violett):}
@@ -7341,8 +7479,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 \subsection{\fan{Mehrere Feuerbezwingerinnen:}}
 
-
-\fan{Eine Feuerbezwingerin kann ihre Feuerzauber keiner anderen Feuerbezwingerin geben.}
+\fan{Jede Feuerbezwingerin erhält am Anfang ihre eigenen 3 Feuerzauber.}
 
 \fan{Eine Feuerbezwingerin darf mit ihrem Leuchtfeuer eine andere Feuerbezwingerin laufen lassen.}
 
@@ -7352,18 +7489,6 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 \begin{bgcolor}[color-DLvA]
 \section{\fan{Die Legenden von Andor (2012)}}
-
-
-\subsection{\fan{Ausscheiden:}}
-
-\fan{Scheidet die Feuerbezwingerin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), gehen ihre Feuerzauber aus dem Spiel.}
-
-
-\subsection{\fan{Legende 5, Der Zorn des Drachens:}}
-
-\fan{Bei der Drachenkampfkarte "Gegenstand in 2 Stärkepunkte tauschen" kann die Feuerwächterin keinen Feuerzauber in Stärke tauschen.}
-
-
 
 \subsection{\fan{Bonus-Legende "Die Eskorte des Königs":}}
 
@@ -7399,7 +7524,6 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\columnbreak
 
 
 \begin{bgcolor}[color-DlH]
@@ -7418,16 +7542,11 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 \fan{Ein durch das Leuchtfeuer laufender Held kann den Trosswagen nicht mitbewegen.}
 
-
-\subsection{\fan{Legende 15, Der vergiftete Geist:}}
-
-\fan{Wird die Feuerbezwingerin enttarnt, gehen ihre Feuerzauber aus dem Spiel. Sie kann sie nicht in Stärke tauschen.}
-
 \end{bgcolor}
 
 
 
-
+\columnbreak
 
 
 
@@ -7478,12 +7597,6 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\subsection{\fan{Feuerzauber:}}
-
-\fan{Die Feuerbezwingerin kann ihre Feuerzauber nicht bei Händlern tauschen.}
-
-
-
 \subsection{\fan{"Schwerer Spielen"-Winterstein:}}
 
 \fan{Läuft der Winterstein-Träger durch das Leuchtfeuer, verliert er die Willenspunkte, nicht die Feuerbezwingerin.}
@@ -7498,12 +7611,15 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
+\columnbreak
+
+
 \begin{bgcolor}[color-DfL]
 \section{Das ferne Land (2025)}
 
 \subsection{Feuerzauber:}
 
-Ein eigenes Symbol "Feuerzauber" auf dem Sonnenaufgang-Feld erinnert an das Aufdecken der Feuerzauber.
+Ein eigenes Symbol "Feuerzauber" auf dem Sonnenaufgang-Feld erinnert ans Erlöschen der Feuerzauber.
 
 Ein durch das Leuchtfeuer laufender Held kann das Steppenvolk nicht mitbewegen.
 \supercite{DfL:Begleitheft}
@@ -7520,7 +7636,7 @@ Ein durch das Leuchtfeuer laufender Held kann das Steppenvolk nicht mitbewegen.
 
 Steht die Feuerbezwingerin bei oder angrenzend zu Geistern, kann sie ihre Feuerzauber nicht entfachen.
 
-\fan{Feuerzauber werden bei Sonnenaufgang aufgedeckt, auch wenn sie bei oder angrenzend zu Geistern steht.}
+\fan{Feuerzauber werden bei Sonnenaufgang gelöscht, auch wenn sie bei oder angrenzend zu Geistern steht.}
 
 Kreaturen bei oder angrenzend zu Geistern werden werden vom Bannfeuer nicht am Laufen gehindert.
 
@@ -7551,7 +7667,12 @@ Kreaturen bei oder angrenzend zu Geistern werden werden vom Bannfeuer nicht am L
 
 \chapter{60. Kirr, der Zeitzauberer}
 \label{Zeitzauberer}
-\heldenfigur{Kirr.jpg}
+\heldenfigur{Kirr.jpg}{Fuchsia}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Als Bonus-Held (2015, \url{https://legenden-von-andor.de/bonus-legende-die-rueckkehr-der-schwarzen-kogge/}).
+\end{center}
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -7636,7 +7757,7 @@ Spricht eine Regel oder Karte von der \hyperref[Zauberin]{Zauberin}, ist der Zei
 
 \subsection{\fan{Spielvariante "Merriks Karte":}}
 
-\fan{Nutzt der Zeitzauberer in einer Kampfrunde Merriks neutralen Zeitstein, zählt für die Bonusstärke dessen Position statt die des farbigen Zeitsteins.}
+\fan{Nutzt der Zeitzauberer in einer Kampfrunde Merriks neutralen Zeitstein, zählt für die Bonusstärke dessen Endposition (nach etwaigen Bewegungen durch andere Helden) statt die des farbigen Zeitsteins.}
 
 \end{nobgcolor}
 
@@ -7667,7 +7788,12 @@ Spricht eine Regel oder Karte von der \hyperref[Zauberin]{Zauberin}, ist der Zei
 
 \chapter{68. Darh (Darhen), die Beschwörerin}
 \label{Beschwörerin}
-\heldenfigur{Darh.jpg}
+\heldenfigur{Darh.jpg}{Wheat1}
+\vspace*{-1.8\baselineskip}
+\begin{center}
+    \footnotesize
+    Aus Dunkle Helden (2017).
+\end{center}
 
 
 
@@ -7739,7 +7865,6 @@ Nur wenn die Kreatur bei der Beschwörung direkt versetzt wird, z.B. weil auf de
 
 Ist der Erzähler bei der Beschwörung 4 oder mehr Felder vom Ende der Legendenleiste entfernt, legt das Golem-Symbol 4 Buchstaben über ihn an die Legendenleiste. Danach bewegt sich der Erzähler, sofern vom Sieg noch eine Erzählerbewegung aussteht. Erreicht der Erzähler das Golem-Symbol, geht der Knochen-Golem aus dem Spiel.
 \supercite{DH:Knochen-Golem}
-
 Der Knochen-Golem darf mehrmals pro Legende beschworen werden.
 
 \fan{Soll die Kreatur für eine Aufgabe besiegt werden, gilt die Aufgabe als erfüllt, auch wenn die Beschwörerin die Kreatur danach wieder ins Spiel bringt.}
@@ -7771,9 +7896,11 @@ Der Knochen-Golem darf mehrmals pro Legende beschworen werden.
 \fan{Würde die Kreatur bei der Beschwörung in Cavern (Spielplan-Rückseite) direkt auf ein Feld versetzt, durch dessen Betreten das "N"-Plättchen nach unten bewegt würde, werft stattdessen die Würfel neu und ermittelt ein alternatives Feld.}
 
 
-\subsection{Ausscheiden:}
+\subsection{Legende 5, Der Zorn des Drachens:}
 
-\fan{Scheidet die Beschwörerin aus (z.B. weil sie in Cavern auf 0 Willenspunkte fiel), gehen ihr Knochen-Golem und ihr Golem-Symbol aus dem Spiel.}
+Wie Helden kann der Knochen-Golem die Rietburg erst betreten, nachdem sie von Kreaturen befreit wurde.
+\supercite{DH:FAQ}
+
 
 \end{bgcolor}
 
@@ -7875,10 +8002,6 @@ Der Knochen-Golem kann nicht nach dem Sieg über ein Skelett beschwört werden.
 \fan{Spielt ihr mit mehreren Beschwörerinnen, muss für deine offizielle Geschenkaufgabe dein eigener Knochen-Golem auf Feld 219 stehen.}
 
 
-\fan{Wird die Beschwörerin enttarnt, gehen ihr Knochen-Golem und ihr Golem-Symbol aus dem Spiel.}
-
-
-
 
 
 
@@ -7917,8 +8040,6 @@ Wird der Knochen-Golem beim Sieg über einen Wachtroll beschworen, \fan{während
 
 
 
-\columnbreak
-
 
 \begin{bgcolor}[color-AG]
 \section{Alte Geister (2018)}
@@ -7939,12 +8060,20 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Maasavi oder eine Zwergen
 
 
 
+\subsection{Knochen-Golem:}
+
+Der Knochen-Golem kann das Lager der Trolle nicht betreten.
+\supercite{DZ:Begleitheft}
+
+
+
 \subsection{Beschwörung:}
 
 Der Knochen-Golem kann nicht nach dem Sieg über einen Tiefminen-Golem beschworen werden.
 \supercite{DZ:Begleitheft}
 
 \fan{Würde die Kreatur bei der Beschwörung direkt auf das Lager der Trolle (Feld 39) versetzt, werft die Würfel neu und ermittelt ein alternatives Feld.}
+
 
 \end{bgcolor}
 
@@ -7968,8 +8097,6 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Tiefminen-Golem beschwore
 
 
 
-
-\columnbreak
 
 
 
@@ -8014,7 +8141,7 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Tiefminen-Golem beschwore
 
 
 
-\chapter{Regeln für Ablagen und Leisten}
+\chapter{Regeln für Ablagen/Leisten}
 \label{Ablagen und Leisten}
 
 
@@ -8070,20 +8197,18 @@ Würde ein Held mehr Stärkepunkte oder Willenspunkte erhalten, als er haben kan
 
 Manche Legenden sind ohne Spielvarianten kaum zu gewinnen, wenn ihr nur Helden mit zu kurzen Stärkeleisten spielt. Ein Beispiel ist Legende 17 mit der \hyperref[Zauberin]{Zauberin} und dem \hyperref[Eis-Dämon]{Eis-Dämon}. \fan{Nutzt in solchen Fällen Spielvarianten für zusätzliche \hyperref[Bonusstärke]{Bonusstärke}:}
 
-\bullet{} Mini-Erweiterung "Das Licht der fünften Stunde"
-\supercite{ME:LdfS}
+\href{https://legenden-von-andor.de/mini-erweiterung-das-licht-der-fuenften-stunde/}
+{\blacktriangleright Mini-Erweiterung \enquote{Das Licht der fünften Stunde}}
 
-\bullet{} \fan{Fan-Spielvarianten-Sammlung "Fan-Spielvarianten für für Siege fast erforderliche Sonderstärke"}
-\supercite{129669}
-
-
+\href{https://legenden-von-andor.de/forum/viewtopic.php?p=129669#p129669}
+{\blacktriangleright \fan{Fan-Spielvarianten-Sammlung \enquote{Fan-Spielvarianten für für Siege fast erforderliche Sonderstärke}}}
 
 
 
 
 \subsection{Holzstämme:}
 
-\fan{Ein Held, der seine höchste Anzahl Stärkepunkte hat, darf einen einzelnen Holzstamm tragen, auch wenn dieser links über seine Stärkeleiste hinausragt. Er kann dann aber nicht mehrere Holzstämme gleichzeitig tragen. Das geht nicht, wenn ein Effekt (z.B. der \hyperref[Hautwandler]{Hautwandlers} als Bär) ihm das Tragen verbietet.} 
+\fan{Ein Held, der seine höchste Anzahl Stärkepunkte hat, darf einen einzelnen Holzstamm tragen, auch wenn dieser links über seine Stärkeleiste hinausragt. Er kann dann aber nicht mehrere Holzstämme gleichzeitig tragen. Das geht nicht, wenn ein Effekt (z.B. der \hyperref[Hautwandler]{Hautwandler} als Bär) ihm das Tragen verbietet.} 
 
 
 
@@ -8338,7 +8463,7 @@ Diese Regeln gelten für Bonusstärke durch:
 
 \bullet{} die Zwergenwut-Sonderfähigkeit und zweite Sonderfähigkeit des \hyperref[Zwerg]{Zwergs},
 
-\bullet{} andere Kampfstärke ändernden Effekte, die Stärkesteine nicht verschieben (z.B. durch Gegenstände, \hyperref[Helfer]{\fan{Helfer}}, das Licht der fünften Stunde, den Bannkreis von Choranat oder die Bruderfeuer).
+\bullet{} andere Kampfstärke ändernden Effekte, die Stärkesteine nicht verschieben (z.B. durch Gegenstände, unterstützende Figuren wie \hyperref[Helfer]{\fan{Helfer}}, das Licht der fünften Stunde, den Bannkreis von Choranat oder die Bruderfeuer).
 
 
 
@@ -8373,7 +8498,7 @@ Für das Tragen von Holzstämmen/Eisen zählt nur die Position des Stärkesteins
 \subsection{Legende 3, Die Tage des Widerstands:}
 
 Die Bonusstärke durch Prinz Thorald erhöht den Kampfwert des verhexten Gors. 
-\supercite{DLvA3:Der_verhete_Gor}
+\supercite{DLvA3:Der_verhexte_Gor}
 Andere Bonusstärke verändert den Kampfwert des verhexten Gors nicht.
 \supercite{155,3450}
 
@@ -8475,147 +8600,169 @@ Für das Eisplättchen "6 Stärkepunkte besitzen" zählt nur die Position des St
 
 
 
+\chapter{Regeln für Gegenstände/\fan{Sonderplättchen}}
+\label{Gegenstände und Sonderplättchen}
+
+
+\begin{multicols*}{2}\raggedcolumns
+
+
+
+Als \textbf{Gegenstände} gelten:
+
+
+\bullet{} der Kessel der \hyperref[Bogenschützin]{Bogenschützin} (zweite Sonderfähigkeit),
+
+\bullet{} die Rietgraskrone der \hyperref[Bogenschützin]{Bogenschützin} (Hoffnungskarte),
+
+\bullet{} \fan{das Hadrische Brennholz der \hyperref[Feuerwächterin]{Feuerwächterin},}
+
+\bullet{} der Armreif des \hyperref[Hautwandler]{Hautwandlers} (zweite Sonderfähigkeit),
+
+\bullet{} \fan{zusätzliche Runensteine der \hyperref[Runenmeisterin]{Runenmeisterin},}
+
+\bullet{} der Runenhelm der \hyperref[Runenmeisterin]{Runenmeisterin} (Hoffnungskarte),
+
+\bullet{} \fan{der treue Streifenmarder des \hyperref[Seekrieger]{Seekriegers},}
+
+\bullet{} die Steinflöte der \hyperref[Takuri-Hüterin]{Takuri-Hüterin},
+
+\bullet{} die Scherben der \hyperref[Takuri-Hüterin]{Takuri-Hüterin} (Hoffnungskarte),
+
+\bullet{} die Takuri-Federn der \hyperref[Takuri-Hüterin]{Takuri-Hüterin} (zweite Sonderfähigkeit),
+
+\bullet{} die Zauberbücher der \hyperref[Zauberin]{Zauberin} (zweite Sonderfähigkeit).
+\bigskip
+
+
+
+
+Als \textbf{\fan{Sonderplättchen}} gelten:
+
+\bullet{} die Eisblitze des \hyperref[Eis-Dämon]{Eis-Dämons},
+
+\bullet{} Rabe, Messer und Horn des \hyperref[Fährtenleser]{Fährtenlesers},
+
+\bullet{} ein von der \hyperref[Feuerwächterin]{Feuerwächterin} getragenes Feuer,
+
+\bullet{} die Feuerzauber der \hyperref[Feuerbezwingerin]{Feuerbezwingerin},
+
+\bullet{} die Pulver des \hyperref[Steppennomade]{Steppennomaden}.
+
+
+
+
+
+\begin{nobgcolor}
+\section{Allgemein}
+
+
+\subsection{Spielplan-Felder:}
+Gegenstände dürfen auf einem Feld abgelegt und von einem Feld aufgenommen werden.
+
+Sonderplättchen können nicht auf einem Feld abgelegt oder von einem Feld aufgenommen werden.
+\supercite{117803}
+
+\subsection{Andere Helden:}
+Gegenstände dürfen von anderen Helden getragen werden, sofern sie ein passendes Ablagefeld haben, selbst wenn sie dessen Fähigkeit nicht nutzen können.
+
+Ausnahme: Die Rietgraskrone kann nur von ihrer \hyperref[Bogenschützin]{Bogenschützin} getragen werden.
+
+Nur der \hyperref[Hautwandler]{Hautwandler} hat ein Armreif-Ablagefeld.
+
+Nur die \hyperref[Zauberin]{Zauberin} hat Ablagefelder für Zauberbücher.
+
+Kleine Gegenstände dürfen per Falke/Eule verschickt werden.
+
+Sonderplättchen können nicht von anderen Helden getragen und nicht verschickt werden. \fan{Auch im Spiel mit mehreren gleichen Helden kann ein Held Sonderplättchen nicht einem anderen Helden derselben Sonderfähigkeit geben.}
+
+\end{nobgcolor}
+
+
+
+\columnbreak
+
+
+\begin{bgcolor}[color-DLvA]
+\section{Die Legenden von Andor (2012)}
+
+
+
+\subsection{Ausscheiden:}
+
+Scheidet ein Held aus (z.B. weil er in Cavern auf 0 Willenspunkte fiel), werden von ihm getragene Gegenstände auf sein Feld gelegt. \fan{Von ihm getragene Sonderplättchen gehen aber aus dem Spiel.}
+
+
+\subsection{Legende 5, Der Zorn des Drachens:}
+
+Bei der Drachenkampfkarte „Gegenstand in 2 Stärkepunkte tauschen“ darf ein Held von ihm getragene Gegenstände in Stärke tauschen. Sonderplättchen können nicht in Stärke getauscht werden.
+\supercite{6952}
+
+\subsection{Bonus-Legende "Die Befreiung der Mine":}
+
+Taucht Varkur bei der Karte "Varkurs Versteck" in der Waffenkammer auf, können Helden im Kampf gegen ihn keine Gegenstände nutzen. Sonderplättchen dürfen weiterhin genutzt werden.
+\supercite{6952}
+
+
+
+\end{bgcolor}
+
+
+\begin{bgcolor}[color-DlH]
+\section{Die letzte Hoffnung (2016)}
+
+
+\subsection{Legende 15, Der vergiftete Geist:}
+
+Wird der verhexte Held enttarnt, darf er von ihm getragene Gegenstände in Stärke tauschen.
+\supercite{DlH15:Verhext?}
+
+\fan{Von ihm getragene Sonderplättchen gehen aber aus dem Spiel und werden nicht zu Stärke.}
+
+\end{bgcolor}
+
+
+\begin{bgcolor}[color-BB]
+\section{Die Bonus-Box (2017/2024)}
+
+\subsection{Weiße Ereigniskarte 8:}
+
+Ein Gegenstand darf eingetauscht werden.
+\fan{Der Streifenmarder und} die Steinflöte können nur auf ihrer Vorderseite (d.h. unbenutzt/aufgefrischt) eingetauscht werden. 
+\supercite{BB:Ereigniskarte_8}
+
+\fan{Ein Sonderplättchen kann nicht eingetauscht werden.}
+
+
+
+\end{bgcolor}
+
+
+
+\begin{bgcolor}[color-DeK]
+\section{Die ewige Kälte (2022)}
+
+\subsection{Händler:}
+
+Gegenstände dürfen bei Händlern getauscht werden.
+\fan{Der Streifenmarder und die Steinflöte können nur auf ihrer Vorderseite (d.h. unbenutzt/aufgefrischt) getauscht werden.}
+
+\fan{Sonderplättchen können nicht getauscht werden.}
+
+\end{bgcolor}
+
+
+
+\end{multicols*}
+
+
+
+
+
 
 \chapter{Regeln für \fan{Helfer}}
 \label{Helfer}
 
-
-\begin{tabular}{|l|l|l|l|}
-    \hline
-    & Kampfeffekt bei Held
-    & Kampfeffekt bei Gegner
-    & Kein Kampfeffekt
-    \\
-    \hline
-    Helfer
-    &
-    \begin{minipage}[t][][t]{0.2\textwidth}
-
-        % Eigene Bewegung, Kampfeffekt bei Held
-
-        \bullet{} Der genesene Mart\supercite{DZ1:Am_Baum_der_Lieder}
-    
-        \bullet{} Radan\supercite{DlH17:Hoffnungskarte_Zwerg}
-
-        \bullet{} Takuri Turr
-
-        \bullet{} Wassergeist Vara
-        \\
-        
-    \end{minipage}
-    &
-    \begin{minipage}[t][][t]{0.3\textwidth}
-
-        % Eigene Bewegung, Kampfeffekt bei Gegner
-
-        \bullet{} Bewahrer vom Baum der Lieder (auch angrenzend)\supercite{DZ:Begleitheft}
-
-        \bullet{} Flederfuchs Flaps\supercite{DeK:Begleitheft,DfL:Begleitheft}
-
-        \bullet{} Harthalt\supercite{DZ:Begleitheft}
-
-        \bullet{} Hexe Reka 
-        
-        ("Der Hexer aus Andor")\supercite{AG2:Reka_und_die_Helden_von_Andor,AG2:Rekas_Hexenkunst}
-
-        \bullet{} Knochen-Golem
-
-        \bullet{} Meres\supercite{AG:Begleitheft,AG2:D,AG3:In_der_Mine}
-     
-        \bullet{} Prinz Thorald\supercite{DLvA:Begleitheft}
-
-        \bullet{} Schildzwerge\supercite{DLvA:Begleitheft}
-
-        \bullet{} Seeriese (auch angrenzend)\supercite{DRidN10:Turm_bewahrt}
-
-        \bullet{} Tranuk\supercite{DeK:Begleitheft}/Yetohe-Krieger\supercite{DeK4:I}
-
-        \bullet{} Trollkönig/Wachtrolle\supercite{DfL6:Der_Nachkomme_des_Oron,DfL7:I}
-
-        \bullet{} Unbekannter Krieger\supercite{BL_RdSK:Der_Unbekannte_Krieger}
-
-        \bullet{} Wölfe/Lonas\supercite{BL_Jagd:FAQ,BL_Rück:A}
-        \\
-        
-    \end{minipage}
-    & 
-    \begin{minipage}[t][][t]{0.28\textwidth}
-
-        % Eigene Bewegung, kein Kampfeffekt
-
-        \bullet{} Irja, die Nixe
-        
-        (Die Suche nach Grenolin)\supercite{BL_SnG:Die_Nixe_Irja}
-
-        \bullet{} Sabri
-
-        \bullet{} Schatten\supercite{Dunkle_Eara:Regelkarte}
-
-        \bullet{} Schwarze Ritter\supercite{DfL5:Die_Ritter_erheben_sich,DfL6:Die_Prinzen_Azturiens,DfL7:I}
-        \\
-        
-    \end{minipage}
-    \\
-    \hline
-    Andere
-    &
-    \begin{minipage}[t][][t]{0.2\textwidth}
-
-        % Keine eigene Bewegung, Kampfeffekt bei Held
-
-        \bullet{} Grenolin, der Barde\supercite{DRidN:Begleitheft}
-    
-        \bullet{} Melkart\supercite{BB4:A}
-
-        \bullet{} Schildzwerge ("Fremde Heimat")\supercite{DZ2:Ankunft_in_der_fremden_Heimat_Berg-Pfad}
-
-        \bullet{} Tulgori\supercite{AG:Begleitheft}
-        \\
-        
-    \end{minipage}
-    &
-    \begin{minipage}[t][][t]{0.3\textwidth}
-
-        % Keine eigene Bewegung, Kampfeffekt bei Gegner
-
-        \bullet{} Hallgard\supercite{AG3:Hallgard}
-
-        \bullet{} Marun, die Tapfere\supercite{DH:Marun}
-    
-        \bullet{} Taren (Legende 10)\supercite{DRidN10:Taren}
-        \\
-        
-    \end{minipage}
-    & 
-    \begin{minipage}[t][][t]{0.3\textwidth}
-
-        % Keine eigene Bewegung, kein Kampfeffekt
-
-        \bullet{} Fahrende Händlerin Helea\supercite{DfL2:Erkungsungskarte_507}
-
-        \bullet{} Garz, der Handelszwerg
-
-        \bullet{} Hexe Reka
-
-        \bullet{} Irja, die Nixe\supercite{ME:Irja}
-
-        \bullet{} König Brandur\supercite{BL_EdK:A}
-
-        \bullet{} Der verletzte Mart\supercite{DZ1:42}
-
-        \bullet{} Merrik, der Kartograph\supercite{StSch:G_Merrik,DRidN8:O,DH:Begleitheft}
-
-        \bullet{} Silberzwerge\supercite{DRidN8:Flut}
-
-        \bullet{} Taren\supercite{DRidN8:Flut}
-
-        \bullet{} Trosswagen\supercite{DlH13:e,DlH16:a}
-        \\
-        
-    \end{minipage}
-    \\
-    \hline
-\end{tabular}
 
 
 
@@ -8625,11 +8772,21 @@ Für das Eisplättchen "6 Stärkepunkte besitzen" zählt nur die Position des St
 
 \begin{nobgcolor}
 
-Diese Regeln gelten für alle \fan{Helfer}: Figuren, die Helden unterstützen und die durch Spieler unabhängig von Heldenfiguren bewegt werden können.
+Diese Regeln gelten für:
 
-Manche Figuren (z.B. Wölfe, Trollkönig) unterstützen die Helden nur manchmal oder können nur manchmal unabhängig von ihnen bewegt werden. Diese Regeln gelten nur dann für sie.
+\bullet{} den Knochen-Golem der \hyperref[Beschwörerin]{Beschwörerin},
 
+\bullet{} den Wassergeist der \hyperref[Hüterin]{Hüterin},
 
+\bullet{} die Sabri des \hyperref[Steppennomade]{Steppennomaden},
+
+\bullet{} den Takuri der \hyperref[Takuri-Hüterin]{Takuri-Hüterin},
+
+\bullet{} den Schatten der \hyperref[Zauberin]{Zauberin} (Hoffnungskarte),
+
+\bullet{} den Schatten der \hyperref[Dunkle Magierin]{Dunklen Magierin} (zweite Sonderfähigkeit),
+
+\bullet{} den Radan des \hyperref[Zwerg]{Zwergs} (Hoffnungskarte).
 
 
 
@@ -8642,9 +8799,12 @@ Manche Figuren (z.B. Wölfe, Trollkönig) unterstützen die Helden nur manchmal 
 
 \subsection{Bewegung:}
 
-Diese Regeln gelten für alle Helfer, außer es steht explizit anders:
 
-Jeder Held darf als eigene Aktion 1 oder mehr Stunden ausgeben und einen Helfer, der auf dem Spielplan steht, pro Stunde bis zu 4 Felder weit zu bewegen. In jeder Aktion kann nur ein einziger Helfer bewegt werden.
+Ein Held darf als eigene Aktion 1 oder mehr Stunden ausgeben und seinen Helfer pro Stunde bis zu 4 Felder weit bewegen.\supercite{NH:Begleitheft,DlH17:Hoffnungskarte_Zwerg,Dunkle_Eara:Regelkarte}
+
+Ausnahme: Sabri kann nicht als eigene Aktion bewegt werden. Bewegt der Erzähler sich (egal ob vorwärts oder rückwärts), läuft Sabri 1 Schritt auf dem kürzesten Weg zum \hyperref[Steppennomade]{Steppennomaden}. \fan{Gibt es keinen Weg zum Steppennomaden oder steht sie bereits bei ihm, läuft Sabri nicht.}
+
+Ausnahme: Der Takuri kann nicht als eigene Aktion bewegt werden. Nur die \hyperref[Takuri-Hüterin]{Takuri-Hüterin} darf die Steinflöte von der Vorderseite auf die Rückseite drehen, um den Takuri auf ein beliebiges Spielplanfeld zu versetzen.
 
 Helfer dürfen Eisbrücken des \hyperref[Eis-Dämon]{Eis-Dämons} nutzen.
 \supercite{88780}
@@ -8655,6 +8815,11 @@ Helfer können keine Plättchen oder Karten aufdecken oder aktivieren.
 Helfer können keine Plättchen oder Figuren mit sich mitbewegen.
 \supercite{NH:Begleitheft,DlH17:Hoffnungskarte_Zwerg,DH:Begleitheft,MH:Begleitheft}
 Ausnahme: Sabri darf bis zu 2 Pulver tragen (bei der Schwächungskarte "nur noch 2 Pulver" in Legende 14 bis zu 3).
+
+
+
+
+
 
 \subsection{Willenspunkte-Schranken:}
 
@@ -8668,16 +8833,15 @@ Helfer werden von festhaltenden Plättchen und Figuren (z.B. Skeletten in "Die l
 
 
 
+\columnbreak
+
 \subsection{"Alleine kämpfen" und "am Sieg beteiligt sein":}
 
 
 Besagt eine Aufgabe oder Regel, dass ein Held einen Gegner alleine bekämpfen oder besiegen soll oder dass ein Held nicht gemeinsam kämpfen darf, darf er dennoch \hyperref[Bonusstärke]{Bonusstärke} und Kampf-Effekte durch Helfer erhalten.
 \supercite{StSch:Varkurs_Triumph,5623,17369}
 
-Ausnahme: Prinz Thorald darf für die Erfüllung einer Schicksalskarte nicht mitkämpfen.
-\supercite{1947,17369}
-
-Besagt eine Aufgabe oder Regel, dass ein Held am Sieg über einen Gegner beteiligt sein soll, muss der Held selbst mitkämpfen. Es genügt nicht, wenn ein von ihm gesteuerter Helfer den Kampf beeinflusst.
+Besagt eine Aufgabe oder Regel, dass ein Held am Sieg über einen Gegner beteiligt sein soll, muss der Held selbst mitkämpfen. Es genügt nicht, wenn sein Helfer den Kampf beeinflusst.
 \supercite{28472}
 
 
@@ -8686,33 +8850,9 @@ Besagt eine Aufgabe oder Regel, dass ein Held am Sieg über einen Gegner beteili
 
 
 
-\subsection{Helfer bestimmter Helden:}
 
-\bullet{} Der Knochen-Golem kann nur von seiner \hyperref[Beschwörerin]{Beschwörerin} als eigene Aktion bewegt werden.
-
-\bullet{} Radan kann nur von seinem \hyperref[Zwerg]{Zwerg} als eigene Aktion bewegt werden.\supercite{DlH17:Hoffnungskarte_Zwerg}
-
-\bullet{} Sabri kann nicht von Helden bewegt werden. Bewegt der Erzähler sich (egal ob vorwärts oder rückwärts), läuft Sabri 1 Schritt auf dem kürzesten Weg zum Steppennomaden. \fan{Gibt es keinen Weg zum Steppennomaden, läuft Sabri auf ein beliebiges angrenzendes Feld.}
-
-
-\bullet{} Der Schatten kann nur von seiner \hyperref[Dunkle Magierin]{Dunklen Magierin} oder \hyperref[Zauberin]{Zauberin} als eigene Aktion bewegt werden.
-
-\bullet{} Der Takuri kann nicht als eigene Aktion bewegt werden. Nur die \hyperref[Takuri-Hüterin]{Takuri-Hüterin} darf die tulgorische Steinflöte von der Vorderseite auf die Rückseite drehen, um den Takuri auf ein beliebiges Spielplanfeld zu versetzen.
-
-\bullet{} Der Wassergeist kann nur von seiner \hyperref[Hüterin]{Hüterin} als eigene Aktion bewegt werden.
-\supercite{NH:Begleitheft}
 
 \end{nobgcolor}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8727,20 +8867,25 @@ Besagt eine Aufgabe oder Regel, dass ein Held am Sieg über einen Gegner beteili
 
 \subsection{Brücken:}
 
-Helfer können durch ein rotes X oder Geröll blockierte Brücken nicht benutzen.
-
-Ausnahme: Der Knochen-Golem\supercite{AG:Begleitheft}, der Takuri\supercite{MH:Begleitheft} und der Wassergeist\supercite{15332,AG:Begleitheft} dürfen blockierte Brücken überqueren.
-
+Helfer dürfen durch ein rotes X oder Geröll blockierte Brücken weiterhin überqueren.
+\supercite{15332,AG:Begleitheft,MH:Begleitheft}
 
 
 \subsection{Geröll:}
 
-\fan{Helfer, die \hyperref[Bonusstärke]{Bonusstärke} geben, wenn sie auf dem Feld des Gegners stehen, geben diese Bonusstärke auch gegen Geröll, und das auch, wenn sie angrenzend stehen.}
+Helfer dürfen Geröll ignorieren und Geröllfelder betreten.
+\supercite{6937,97438,AG:Begleitheft,MH:Begleitheft}
 
-\fan{Helfer können Felder mit Geröll nicht betreten. }
+\fan{Helfer geben ihre \hyperref[Bonusstärke]{Bonusstärke} auch gegen Geröll. Der Knochen-Golem ausnahmsweise auch, wenn er angrenzend steht.}
 
-\fan{Ausnahme:} Der Knochen-Golem\supercite{AG:Begleitheft}, der Takuri\supercite{MH:Begleitheft,97438} und der Wassergeist\supercite{6937,AG:Begleitheft} dürfen Geröll ignorieren.
 
+
+\subsection{Ausscheiden:}
+
+Scheidet ein Held aus (z.B. weil er in Cavern auf 0 Willenspunkte fiel), geht sein Helfer aus dem Spiel.
+\supercite{35653}
+
+\fan{Auch von Sabri getragene Pulver gehen aus dem Spiel.}
 
 
 \subsection{Cavern:}
@@ -8758,24 +8903,16 @@ Helfer lösen keinen Alarm aus.
 \subsection{Legende 5, Der Zorn des Drachens:}
 
 \fan{Helfer dürfen die Rietburg (Feld 0) immer betreten, auch wenn sie von Kreaturen besetzt ist.}
+\supercite{MH:Begleitheft}
 
-\fan{Ausnahme:} Wie Helden können Prinz Thorald\supercite{28830}, \fan{die Schildzwerge} und der Knochen-Golem\supercite{DH:FAQ} die Rietburg erst betreten, nachdem sie von Kreaturen befreit wurde.
+\fan{Ausnahme:} Wie Helden kann der Knochen-Golem die Rietburg erst betreten, nachdem sie von Kreaturen befreit wurde.
+\supercite{DH:FAQ}
 
 
 \end{bgcolor}
 
 
-
-\begin{bgcolor}[color-StSch]
-\section{Der Sternenschild (2013)}
-
-\subsection{Gezähmte Wölfe:}
-
-Gezähmte Wölfe sind eine Ausnahme: Sie können nur vom Wolfsfreund als eigene Aktion bewegt werden und verschiedene Wölfe dürfen in verschiedenen Stunden derselben Aktion bewegt werden.
-\supercite{StSch:Wolfsfreund}
-
-\end{bgcolor}
-
+\columnbreak
 
 
 \begin{bgcolor}[color-DRidN]
@@ -8785,47 +8922,44 @@ Gezähmte Wölfe sind eine Ausnahme: Sie können nur vom Wolfsfreund als eigene 
 
 Helfer können Meeres- und Klippenfelder nicht betreten.
 
-Ausnahme: Der Wassergeist sowie in Legende 10, "Hadria", der Seeriese dürfen Meeres- und Klippenfelder\supercite{10815} betreten.
-\supercite{DRidN:Begleitheft,DRidN:FAQ} 
-Der Seeriese kann keine Landfelder betreten.
-\supercite{DRidN10:Turm_bewahrt} 
+Ausnahme: Der Wassergeist darf Meeres- und Klippenfelder betreten.
+\supercite{10815,DRidN:Begleitheft,DRidN:FAQ} 
+
 
 \subsection{Schiff:}
 
-Helfer dürfen das Schiff mit einem Schritt betreten oder verlassen (von/zu einem Landfeld). 
+\fan{Helfer dürfen das Schiff mit einem Schritt betreten oder verlassen (von/zu einem Landfeld).}
 \supercite{MH:Begleitheft}
-Sie können nicht segeln.
-\supercite{32649}
-\fan{Jeder Helfer, der \hyperref[Bonusstärke]{Bonusstärke} gibt, wenn er auf dem Feld des Gegners steht, gibt diese Bonusstärke auch, wenn er auf dem Schiff angrenzend zum Gegner steht.}
+
+\fan{Ausnahme:} Der Wassergeist kann das Schiff nicht betreten.
+\supercite{DRidN:Begleitheft}
 
 \fan{Ausnahme:} Der Takuri darf das Schiff betreten und verlassen, auch wenn es nicht an ein Landfeld angrenzt.
 \supercite{88939}
 
-\fan{Ausnahme:} Der Wassergeist sowie in Legende 10, "Hadria", der Seeriese können das Schiff nicht betreten.
-\supercite{DRidN:Begleitheft}
+Helfer können nicht segeln.
+\supercite{32649}
+
+\fan{Der Knochen-Golem gibt seine \hyperref[Bonusstärke]{Bonusstärke} auch, wenn er auf dem Schiff angrenzend zum Gegner steht.}
+
+\fan{Nur Helden können Schiffsausbauten bemannen, keine Helfer.}
 
 
 \subsection{Bootsstrecken:}
 
-Helfer dürfen für je 2 Schritte Bootsstrecken benutzen.
+\fan{Helfer dürfen für je 2 Schritte Bootsstrecken benutzen.}
 \supercite{BL_RdSK:Der_Unbekannte_Krieger}
+
+\fan{Ausnahme:} Sabri darf Bootsstrecken für je 1 Schritt nutzen (statt 2).
+\supercite{MH:Begleitheft}
 
 \fan{Ausnahme: Der Wassergeist kann keine Bootsstrecken benutzen.}
 
-Ausnahme: Sabri darf Bootsstrecken für je 1 Schritt nutzen (statt 2).
-\supercite{MH:Begleitheft}
 
 
 \subsection{Schneeplättchen:}
 
 \fan{Helfer aktivieren keine Schneeplättchen und müssen nicht stehen bleiben, wenn sie ein Feld mit Schneeplättchen betreten.}
-
-
-\subsection{Legende "Die Rückkehr der Schwarzen Kogge":}
-
-Der Unbekannte Krieger ist eine Ausnahme: Er kann pro Stunde nur 1 Schritt weit bewegt werden (statt bis zu 4) und er darf Plättchen aktivieren.
-\supercite{BL_RdSK:Der_Unbekannte_Krieger}
-
 
 \end{bgcolor}
 
@@ -8837,13 +8971,16 @@ Der Unbekannte Krieger ist eine Ausnahme: Er kann pro Stunde nur 1 Schritt weit 
 
 
 
-
-
-
 \subsection{Legende 14, Der Meister des Trolls:}
 
 Steht ein Helfer auf der Brücke, während diese abgerissen wird, stellt ihn auf Feld 205 oder 207.
 \supercite{94128}
+
+
+\subsection{Legende 15, Der vergiftete Geist:}
+
+\fan{Wird der verhexte Held enttarnt, geht sein Helfer aus dem Spiel.}
+
 
 \end{bgcolor}
 
@@ -8860,7 +8997,7 @@ Helfer dürfen Felder mit Arbaks und Eisplättchen betreten.
 
 \subsection{Casamatuc:}
 
-Ein Helfer darf mit dem Casamatuc versetzt werden, wenn er mit dem Helden auf demselben Feld steht. 
+Ein Helfer darf mit dem Casamatuc versetzt werden, wenn er mit dem Helden, der den Casamatuc nutzt, auf demselben Feld steht. 
 \supercite{AG:Begleitheft}
 
 \subsection{Takuri-Spiegel:}
@@ -8872,12 +9009,17 @@ Helfer können nicht mit dem Takuri-Spiegel versetzt werden.
 
 
 
+\columnbreak
+
+
 \begin{bgcolor}[color-DZ]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Boot:}
 
 \fan{Helfer dürfen das Boot für je 1 Schritt betreten oder verlassen, aber nur ein Held kann das Boot fahren.}
+
+\fan{Auch der Wassergeist darf das Boot betreten.}
 
 
 \subsection{Zwergentüren:}
@@ -8887,14 +9029,17 @@ Helfer können Zwergentüren nicht öffnen und verhindern nicht das Zudecken von
 
 Helfer dürfen für je 1 Schritt zwischen zwei offenen Zwergentüren mit passenden Symbolen laufen.
 
+
+
 \subsection{Lager der Trolle:}
 
+Helfer dürfen das Lager der Trolle betreten.
+\supercite{DZ:Begleitheft,MH:Begleitheft,130389}
 
-Helfer können das Lager der Trolle nicht betreten.
+Ausnahme: Der Knochen-Golem kann das Lager der Trolle nicht betreten.
 \supercite{DZ:Begleitheft}
 
-Ausnahme: Der Takuri\supercite{MH:Begleitheft} und der Wassergeist\supercite{DZ:Begleitheft} dürfen das Lager der Trolle betreten.
-\supercite{130389}
+
 
 
 
@@ -8924,13 +9069,9 @@ Ausnahme: Der Takuri\supercite{MH:Begleitheft} und der Wassergeist\supercite{DZ:
 
 \fan{Helfer aktivieren nie Eisplättchen und müssen auf Feldern mit Eisplättchen nicht stehen bleiben.}
 
-Helfer dürfen Seefelder nicht betreten, egal ob dort Eisplättchen liegen.
-\supercite{DeK2:A}
+\fan{Helfer dürfen Seefelder betreten, egal ob dort Eisplättchen liegen.}
 
-\fan{Ausnahme: Sollte ein Helfer auf einem Seefeld oder Feld 460 stehen, darf er Seefelder auf einem kürzesten Weg zum Ufer betreten, egal ob dort Eisplättchen liegen. }
-
-\fan{Ausnahme: Der Knochen-Golem, der Takuri und der Wassergeist dürfen Seefelder immer betreten, egal ob dort Eisplättchen liegen.}
-
+\fan{Ausnahme: Sabri kann Seefelder nicht betreten, egal ob dort Eisplättchen liegen. Nur wenn sie bereits auf einem Seefeld oder Feld 460 steht, darf sie Seefelder auf einem kürzesten Weg zum Ufer betreten, erneut egal ob dort Eisplättchen liegen.}
 
 
 \subsection{Höhle der Verwandlung:}
@@ -8942,7 +9083,6 @@ Helfer dürfen Seefelder nicht betreten, egal ob dort Eisplättchen liegen.
 
 
 
-\columnbreak
 
 
 
@@ -8960,11 +9100,7 @@ Helfer dürfen Seefelder nicht betreten, egal ob dort Eisplättchen liegen.
 
 \subsection{Schwarze Ritter:}
 
-\fan{Die Schwarzen Ritter als Gegner verfolgen keine Helfer.}
-
-Die Schwarzen Ritter als Helfer sind eine Ausnahme: Sie können nicht als eigene Aktion bewegt werden, sondern je einmal pro Legende auf ein beliebiges Feld versetzt werden, außer auf Felder mit Kreatur, Oron, Steppenvolk oder Greifenfels (Feld 425).
-\supercite{DfL5:Die_Ritter_erheben_sich,DfL6:Die_Prinzen_Azturiens,DfL7:I}
-
+\fan{Die Schwarzen Ritter verfolgen keine Helfer.}
 
 
 \subsection{Schachtelboden:}
@@ -9084,7 +9220,7 @@ Wählt am Anfang eine (!) der Spielvarianten "Erschwerte Kämpfe"\supercite{AG:B
 \subsection{\fan{Legende 1, Die Ankunft der Helden:}}
 
 
-\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "C", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt keine Spielvariante "Weniger Zeit" ins Spiel.}
+\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "C", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt in dieser Legende keine Spielvariante "Weniger Zeit" ins Spiel.}
 
 
 
@@ -9334,7 +9470,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 
 \fan{Für die dritte Aufgabe des Einführungsspiels müssen nur 4 Helden ein Schneeplättchen aktivieren, nicht alle.}
 
-\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "D", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt keine Spielvariante "Weniger Zeit" ins Spiel.}
+\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "D", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt in dieser Legende keine Spielvariante "Weniger Zeit" ins Spiel.}
 
 
 \subsection{\fan{Weniger Zeit – Neutrale Zeitsteine:}}
@@ -9374,7 +9510,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 \subsection{\fan{Legende 1, Der wahre Meister:}}
 
 
-\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "C", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt keine Spielvariante "Weniger Zeit" ins Spiel.}
+\fan{Spielt am Anfang ganz ohne Spielvarianten für 5 oder 6 Helden. Erreicht der Erzähler "C", wählt eine (!) der Spielvarianten "Erschwerte Kämpfe" für den Rest der Legende. Es kommt in dieser Legende keine Spielvariante "Weniger Zeit" ins Spiel.}
 
 \end{bgcolor}
 
@@ -9530,16 +9666,16 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 
 \bullet{} Ein Held mit Fernrohr, sowie der \hyperref[Bergkrieger]{Bergkrieger} mit 14 oder mehr Willenspunkten, dürfen, wenn sie auf einem Feld stehen, beliebig viele\supercite{DLvA:FAQ} von fern aufdeckbare Plättchen auf angrenzenden Feldern aufdecken.
 
-\bullet{}  Das Auge-Symbol der \hyperref[Runenmeisterin]{Runenmeisterin} darf \fan{beliebig viele} von fern aufdeckbare Plättchen auf einem Feld aufdecken.
+\bullet{} Das Auge-Symbol der \hyperref[Runenmeisterin]{Runenmeisterin} darf \fan{beliebig viele} von fern aufdeckbare Plättchen auf einem Feld aufdecken.
 \supercite{88631}
-
 \bigskip
+
 
 \textbf{Von nah aufdeckbare Plättchen:}
 
-\bullet{}  Der Rabe des \hyperref[Fährtenleser]{Fährtenlesers} darf \fan{beliebig viele} von nah aufdeckbare Plättchen auf einem Feld aufdecken.
+\bullet{} Der Rabe des \hyperref[Fährtenleser]{Fährtenlesers} darf \fan{beliebig viele} von nah aufdeckbare Plättchen auf einem Feld aufdecken.
 
-\bullet{}  Flaps Flederfuchs darf \fan{beliebig viele} von nah aufdeckbare Plättchen auf seinem Feld aufdecken.
+\bullet{} Flaps Flederfuchs darf \fan{beliebig viele} von nah aufdeckbare Plättchen auf seinem Feld aufdecken.
 \supercite{DeK:Begleitheft,DfL:Begleitheft}
 
 \bullet{} Ein Held darf von nah aufdeckbare Plättchen auf seinem Feld aufdecken. Manche Plättchen muss er aktivieren.
@@ -9548,24 +9684,23 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 \supercite{DlH:Ausrüstungstafel}
 \bigskip
 
+
 \textbf{Vorhersehbare Plättchen:}
 
-\bullet{}  Das Sehende Auge des \hyperref[Seher]{Sehers} darf ein vorhersehbares Plättchen auf dem Spielplan (auch an der Tagesleiste oder Legendenleiste) aufdecken.
-
+\bullet{} Das Sehende Auge des \hyperref[Seher]{Sehers} darf ein vorhersehbares Plättchen auf dem Spielplan (auch an der Tagesleiste oder Legendenleiste) aufdecken.
 \bigskip
 
 
 \textbf{Allgemein:}
 
-\bullet{}  Plättchen werden durch diese Effekte nur aufgedeckt, nicht aktiviert.
+\bullet{} Plättchen werden durch diese Effekte nur aufgedeckt, nicht aktiviert.
 
 \bullet{} Plättchen in Stapeln dürfen auch durch diese Effekte aufgedeckt werden, ihre Reihenfolge bleibt aber gleich.
 \supercite{BL_BdM:A3_en}
 Ausnahme: Von den Bewegungsplättchen aus "Die letzte Hoffnung" darf nur das jeweils oberste aufgedeckt werden.
 \supercite{DH:Begleitheft}
 
-\bullet{}  Karten können durch diese Effekte weder aufgedeckt noch aktiviert werden. Ausnahme: Ortskarten in Legende 17, "Die letzte Hoffnung", dürfen mit Fernrohr \fan{oder vom \hyperref[Bergkrieger]{Bergkrieger} mit 14 oder mehr Willenspunkten} aktiviert werden.
-
+\bullet{} Karten können durch diese Effekte weder aufgedeckt noch aktiviert werden. Ausnahme: Ortskarten in Legende 17, "Die letzte Hoffnung", dürfen mit Fernrohr \fan{oder vom \hyperref[Bergkrieger]{Bergkrieger} mit 14 oder mehr Willenspunkten} aktiviert werden.
 \bigskip
 
 
@@ -9605,67 +9740,67 @@ Ausnahme: Von den Bewegungsplättchen aus "Die letzte Hoffnung" darf nur das jew
 
 \begin{center}
 
-    \vspace*{0.8cm}
+    \vspace*{0.2cm}
     
-    \frame{\hyperref[Zwerg]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kram.jpg}}}
-    \frame{\hyperref[Krieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn.jpg}}}
-    \frame{\hyperref[Bogenschützin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Chada.jpg}}}
-    \frame{\hyperref[Zauberin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara.jpg}}}
+    \heldenfigurenlink{Kram.jpg}{yellow}{Zwerg}
+    \heldenfigurenlink{Thorn.jpg}{RoyalBlue}{Krieger}
+    \heldenfigurenlink{Chada.jpg}{ForestGreen}{Bogenschützin}
+    \heldenfigurenlink{Eara.jpg}{Fuchsia}{Zauberin}
 
     \vspace{2pt}
 
-    \frame{\hyperref[Wolfskrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Orfen.jpg}}}
+    \heldenfigurenlink{Orfen.jpg}{Blue}{Wolfskrieger}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Tarus]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Bragor.jpg}}}
-    \frame{\hyperref[Fährtenleser]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Fenn.jpg}}}
-    \frame{\hyperref[Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kheela.jpg}}}
-    \frame{\hyperref[Bewahrer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Arbon.jpg}}}
+    \heldenfigurenlink{Bragor.jpg}{brown}{Tarus}
+    \heldenfigurenlink{Fenn.jpg}{orange}{Fährtenleser}
+    \heldenfigurenlink{Kheela.jpg}{white}{Hüterin}
+    \heldenfigurenlink{Arbon.jpg}{Gray}{Bewahrer}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Seekrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Stinner.jpg}}}
-    \frame{\hyperref[Zeitzauberer]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Kirr.jpg}}}
+    \heldenfigurenlink{Stinner.jpg}{Wheat1}{Seekrieger}
+    \heldenfigurenlink{Kirr.jpg}{Fuchsia}{Zeitzauberer}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Ritter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Thorn (Reiter).jpg}}}
-    \frame{\hyperref[Dunkle Magierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Eara (dunkel).jpg}}}
+    \heldenfigurenlink{Thorn (Reiter).jpg}{RoyalBlue}{Ritter}
+    \heldenfigurenlink{Eara (dunkel).jpg}{Fuchsia}{Dunkle Magierin}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Seher]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Leander.jpg}}}
-    \frame{\hyperref[Hautwandler]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Drukil.jpg}}}
-    \frame{\hyperref[Halbskral]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Forn.jpg}}}
-    \frame{\hyperref[Beschwörerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Darh.jpg}}}
+    \heldenfigurenlink{Leander.jpg}{Blue}{Seher}
+    \heldenfigurenlink{Drukil.jpg}{brown}{Hautwandler}
+    \heldenfigurenlink{Forn.jpg}{red}{Halbskral}
+    \heldenfigurenlink{Darh.jpg}{Wheat1}{Beschwörerin}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Wassermagierin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Jarid.jpg}}}
-    \frame{\hyperref[Feuerkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Trieest.jpg}}}
+    \heldenfigurenlink{Jarid.jpg}{RoyalBlue}{Wassermagierin}
+    \heldenfigurenlink{Trieest.jpg}{orange}{Feuerkrieger}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Eis-Dämon]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Ijsdur.jpg}}}
-    \frame{\hyperref[Takuri-Hüterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Aćh.jpg}}}
-    \frame{\hyperref[Steppennomade]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Barz.jpg}}}
-    \frame{\hyperref[Runenmeisterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Iril.jpg}}}
+    \heldenfigurenlink{Ijsdur.jpg}{white}{Eis-Dämon}
+    \heldenfigurenlink{Aćh.jpg}{orange}{Takuri-Hüterin}
+    \heldenfigurenlink{Barz.jpg}{HotPink1}{Steppennomade}
+    \heldenfigurenlink{Iril.jpg}{Blue}{Runenmeisterin}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Weihnachts-Gor]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Santa Gor.jpg}}}
+    \heldenfigurenlink{Santa Gor.jpg}{ForestGreen}{Weihnachts-Gor}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Feuerwächterin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya (Feuerwächterin).jpg}}}
-    \frame{\hyperref[Bergkrieger]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Grent.jpg}}}
+    \heldenfigurenlink{Tenaya (Feuerwächterin).jpg}{ForestGreen}{Feuerwächterin}
+    \heldenfigurenlink{Grent.jpg}{Fuchsia}{Bergkrieger}
 
     \vspace{2pt}    
 
-    \frame{\hyperref[Heilerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Avida.jpg}}}
-    \frame{\hyperref[Steppenreiter]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Raash.jpg}}}
-    \frame{\hyperref[Feuerbezwingerin]{\includegraphics[width=42pt]{Alle Helden ueberall/Heldenfiguren/Tenaya.jpg}}}
+    \heldenfigurenlink{Avida.jpg}{RoyalBlue}{Heilerin}
+    \heldenfigurenlink{Raash.jpg}{brown}{Steppenreiter}
+    \heldenfigurenlink{Tenaya.jpg}{ForestGreen}{Feuerbezwingerin}
 
 \end{center}
 
