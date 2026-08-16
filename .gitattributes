@@ -8,3 +8,6 @@
 
 # If the next line is uncommented, then all "das-erbe-des-wunderkindes" files are not exported.
 #"das-erbe-des-wunderkindes*" export-ignore
+
+# Do not export works in progress.
+"wip-*" export-ignore

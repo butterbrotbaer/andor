@@ -10,12 +10,20 @@
 \usepackage{eso-pic} % unter anderem für die Hintergrundbilder
 \usepackage{tikz} % unter anderem für die Hintergrundbilder
 
+\usepackage{amssymb} % für \blacktriangleright
+
 \usepackage{csquotes} % für Anführungszeichen
     \MakeOuterQuote{"}
 
 \usepackage{multicol}
 
 \usepackage{soul} % für Befehle wie \st (durchgestrichen)
+
+\usepackage{snotez} % für \sidenote
+    \setsidenotes{
+        perchapter=true,
+        text-format=\normalfont\tiny\raggedright,
+    }
 
 \usepackage{hyperref}
     \hypersetup{
@@ -103,6 +111,12 @@
     \end{center}
 }
 
+% Definiere Command für gendern
+\newcommand{\gend}[2]{#2} 
+
+% Definiere Command für Verweise zur Chronik der Andorversen
+\newcommand{\siehechronik}[1]{\href{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}{\blacktriangleright #1}}
+
 % Definiere Commands für TeX-Stellen nur in der Vollversion oder nur in der Plainversion
 \newcommand{\nurvollversion}[1]{#1}
 \newcommand{\nurplainversion}[1]{}
@@ -147,7 +161,7 @@
 
 
 
-\renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
+%\renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
 
 
 \usepackage{contour}
@@ -279,17 +293,38 @@ Butterbrotbär
 
 \include{das-erbe-des-wunderkindes/geschichten/2020-der-giftzwerg-und-die-sphaere}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-a-der-fall-des-zweitbesten-bogenschuetzen}
+
 \include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-i-der-steppennomade-der-grosse-see-und-das-grosse-feuer}
 
 \include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-ii-der-verschwundene-feuertakuri}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-tenayas-abenteuer-1-die-waechterin-der-nacht}
+
 \include{das-erbe-des-wunderkindes/geschichten/2023-die-legende-der-entzweiten-zeit}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-b1-kampf-in-den-flusslanden}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-der-schatten-des-koenigs}
 
 \include{das-erbe-des-wunderkindes/geschichten/2022-magisches-zwischenspiel-ein-folgenschwerer-tod}
 
 \include{das-erbe-des-wunderkindes/geschichten/2022-magische-abenteuer-lll-runen-im-schnee}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-dunkle-abenteuer-1-erinnerungen-an-beschwoerungen}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-der-groesste-seeraeuber-der-nordmeere}
+
 \include{das-erbe-des-wunderkindes/geschichten/2019-2020-stuermische-raetselnacht-in-der-taverne}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-die-goldene-zentaurin-von-tulgor}
 
 \include{das-erbe-des-wunderkindes/geschichten/2023-der-feuerkrieger-und-die-wassermagierin}
 
@@ -297,9 +332,37 @@ Butterbrotbär
 
 \include{das-erbe-des-wunderkindes/geschichten/2023-der-giftzwerg-und-das-drachenherz}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-dunkle-abenteuer-2-erinnerungen-an-haelften}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-b2-kampf-um-die-flusslande}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neues-zwischenspiel-zwei-folgenschwere-tode}
+
 \include{das-erbe-des-wunderkindes/geschichten/2021-ein-koenig-auf-abwegen}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-der-tyrann-von-andor}
 
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-dunkle-abenteuer-3-erinnerungen-an-verwandlungen}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-dunkle-abenteuer-4-erinnerungen-an-vorhersehungen}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-c-in-vertrauten-landen}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-d-eine-faehrtenleserin-entscheidet-sich}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-neue-abenteuer-e-die-wahre-macht-des-zweiten-schilds}
+
+%
+\include{das-erbe-des-wunderkindes/geschichten/wip-die-falschen-drachen}
 
 
 \part{Aufzeichnungen analogen Autors aus allerlei alternativen Andorversen}
