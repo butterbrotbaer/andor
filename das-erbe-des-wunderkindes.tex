@@ -117,6 +117,9 @@
 % Definiere Command für Verweise zur Chronik der Andorversen
 \newcommand{\siehechronik}[1]{\href{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}{\blacktriangleright #1}}
 
+% Definiere Command für Pu'Xif
+\newcommand{\puxif}[1]{}
+
 % Definiere Commands für TeX-Stellen nur in der Vollversion oder nur in der Plainversion
 \newcommand{\nurvollversion}[1]{#1}
 \newcommand{\nurplainversion}[1]{}
@@ -142,12 +145,17 @@
 \usepackage{environ}
     \usepackage[most]{tcolorbox} % für farbige Boxen
     \NewEnviron{chapterbox} % box für chapter-Anfänge
-    {   
-        \newpage
-        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
-            \BODY
-            \vfill
-        \end{tcolorbox}
+    {%    
+        % Seit TeX Live 2026 scheinen Marks in tcolorbox ignoriert zu werden. Speichere darum den 
+        % Kapiteltitel global in der tcolorbox und setze die Header-Marks erst nach der tcolorbox.
+        \begingroup
+            \renewcommand{\chaptermark}[1]{\gdef\kapiteltitel{##1}}
+            \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+                \BODY
+                \vfill
+            \end{tcolorbox}
+        \endgroup
+        \markboth{\kapiteltitel}{}
     }
     \NewEnviron{commentbox} % box für Kommentare
     {   
@@ -372,7 +380,24 @@ Butterbrotbär
     \chapter{Andor-Märchen (2019)}
 
     Hier begann mein Pfad zur Veröffentlichung andorischer Fanfiction: An einem warmen Sommerabend, an dem mich ein Kommentar der Schlafenden Katze dazu anspornte, das Märchen vom gestiefelten Kater andorisch zu verpacken. Bald darauf folgten einige weitere andorisch umgedichtete Sagen, die in ihrer Gesamtheit eine kleine Märchensammlung bilden. Von gescheiten Streifenmardern, den ersten Taren, Schatten finsterer Krahderfürsten und Arpachen hütenden Jungdrachen.
+
+    \trennzeichen
+
+    \nurvollversion{
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=55170#p55170
+        \textit{Butterbrotbär, dein Märchen finde ich echt schön! Ganz großen Applaus!!!}
+        \newline
+        – Galaphil
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=56498#p56498
+        \textit{Wieder eine mehr als gelungene Geschichte!}
+        \newline
+        – TroII
+    }
+
 \end{chapterbox}
+
 
 \extramarks{}{ }
 
@@ -583,6 +608,40 @@ Und da er nicht gestorben ist, lebt er auch heute noch.
     \az{diverse Jahre}
 
     In meiner Zeit im Andor-Forum werkelte ich an viel zu vielen Fan-Held*innen. Da das Geschichtenschreiben mich ebenfalls äußerst vergnügt, entstanden zu manchen dieser Heldenideen kurze Storytexte, welche teils gar aufeinander Bezug nahmen. Hier sind die längsten davon versammelt – und als Zückerchen kommt am Ende mit den Geschenken vom Santa Gor ein bisschen Weihnachtsstimmung auf.
+
+    \trennzeichen
+
+    \nurvollversion{
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=54953#p54953
+        \textit{die Story ist sehr gelungen}
+        \newline
+        – Wurzel1
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=54954#p54954
+        \textit{ich finde Idee und Story sehr toll}
+        \newline
+        – Frodo
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=54958#p54958
+        \textit{Dies ist eine sehr schöne Geschichte}
+        \newline
+        – Galaphil
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=101631#p101631
+        \textit{gefallen mir sehr}
+        \newline
+        – Trollerei
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=101701#p101701
+        \textit{Schönes Geschichtchen!}
+        \newline
+        – TroII
+    }
+
 \end{chapterbox}
 
 
@@ -827,6 +886,34 @@ Verspätete frohe Festtage, Freunde! :P
     Ihr seid hiermit herzlich eingeladen, euch vor dem Weiterlesen kurz zurückzulehnen und nachzudenken.
     Was meint ihr: In welcher Legende kann der größte Kampfwert erreicht werden? Mit welchen Helden? Mit welchen Spielvarianten und Mini-Erweiterungen?
     Und vor allem: Was ratet ihr, wie hoch der maximal offiziell erreichbare Kampfwert sein könnte?
+
+    \trennzeichen
+
+    \nurvollversion{
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=97872#p97872
+        \textit{Vielen Dank für den unterhaltsamen Bericht, BBB!}
+        \newline
+        – Trollerei
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=97963#p97963
+        \textit{Respekt für diese Leistung, ich hätte den höchsten erreichbaren Kampfwert deutlich geringer Eingeschätzt.}
+        \newline
+        – Bewahrer Melkart
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=97981#p97981
+        \textit{Respekt! Der Kampfwert wird in der Tat nur schwer zu toppen!}
+        \newline
+        – TroII
+        \bigskip
+
+        % https://legenden-von-andor.de/forum/viewtopic.php?p=99005#p99005
+        \textit{Vielen Dank für den stimmungsvollen Spielbericht, dem man deutlich anmerkt, wie viel Spaß Dir das Ausknobeln gemacht hat.}
+        \newline
+        – Bennie
+    }
+
 \end{chapterbox}
 
 
