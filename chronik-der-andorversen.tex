@@ -2,36 +2,57 @@
 % Die vorherige Zeile teilt der LaTeX Workshop Extension von VS Code mit, nach welchem Rezept (Rezepte sind definiert in .vscode/settings.json) das PDF-Dokument erstellt werden soll. 
 
 
+
 \documentclass[10pt, a4paper, oneside]{book}
-
-\usepackage[ngerman]{babel}
-\usepackage{contour}
-\usepackage{csquotes}
-\usepackage{emoji}
-\usepackage{enumitem}
-\usepackage{eso-pic}
-\usepackage[left=1.5cm,right=1.5cm, top=1cm,bottom=1cm,includeheadfoot]{geometry}
-\usepackage{graphicx}  
-\usepackage{hyperref}
-\usepackage{multicol}
-\usepackage[section]{placeins} %lasse float-Bilder nicht in den nächsten Abschnitt rutschen
-\usepackage{tikz}
-    \usetikzlibrary{arrows.meta,calc,fit}
-\usepackage{tocloft}
-\usepackage{xcolor}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=blue,      
-    urlcolor=blue,
-    pdftitle={Chronik der Andorversen},
-    pdfpagemode=FullScreen,
+    \renewcommand\thesection{} % damit sections im Inhaltsverzeichnis nicht nummeriert werden
+    \renewcommand\thesubsection{} % damit subsections im Inhaltsverzeichnis nicht nummeriert werden
+    \setlength\intextsep{0pt} % für wrapfigure
+    \setlength\parindent{0pt} % keinen Indent bei Absatzanfang
+    % Stretche footnote-Linie über die ganze Länge
+    \renewcommand{\footnoterule}{%
+        \kern -3pt
+        \hrule width \textwidth
+        \kern 2pt
+    }
+    % Neuer Command für Produkt-Section
+    \newcommand{\produkt}[2][]{%
+        \section{#2}%
+        \label{produkt-#1}%
+    }
+    % Neuer Command für Storytext-Section
+    \newcommand{\storytext}[2][]{%
+        \section{#2}%
+        \label{storytext-#1}%
     }
 
-\contourlength{1.2px}
 
-\setlength\parindent{0pt} %keinen Indent bei Absatzanfang
+
+% Lade verschiedene Packages
+
+\usepackage[ngerman]{babel}
+
+\usepackage{contour}
+    \contourlength{1.2px}
+
+\usepackage{csquotes}
+    \MakeOuterQuote{"} % mache Anführungszeichen " schön
+
+\usepackage{emoji}
+
+\usepackage{enumitem} % für genaue Kontrolle des enumerate-Environments
+
+\usepackage{environ} % für \NewEnviron
+
+\usepackage{eso-pic} % für \AddToShipoutPictureBG
+
+\usepackage{extramarks} %für \extramarks, \lastrightmark und xmark's
+
+\usepackage{fancyhdr} %für \pagestyle{fancy}
+    \fancyhf{} % lösche alle Header-Footer-default-Einstellungen
+    \fancyfoot[C]{\thepage} %Seitenzahl im Footer, zentriert 
+    \fancyhead[L]{\nouppercase{\lastrightmark}}
+    \fancyhead[C]{}
+    \fancyhead[R]{\lastrightxmark}
 
 \usepackage{fontspec}
     \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=chronik-der-andorversen/]
@@ -44,162 +65,131 @@
     \newcommand{\wingdingsfrownface}{{\wingdings\char"F04C}}
     \newcommand{\webdingstwister}{{\webdings\char"F0DD}}
 
-%entferne Einrücken im Inhaltsverzeichnis
-\setlength{\cftsecindent}{-7pt}
+\usepackage[left=1.5cm,right=1.5cm,top=1cm,bottom=1cm,includeheadfoot]{geometry}
 
-%mache Anführungszeichen " schön
-\MakeOuterQuote{"}
-
-
-\newcommand{\fillbreak}{\vspace*{\fill}\columnbreak}
-
-
-%Hintergrund
-\newcommand{\hintergrund}[1]{%
-    \AddToShipoutPictureBG{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{chronik-der-andorversen/hintergrund/#1}};%
+\usepackage{graphicx} % für \includegraphics
+    % Neuer Command für andorische Zeitrechnung
+    \newcommand{\az}[1]{%
+        \begin{center}
+            \includegraphics[width=180px]{chronik-der-andorversen/verzierung-2.png}\\
+            {\Huge #1} \\
+            {nach andorischer Zeitrechnung}\\
+            \includegraphics[width=180px]{chronik-der-andorversen/verzierung-1.png}
+        \end{center}
+        \extramarks{}{#1 a.Z.}
     }
-}
-
-\newcommand{\titelseite}[1]{%
-    \thispagestyle{empty}%keine Header oder Footer auf dieser Seite
-    \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{chronik-der-andorversen/hintergrund/#1}};%
+    % Neuer Command für Bild in der Mitte einer Spalte
+    \newcommand{\bildmitts}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
+        \begin{center}
+            \includegraphics[#1]{chronik-der-andorversen/bilder/#2}
+        \end{center}
     }
-}
-
-
-\newcommand{\comic}[1]{%
-    \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{chronik-der-andorversen/comics/#1}};%
+    % Neuer Command für Legenden-Section
+    \newcommand{\legende}[2][]{%
+        \section[#2]{%
+            \parbox{24px}{\centering\includegraphics[width=24px]{chronik-der-andorversen/legenden-icons/#1.png}}%
+            #2%
+        }%
+        \label{legende-#1}%
     }
-    \textbf{ }
-    \newpage
-}
 
+\usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=blue,
+        filecolor=blue,      
+        urlcolor=blue,
+        pdftitle={Chronik der Andorversen},
+        pdfpagemode=FullScreen,
+    }
+    % Neuer Command für Legendensymbol
+    \newcommand{\legendensymbol}[2][]{%
+        \hyperref[legende-#1]{%
+            \parbox{24px}{\centering\includegraphics[width=24px]{chronik-der-andorversen/legenden-icons/#1.png}}%
+        }%
+    }%
 
-\usepackage{varwidth}
-\usepackage{wrapfig}
+\usepackage{multicol}
+    \newcommand{\fillbreak}{\vspace*{\fill}\columnbreak}
 
-\usepackage{fancyhdr} %für Headers
-\pagestyle{fancy}
+\usepackage[section]{placeins} %lasse float-Bilder nicht in den nächsten Abschnitt rutschen
 
-\usepackage{sectsty} %section stiling
-\partfont{\fontsize{65}{75}\andorfont}
-\chapterfont{\centering}
-\sectionfont{\centering}
-\renewcommand\thesection{} %damit sections im Inhaltsverzeichnis nicht nummeriert werden
-\renewcommand\thesubsection{} %damit subsections im Inhaltsverzeichnis nicht nummeriert werden
+\usepackage{sectsty} % Section stiling
+    \chapterfont{\centering}
+    \partfont{\fontsize{65}{75}\andorfont}
+    \sectionfont{\centering}
+
+\usepackage[most]{tcolorbox} % für farbige Boxen
+    \NewEnviron{chapterbox} % box für chapter-Anfänge
+    {%    
+        % Seit TeX Live 2026 scheinen Marks in tcolorbox ignoriert zu werden. Speichere darum den 
+        % Kapiteltitel global in der tcolorbox und setze die Header-Marks erst nach der tcolorbox.
+        \newpage
+        \begingroup
+            \renewcommand{\chaptermark}[1]{\gdef\kapiteltitel{##1}}
+            \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
+                \BODY
+                \vfill
+            \end{tcolorbox}
+        \endgroup
+        \markboth{\kapiteltitel}{}
+    }
+
+\usepackage{tikz}
+    \usetikzlibrary{arrows.meta,calc,fit}
+    % Neuer Command für Comicseite
+    \newcommand{\comicseite}[1]{%
+        \AddToShipoutPictureBG*{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{chronik-der-andorversen/comics/#1}};%
+        }
+        \textbf{ }
+        \newpage
+    }
+    % Neuer Command für Hintergrundbild
+    \newcommand{\hintergrund}[1]{%
+        \AddToShipoutPictureBG{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{chronik-der-andorversen/hintergrund/#1}};%
+        }
+    }
+    % Neuer Command für Titelseite
+    \newcommand{\titelseite}[1]{%
+        \thispagestyle{empty}% keine Header oder Footer auf dieser Seite
+        \AddToShipoutPictureBG*{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{chronik-der-andorversen/hintergrund/#1}};%
+        }
+    }
 
 \usepackage{titlesec}
-\titlespacing*{\chapter}{0pt}{30pt}{20pt}
-\titleformat{\chapter}{\centering\normalfont\Large\bfseries}{}{0pt}{\huge}
-\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+    \renewcommand{\sectionmark}[1]{\markright{#1}} % keine Nummerierung für die section-header
+    \titleformat{\chapter}{\centering\normalfont\Large\bfseries}{}{0pt}{\huge}
+    \titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+    \titlespacing*{\chapter}{0pt}{30pt}{20pt}
 
-\newcommand{\legende}[2][]{%
-    \section[#2]{%
-        \parbox{24px}{\centering\includegraphics[width=24px]{chronik-der-andorversen/legenden-icons/#1.png}}%
-        #2%
-    }%
-    \label{legende-#1}%
-}
+\usepackage{tocloft}
+    \setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnis
 
-\newcommand{\legendensymbol}[2][]{%
-    \hyperref[legende-#1]{%
-        \parbox{24px}{\centering\includegraphics[width=24px]{chronik-der-andorversen/legenden-icons/#1.png}}%
-    }%
-}%
-
-
-\newcommand{\produkt}[2][]{%
-    \section{#2}%
-    \label{produkt-#1}%
-}
-
-\newcommand{\storytext}[2][]{%
-    \section{#2}%
-    \label{storytext-#1}%
-}
-
-
-
-
-\newcommand{\bildmitts}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
-    \begin{center}
-        \includegraphics[#1]{chronik-der-andorversen/bilder/#2}
-    \end{center}
-}
-
-\newcommand{\bildlinks}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
-    \begin{wrapfigure}{L}{0px}
-        \includegraphics[#1]{chronik-der-andorversen/bilder/#2}
-    \end{wrapfigure}
-}
-
-
-
-
-\newcommand{\az}[1]{%
-    \begin{center}
-        \includegraphics[width=180px]{chronik-der-andorversen/verzierung-2.png}\\
-        {\Huge #1} \\
-        {nach andorischer Zeitrechnung}\\
-        \includegraphics[width=180px]{chronik-der-andorversen/verzierung-1.png}
-    \end{center}
-    \extramarks{}{#1 a.Z.}
-}
-
-
-
-
-\renewcommand{\footnoterule}{%stretche footnote-Linie über die ganze Länge
-  \kern -3pt
-  \hrule width \textwidth
-  \kern 2pt
-}
-
-\usepackage{extramarks} %für \lastrightmark und xmark's
-
-\renewcommand{\sectionmark}[1]{\markright{#1}} %keine Nummerierung für die section-header
-
-\fancyhf{}%lösche alle Header-Footer-default-Einstellungen
-\fancyfoot[C]{\thepage} %Seitenzahl im Footer, zentriert 
-\fancyhead[L]{\nouppercase{\lastrightmark}}
-\fancyhead[C]{}
-\fancyhead[R]{\lastrightxmark}
+\usepackage{wrapfig}
+    \newcommand{\bildlinks}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
+        \begin{wrapfigure}{L}{0px}
+            \includegraphics[#1]{chronik-der-andorversen/bilder/#2}
+        \end{wrapfigure}
+    }
 
 
 
 
 
-\usepackage{environ}
-\usepackage[most]{tcolorbox} % für farbige Boxen
-\NewEnviron{chapterbox} %box für chapter-Anfänge
-{   
-    \newpage
-    \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
-        \BODY
-        \vfill
-    \end{tcolorbox}
-}
 
-\setlength{\intextsep}{0pt}%für wrapfigure
 
-\title{Chronik der Andorversen\\Stand ????}
-\author{Werke von Michael Menzel, Stefanie Schmitt,\\Christoph Kling, Dorothea Michels, Andreas Kälber, Matthias Miller,\\Jens Baumeister, Timo Grubing, Peter Gustav Bartschat,\\Gerhard Hecht, Inka und Markus Brand, Stefan Blanck,\\Alex Zbiek, Jörg Ihle, Thorsten Suckow, Julian Colbus,\\ELANE, Zapf, Silke Lukas, Arne S. Reismueller,\\und allen anderen andorischen Autor*innen,\\zusammengestellt von Butterbrotbär}
-\date{\vfill Chronik der Andorversen v??.?\\Dieses Dokument wurde erstellt mit \LaTeX{}.\\Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}.}
+
+
 
 
 \begin{document}
 
-
-
-
-
-
+\pagestyle{fancy}
 
 \hintergrund{hintergrund.jpg}
-
 
 \begin{titlepage}
     \titelseite{grundspiel-hintergrund.jpg}
@@ -217,9 +207,50 @@
     \textcolor{white}{\andorfont \contour{black}{Andorversen}}
 \end{titlepage}
 
+\setcounter{page}{2} % lasse bereits das Titelbild als Seite 1 zählen
+\thispagestyle{plain} % keine fancy Header auf dieser Seite
+
+\begin{center}
+    \vspace*{8em}
+
+    \LARGE
+    Chronik der Andorversen
+
+    Stand ????
+
+    \vspace{2em}
+
+    \large
+    Werke von Michael Menzel, Stefanie Schmitt,
+    
+    Christoph Kling, Dorothea Michels, Andreas Kälber, Matthias Miller,
+    
+    Jens Baumeister, Timo Grubing, Peter Gustav Bartschat,
+    
+    Gerhard Hecht, Inka und Markus Brand, Stefan Blanck,
+    
+    Alex Zbiek, Jörg Ihle, Thorsten Suckow, Julian Colbus,
+    
+    ELANE, Zapf, Silke Lukas, Arne S. Reismueller,
+    
+    und allen anderen andorischen Autor*innen,
+    
+    zusammengestellt von Butterbrotbär
+
+    \vfill 
+    
+    Chronik der Andorversen v??.?
+    
+    Dieses Dokument wurde erstellt mit \LaTeX{}.
+    
+    Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.
+    
+    Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}.
+\end{center}
+
+\newpage
 
 
-\maketitle
 
 
 
@@ -227,10 +258,10 @@
 
 
 
-\thispagestyle{plain}%keine fancy Header auf dieser Seite
+\thispagestyle{plain} % keine fancy Header auf dieser Seite
 
 
-\setcounter{page}{3} %lasse bereits das Titelbild als Seite 1 zählen
+
 
 \textbf{Liebe Andori}
 
@@ -4561,7 +4592,7 @@ Eure Gilda
 \end{center}
 
 \newpage
-\comic{winterstein-comic-1.jpeg}
+\comicseite{winterstein-comic-1.jpeg}
 
 \begin{center}
     "Ein Falke aus Andor ..."
@@ -5354,7 +5385,7 @@ Hallo liebe Helden und Heldinnen,
 \end{center}
 
 \newpage
-\comic{aa2022-thorn-erreicht-die-taverne-von-andor.jpeg}
+\comicseite{aa2022-thorn-erreicht-die-taverne-von-andor.jpeg}
 
 \begin{multicols}{2}
 
@@ -7842,8 +7873,8 @@ Immer weiter tauchst du in diese mysteriöse Geschichte in zwei Kapiteln mit ung
 \end{center}
 
 \newpage
-\comic{die-bonus-box-comic-1.jpg}
-\comic{die-bonus-box-comic-2.jpg}
+\comicseite{die-bonus-box-comic-1.jpg}
+\comicseite{die-bonus-box-comic-2.jpg}
 
 
 \begin{multicols}{2}
@@ -8116,8 +8147,8 @@ Erfüllt spannende Aufgaben mit Feuertakuri, Eisblitzen, Runensteinen und der St
 
 
 \newpage
-\comic{der-kampf-um-cavern-comic-1.jpg}
-\comic{der-kampf-um-cavern-comic-2.jpg}
+\comicseite{der-kampf-um-cavern-comic-1.jpg}
+\comicseite{der-kampf-um-cavern-comic-2.jpg}
 
 
 \begin{multicols}{2}
@@ -8186,8 +8217,8 @@ Schon morgen erfahrt ihr wie die Geschichte andernorts weiter geht!\bigskip
 
 
 \newpage
-\comic{der-kampf-um-cavern-comic-3.jpg}
-\comic{der-kampf-um-cavern-comic-4.jpg}
+\comicseite{der-kampf-um-cavern-comic-3.jpg}
+\comicseite{der-kampf-um-cavern-comic-4.jpg}
 
 
 \legende[2014-der-kampf-um-cavern]{Der Kampf um Cavern (2014)}
@@ -8341,8 +8372,8 @@ Es entbrannte ein harter Kampf. Ich habe noch nie zwei Zwerge so mit ihren Äxte
 \end{center}
 
 \newpage
-\comic{dz-comic-1.png}
-\comic{dz-comic-2.png}
+\comicseite{dz-comic-1.png}
+\comicseite{dz-comic-2.png}
 
 \begin{multicols}{2}
 
@@ -8384,10 +8415,10 @@ Seht selbst ...
 
 
 \newpage
-\comic{dz-comic-3.png}
-\comic{dz-comic-4.png}
-\comic{dz-comic-5.png}
-\comic{dz-comic-6.png}
+\comicseite{dz-comic-3.png}
+\comicseite{dz-comic-4.png}
+\comicseite{dz-comic-5.png}
+\comicseite{dz-comic-6.png}
 
 
 
