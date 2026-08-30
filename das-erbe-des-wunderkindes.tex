@@ -3,26 +3,88 @@
 %!LW recipe = das-erbe-des-wunderkindes-recipe
 % Die vorherige Zeile teilt der LaTeX Workshop Extension von VS Code mit, nach welchem Rezept (Rezepte sind definiert in .vscode/settings.json) das PDF-Dokument erstellt werden soll. 
 
+
+
 \documentclass[10pt, a4paper, oneside]{book}
-\usepackage[left=3.5cm,right=3.5cm, top=1cm,bottom=1cm,includeheadfoot]{geometry} %definiere Ränder und so
-\usepackage[ngerman]{babel} % für deutsche Titelbezeichnungen
-\usepackage{graphicx} % für Bildereinfügen
-\usepackage{eso-pic} % unter anderem für die Hintergrundbilder
-\usepackage{tikz} % unter anderem für die Hintergrundbilder
+    \newcommand{\gend}[2]{#2} % Command für Gendern
+    \newcommand{\nurplainversion}[1]{} % Command für TeX-Stellen nur in der Plainversion (nicht in diesem Dokument)
+    \newcommand{\nurvollversion}[1]{#1} % Command für TeX-Stellen nur in der Vollversion (dieses Dokument)
+    \newcommand{\puxif}[1]{} % Command für Pu'Xif
+    \renewcommand\thesection{} % damit sections im Inhaltsverzeichnis nicht nummeriert werden
+    \renewcommand\thesubsection{} % damit subsections im Inhaltsverzeichnis nicht nummeriert werden
+    % Stretche footnote-Linie über die ganze Länge
+    \renewcommand{\footnoterule}{%
+        \kern -3pt
+        \hrule width \textwidth
+        \kern 2pt
+    }
+
+
+
+% Lade verschiedene Packages
 
 \usepackage{amssymb} % für \blacktriangleright
 
-\usepackage{csquotes} % für Anführungszeichen
-    \MakeOuterQuote{"}
+\usepackage[ngerman]{babel} % für deutsche Titelbezeichnungen
 
-\usepackage{multicol}
+\usepackage{contour}
+    \contourlength{1.2px}
 
-\usepackage{soul} % für Befehle wie \st (durchgestrichen)
+\usepackage{csquotes}
+    \MakeOuterQuote{"} % mache Anführungszeichen " schön
 
-\usepackage{snotez} % für \sidenote
-    \setsidenotes{
-        perchapter=true,
-        text-format=\normalfont\tiny\raggedright,
+\usepackage{environ} % für \NewEnviron
+
+\usepackage{eso-pic} % für \AddToShipoutPictureBG
+
+\usepackage{extramarks} %für \extramarks, \lastrightmark und xmark's
+
+\usepackage{fancyhdr} %für \pagestyle{fancy}
+    \fancyhf{} % lösche alle Header-Footer-default-Einstellungen
+    \fancyfoot[C]{\thepage} %Seitenzahl im Footer, zentriert 
+    \fancyhead[L]{\nouppercase{\lastleftmark}}
+    \fancyhead[C]{}
+    \fancyhead[R]{\lastrightxmark}
+
+\usepackage{fontspec}
+    \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=das-erbe-des-wunderkindes/]
+    % Definiere Command für Trennzeichen mit Giftknödels Sternblumen-Heldenbrosche
+    \newcommand{\trennzeichen}{%
+        \begin{center}%
+            \vspace*{-1em}
+            \andorfont\Huge{ô}
+        \end{center}
+    }
+
+\usepackage[left=3.5cm,right=3.5cm, top=1cm,bottom=1cm,includeheadfoot]{geometry}
+
+\usepackage{graphicx}
+    % Neuer Command für andorische Zeitrechnung
+    \newcommand{\az}[1]{%
+        \begin{center}
+            \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
+            {\Huge #1} \\
+            {nach andorischer Zeitrechnung}\\
+            \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
+        \end{center}
+        \extramarks{}{#1 a.Z.}
+    }
+    % Neuer Command für Robin-Hood-Zeitrechnung
+    \newcommand{\jdh}[1]{%
+        \begin{center}
+            \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
+            {Im Jahre des Herrn}\\
+            \vspace{5pt}
+            {\Huge #1} \\
+            \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
+        \end{center}
+        \extramarks{}{A.D. #1}
+    }
+    % Neuer Command für Bild in der Mitte einer Spalte
+    \newcommand{\bildmitts}[2][height=0.5\textwidth,width=0.75\textwidth,keepaspectratio]{%
+        \begin{center}
+            \includegraphics[#1]{das-erbe-des-wunderkindes/bilder/#2}
+        \end{center}
     }
 
 \usepackage{hyperref}
@@ -34,120 +96,30 @@
         pdftitle={Das Erbe des Wunderkindes},
         pdfpagemode=FullScreen,
     }
+    % Definiere Command für Verweise zur Chronik der Andorversen
+    \newcommand{\siehechronik}[1]{\href{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}{\blacktriangleright #1}}
 
-\newcommand{\hintergrund}[1]{%
-    \AddToShipoutPictureBG{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
+\usepackage{multicol}
+
+\usepackage{sectsty} % Section stiling
+    \chapterfont{\centering}
+    \partfont{\fontsize{50}{60}\andorfont}
+    \sectionfont{\centering}
+
+\usepackage{snotez} % für \sidenote
+    \setsidenotes{
+        perchapter=true,
+        text-format=\normalfont\tiny\raggedright,
     }
-}
 
-\newcommand{\titelseite}[1]{%
-    \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
-    }
-}
+\usepackage{soul} % für \st (durchgestrichen)
 
-\usepackage{tocloft}
-\setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnigs
-
-\usepackage{fontspec}
-    \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=das-erbe-des-wunderkindes/]
-
-\usepackage{sectsty} %section stiling
-\partfont{\fontsize{50}{60}\andorfont}
-\chapterfont{\centering}
-\sectionfont{\centering}
-\renewcommand\thesection{} %damit sections im Inhaltsverzeichnis nicht nummeriert werden
-\renewcommand\thesubsection{} %damit subsections im Inhaltsverzeichnis nicht nummeriert werden
-
-\usepackage{titlesec}
-\titlespacing*{\chapter}{0pt}{30pt}{20pt}
-\titleformat{\chapter}{\centering\normalfont\Large\bfseries}{}{0pt}{\huge}
-\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{\huge}
-
-\usepackage{fancyhdr} %für fancy Headers und Footers
-
-\usepackage{extramarks} %für \lastrightmark und xmark's
-
-\pagestyle{fancy}
-
-\newcommand{\az}[1]{%fügt einen "nach andorischer Zeit"-Block ein
-    \begin{center}
-        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
-        {\Huge #1} \\
-        {nach andorischer Zeitrechnung}\\
-        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
-    \end{center}
-    \extramarks{}{#1 a.Z.}
-}
-
-\newcommand{\jdh}[1]{%fügt einen "im Jahre des Herrn"-Block ein
-    \begin{center}
-        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-2.png}\\
-        {Im Jahre des Herrn}\\
-        \vspace{5pt}
-        {\Huge #1} \\
-        \includegraphics[width=180px]{das-erbe-des-wunderkindes/verzierung-1.png}
-    \end{center}
-    \extramarks{}{A.D. #1}
-}
-
-\newcommand{\bildmitts}[2][height=0.5\textwidth,width=0.75\textwidth,keepaspectratio]{%
-    \begin{center}
-        \includegraphics[#1]{das-erbe-des-wunderkindes/bilder/#2}
-    \end{center}
-}
-
-\newcommand{\bildlinks}[2][height=0.32\textwidth,width=0.48\textwidth,keepaspectratio]{%
-    \begin{wrapfigure}{L}{0px}
-        \includegraphics[#1]{das-erbe-des-wunderkindes/bilder/#2}
-    \end{wrapfigure}
-}
-
-\newcommand{\trennzeichen}{%
-    \begin{center}%
-        \vspace*{-1em}
-        \andorfont\Huge{ô}
-    \end{center}
-}
-
-% Definiere Command für gendern
-\newcommand{\gend}[2]{#2} 
-
-% Definiere Command für Verweise zur Chronik der Andorversen
-\newcommand{\siehechronik}[1]{\href{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10314}{\blacktriangleright #1}}
-
-% Definiere Command für Pu'Xif
-\newcommand{\puxif}[1]{}
-
-% Definiere Commands für TeX-Stellen nur in der Vollversion oder nur in der Plainversion
-\newcommand{\nurvollversion}[1]{#1}
-\newcommand{\nurplainversion}[1]{}
-
-\renewcommand{\footnoterule}{%stretche footnote-Linie über die ganze Länge
-  \kern -3pt
-  \hrule width \textwidth
-  \kern 2pt
-}
-
-
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}} %keine Nummerierung für die chapter-header
-\renewcommand{\sectionmark}[1]{\markright{#1}} %keine Nummerierung für die section-header
-
-\fancyhf{}%lösche alle Header-Footer-default-Einstellungen
-\fancyfoot[C]{\thepage} %Seitenzahl im Footer, zentriert 
-\fancyhead[L]{\nouppercase{\lastleftmark}}
-\fancyhead[C]{}
-\fancyhead[R]{\lastrightxmark}
-
-
-
-\usepackage{environ}
-    \usepackage[most]{tcolorbox} % für farbige Boxen
+\usepackage[most]{tcolorbox} % für farbige Boxen
     \NewEnviron{chapterbox} % box für chapter-Anfänge
     {%    
         % Seit TeX Live 2026 scheinen Marks in tcolorbox ignoriert zu werden. Speichere darum den 
         % Kapiteltitel global in der tcolorbox und setze die Header-Marks erst nach der tcolorbox.
+        \newpage
         \begingroup
             \renewcommand{\chaptermark}[1]{\gdef\kapiteltitel{##1}}
             \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
@@ -165,26 +137,47 @@
         \end{tcolorbox}
     }
 
+\usepackage{tikz} 
+    % Neuer Command für Hintergrundbild
+    \newcommand{\hintergrund}[1]{%
+        \AddToShipoutPictureBG{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
+        }
+    }
+    % Neuer Command für Titelseite
+    \newcommand{\titelseite}[1]{%
+        \AddToShipoutPictureBG*{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at(current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{das-erbe-des-wunderkindes/hintergrund/#1}};%
+        }
+    }
+
+\usepackage{titlesec}
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}} % keine Nummerierung für die chapter-header
+    \renewcommand{\sectionmark}[1]{\markright{#1}} % keine Nummerierung für die section-header
+    \titleformat{\chapter}{\centering\normalfont\Large\bfseries}{}{0pt}{\huge}
+    \titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{\huge}
+    \titlespacing*{\chapter}{0pt}{30pt}{20pt}
+
+\usepackage{tocloft}
+    \setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnis
 
 
 
 
-%\renewcommand\thechapter{\Alph{chapter}} %damit chapters mit Großbuchstaben bezeichnet werden
 
 
-\usepackage{contour}
-\contourlength{1.2px}
 
 
-\title{Das Erbe des Wunderkindes\\und andere andorische Erzählungen\\Stand ????}
-\author{Fan-Geschichten von Butterbrotbär,\\basierend auf Werken von Michael Menzel, Stefanie Schmitt,\\Christoph Kling, Dorothea Michels, Andreas Kälber, Matthias Miller,\\Jens Baumeister, Timo Grubing, Peter Gustav Bartschat,\\Gerhard Hecht, Inka und Markus Brand, Stefan Blanck,\\Alex Zbiek, Jörg Ihle, Thorsten Suckow, Julian Colbus,\\ELANE, Zapf, Silke Lukas, Arne S. Reismueller,\\und allen anderen andorischen Autor*innen sowie\\vielen fantastischen Fan-Kreationen verfasst von\\allerlei anderen atemberaubenden Andori}
-\date{\vfill Das Erbe des Wunderkindes v??.?\\Dieses Dokument wurde erstellt mit \LaTeX{}.\\Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10516}.}
+
+
+
+
 
 \begin{document}
 
+\pagestyle{fancy}
+
 \hintergrund{hintergrund.jpg}
-
-
 
 \begin{titlepage}
     \titelseite{andor-fan-karte-inkarnate-textlos.jpg}
@@ -208,12 +201,65 @@
 \end{titlepage}
 
 
+\setcounter{page}{2} % lasse bereits das Titelbild als Seite 1 zählen
+\thispagestyle{plain} % keine fancy Header auf dieser Seite
 
-\maketitle
+
+\begin{center}
+    \vspace*{8em}
+
+    \LARGE
+    Das Erbe des Wunderkindes
+    
+    und andere andorische Erzählungen
+    
+    Stand ????
+
+    \vspace{2em}
+
+    \large
+    Fan-Geschichten von Butterbrotbär,
+    
+    basierend auf Werken von Michael Menzel, Stefanie Schmitt,
+    
+    Christoph Kling, Dorothea Michels, Andreas Kälber, Matthias Miller,
+    
+    Jens Baumeister, Timo Grubing, Peter Gustav Bartschat,
+    
+    Gerhard Hecht, Inka und Markus Brand, Stefan Blanck,
+    
+    Alex Zbiek, Jörg Ihle, Thorsten Suckow, Julian Colbus,
+    
+    ELANE, Zapf, Silke Lukas, Arne S. Reismueller,
+    
+    und allen anderen andorischen Autor*innen sowie
+    
+    vielen fantastischen Fan-Kreationen verfasst von
+    
+    allerlei anderen atemberaubenden Andori
+
+    \vfill 
+    
+    Das Erbe des Wunderkindes v??.?
+    
+    Dieses Dokument wurde erstellt mit \LaTeX{}.
+    
+    Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.
+    
+    Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=10516}.
+\end{center}
+
+\newpage
+
+
+
+
+
+
+
 
 \thispagestyle{plain}
 
-\setcounter{page}{3} %lasse bereits das Titelbild als Seite 1 zählen
 
 \vspace*{\fill}
 
@@ -248,7 +294,7 @@ Sie könnten nicht existieren ohne die brillianten Werke von Michael Menzel und 
 \newline
 
 \textbf{Inhaltswarnung:} 
-Dies sind fantastische Erzählungen, die sich mehr um Zeitschleifen und Andor-Lore-Anspielungen kümmern als um Gewaltdarstellung oder Erotik. Nichtsdestotrotz kommt es vor, dass Figuren gravierende Verletzungen erleiden und erteilen, dass sie töten und sterben, dass sie Schimpfwörter fluchen (aber nicht Schlimmeres als "Scheiße") und intime Begegnungen andeuten (aber nichts Expliziteres als Küsse). Ich tu mich schwer mit Altersempfehlungen. Kennt ihr nur die Andor-Junior-Romane (offiziell 8+), sind manche der hiesigen Geschichten vielleicht zu düster. Kamt ihr mit "Das Lied des Königs" (offiziell 14+) klar, kommt ihr wahrscheinlich auch hiermit klar. Kamt ihr mit "Varkurs Erwachen" (offiziell 16+) oder TroIIs "Der Ewige Rat" klar, dann sogar höchstwahrscheinlich.
+Dies sind fantastische Erzählungen, die sich mehr um Zeitschleifen und Andor-Lore-Anspielungen kümmern als um Gewaltdarstellung oder Liebesszenen. Nichtsdestotrotz kommt es vor, dass Figuren gravierende Verletzungen erleiden und erteilen, dass sie töten und sterben, dass sie Schimpfwörter fluchen (aber nicht Schlimmeres als "Scheiße") und intime Begegnungen andeuten (aber nichts Expliziteres als Küsse). Ich tu mich schwer mit Altersempfehlungen. Kennt ihr nur die Andor-Junior-Romane (offiziell 8+), sind manche der hiesigen Geschichten vielleicht zu düster. Kamt ihr mit "Das Lied des Königs" (offiziell 14+) klar, kommt ihr wahrscheinlich auch hiermit klar. Kamt ihr mit "Varkurs Erwachen" (offiziell 16+) oder TroIIs "Der Ewige Rat" klar, dann sogar höchstwahrscheinlich.
 \newline
 
 \textbf{Die Geschichten halten sich nahe am offiziellen Lore und können überarbeitet werden.}
@@ -400,6 +446,8 @@ Butterbrotbär
 
 
 \extramarks{}{ }
+
+\newpage
 
 \section{Der gestiefelte Streifenmarder}
 
@@ -645,6 +693,7 @@ Und da er nicht gestorben ist, lebt er auch heute noch.
 \end{chapterbox}
 
 
+\newpage
 \section{Lynnra \& Kaleido (2019)}
 
 \az{Jahr 64}
@@ -920,7 +969,7 @@ Verspätete frohe Festtage, Freunde! :P
 
 
 
-
+\newpage
 
 
 
@@ -2089,6 +2138,9 @@ Nachdem mir Kirr erst relativ spät eingefallen ist (heieiei, den Santa Gor hatt
 \end{chapterbox}
 
 \extramarks{}{ } % leere den a.Z.-Header
+
+
+\newpage
 
 
 {\parindent0pt
