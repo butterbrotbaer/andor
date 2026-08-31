@@ -2,9 +2,26 @@
 % Die vorherige Zeile teilt der LaTeX Workshop Extension von VS Code mit, nach welchem Rezept (Rezepte sind definiert in .vscode/settings.json) das PDF-Dokument erstellt werden soll. 
 
 
-\documentclass[10pt, a4paper, oneside]{book}
 
-\usepackage[left=1.5cm,right=1.5cm, top=1cm,bottom=1cm,includeheadfoot]{geometry} %definiere Ränder und so
+\documentclass[10pt, a4paper, oneside]{book}
+    \renewcommand\thechapter{} % damit chapters nicht nummeriert werden
+    \renewcommand\thesection{} % damit sections im Inhaltsverzeichnis nicht nummeriert werden
+    \renewcommand\thesubsection{} % damit subsections im Inhaltsverzeichnis nicht nummeriert werden
+    \setlength\fboxrule{3pt}  % Dicke von \fbox
+    \setlength\fboxsep{0pt}   % Padding von \fbox
+    \setlength\parindent{0pt} % keinen Indent bei Absatzanfang
+    % Neuer Command für Markierung von Fan-Regeln
+    \newcommand{\fan}[1]{\textit{#1}}
+    % Stretche footnote-Linie über die ganze Länge
+    \renewcommand{\footnoterule}{
+    \kern -3pt
+    \hrule width \textwidth
+    \kern 2pt
+    }
+
+
+
+% Lade verschiedene Packages
 
 \usepackage{amssymb} % für \blacktriangleright
 
@@ -19,25 +36,15 @@
 \usepackage{contour}
     \contourlength{1.2px}
 
-\usepackage{csquotes} % für Anführungszeichen
-    \MakeOuterQuote{"}
+\usepackage{csquotes}
+    \MakeOuterQuote{"} % mache Anführungszeichen " schön
 
-\usepackage{environ}
-    \usepackage[most]{tcolorbox} % für farbige Boxen
-    \NewEnviron{chapterbox} %box für chapter-Anfänge
-    {   
-        \newpage
-        \begin{tcolorbox}[arc=0pt, colback=white, boxrule=0pt]
-            \BODY
-            \vfill
-        \end{tcolorbox}
-    }
+\usepackage{eso-pic} % für \AddToShipoutPictureBG
 
-\usepackage{extramarks} %für \lastrightmark und xmark's
+\usepackage{extramarks} %für \extramarks, \lastrightmark und xmark's
 
-\usepackage{fancyhdr} %für fancy Headers und Footers
-    \pagestyle{fancy}
-    \fancyhf{}%lösche alle Header-Footer-default-Einstellungen
+\usepackage{fancyhdr} %für \pagestyle{fancy}
+    \fancyhf{} % lösche alle Header-Footer-default-Einstellungen
     \fancyfoot[C]{\thepage} %Seitenzahl im Footer, zentriert 
     \fancyhead[L]{}
     \fancyhead[C]{\nouppercase{\lastleftmark}}
@@ -46,9 +53,9 @@
 \usepackage{fontspec}
     \newfontfamily{\andorfont}{andor-schriftart.otf}[Path=alle-helden-ueberall/]
 
-\usepackage{eso-pic} % unter anderem für die Hintergrundbilder
+\usepackage[left=1.5cm,right=1.5cm,top=1cm,bottom=1cm,includeheadfoot]{geometry}
 
-\usepackage{graphicx} % für Bildereinfügen
+\usepackage{graphicx} 
 
 \usepackage{hyperref}
     \hypersetup{
@@ -63,108 +70,78 @@
 
 \usepackage{multicol}
 
-\usepackage{sectsty} %section stiling
-    \partfont{\fontsize{50}{60}\andorfont}
+\usepackage{sectsty} % Section stiling
     \chapterfont{\centering}
     \sectionfont{\centering}
-    \renewcommand\thesection{} %damit sections im Inhaltsverzeichnis nicht nummeriert werden
-    \renewcommand\thesubsection{} %damit subsections im Inhaltsverzeichnis nicht nummeriert werden
 
-\usepackage[most]{tcolorbox}
-    \newtcolorbox[]{bgcolor}[1][color-DLvA]{
+\usepackage[most]{tcolorbox} % für farbige Boxen
+    \newtcolorbox[]{bgcolor}[1][color-dlva]{
         breakable,enhanced,opacityfill=0.9,
         arc=0pt,boxrule=0pt,frame hidden, % no frame
         colback={#1}, % set background color
         left=0.05cm,right=0.05cm,top=0.05cm,bottom=0.05cm, % set positioning of text inside box
     }
-    \newtcolorbox[]{nobgcolor}[1][color-DLvA]{
+    \newtcolorbox[]{nobgcolor}[1][color-dlva]{
         breakable,enhanced,opacityfill=0,
         arc=0pt,boxrule=0pt,frame hidden, % no frame
         colback={#1}, % set background color
         left=0.05cm,right=0.05cm,top=0.05cm,bottom=0.05cm, % set positioning of text inside box
     }
 
-\usepackage{tikz} % unter anderem für die Hintergrundbilder
+\usepackage{tikz} 
+    % Command für quadratisches Bild einer Heldenfigur oben an einer Seite
+    \newcommand{\heldenfigur}[2]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[opacity=1, inner sep=1.5cm, anchor=north] at (current page.north) {%
+                \color{#2}\fbox{\includegraphics[height=54pt]{alle-helden-ueberall/heldenfiguren/#1}}%
+            };
+        \end{tikzpicture}%
+        \vspace*{-\baselineskip}
+    }
+    % Command für quadratisches Bild einer Heldenfigur mit Link zur entsprechenden Held*in
+    \newcommand{\heldenfigurenlink}[3]{%
+        \color{#2}\fbox{\hyperref[#3]{\includegraphics[width=42pt]{alle-helden-ueberall/heldenfiguren/#1}}}%
+    }
+    % Neuer Command für Hintergrundbild
+    \newcommand{\hintergrund}[1]{%
+        \AddToShipoutPictureBG{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{alle-helden-ueberall/hintergrund/#1}};%
+        }
+    }
+    % Neuer Command für Titelseite
+    \newcommand{\titelseite}[1]{%
+        \AddToShipoutPictureBG*{%
+            \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{alle-helden-ueberall/hintergrund/#1}};%
+        }
+    }
 
 \usepackage{titlesec}
-    \titlespacing*{\chapter}{0pt}{30pt}{20pt}
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}} % keine Nummerierung für die chapter-header
+    \renewcommand{\sectionmark}[1]{\markright{#1}} % keine Nummerierung für die section-header
     \titleformat{\chapter}{\penalty-100\centering\normalfont\Large\bfseries}{}{0pt}{\huge}
     \titleformat{\section}{\penalty-100\centering\normalfont\large\bfseries}{}{0pt}{\large\vspace{-0.3cm}}
     \titleformat{\subsection}{\vspace{0.3cm}\penalty-100\normalfont\bfseries}{}{0pt}{\vspace{-0.2cm}}
+    \titlespacing*{\chapter}{0pt}{30pt}{20pt}
 
 \usepackage{tocloft}
     \setlength{\cftsecindent}{-7pt} % entferne Einrücken im Inhaltsverzeichnis
 
 \usepackage[dvipsnames,x11names]{xcolor}
-    \definecolor{color-DLvA}{HTML}{FF8080}
-    \definecolor{color-DRidN}{HTML}{40E0D0}
-    \definecolor{color-DlH}{HTML}{C0C0C0}
-    \definecolor{color-DeK}{HTML}{FFFFFF}
-    \definecolor{color-DfL}{HTML}{FFD040}
-    \definecolor{color-StSch}{HTML}{FFB040}
-    \definecolor{color-BB}{HTML}{F0D8C0}
-    \definecolor{color-AG}{HTML}{FFA0E0}
-    \definecolor{color-DZ}{HTML}{80E0FF}
-
-
-
-\newcommand{\fan}[1]{\textit{#1}}
-
-\newcommand{\heldenfigur}[2]{%
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[opacity=1, inner sep=1.5cm, anchor=north] at (current page.north) {%
-            \color{#2}\fbox{\includegraphics[height=54pt]{alle-helden-ueberall/heldenfiguren/#1}}%
-        };
-    \end{tikzpicture}%
-    \vspace*{-\baselineskip}
-}
-
-\newcommand{\heldenfigurenlink}[3]{%
-    \color{#2}\fbox{\hyperref[#3]{\includegraphics[width=42pt]{alle-helden-ueberall/heldenfiguren/#1}}}%
-}
-
-\newcommand{\hintergrund}[1]{%
-    \AddToShipoutPictureBG{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{alle-helden-ueberall/hintergrund/#1}};%
-    }
-}
-
-\newcommand{\titelseite}[1]{%
-    \AddToShipoutPictureBG*{%
-        \tikz[remember picture, overlay] \node[opacity=1, inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{alle-helden-ueberall/hintergrund/#1}};%
-    }
-}
+    \definecolor{color-dlva}{HTML}{FF8080}
+    \definecolor{color-dridn}{HTML}{40E0D0}
+    \definecolor{color-dlh}{HTML}{C0C0C0}
+    \definecolor{color-dek}{HTML}{FFFFFF}
+    \definecolor{color-dfl}{HTML}{FFD040}
+    \definecolor{color-stsch}{HTML}{FFB040}
+    \definecolor{color-bb}{HTML}{F0D8C0}
+    \definecolor{color-ag}{HTML}{FFA0E0}
+    \definecolor{color-dz}{HTML}{80E0FF}
 
 
 
 
 
 
-\setlength{\parindent}{0cm} % damit Zeilen nicht eingerückt werden.
-\setlength{\fboxrule}{3pt}  % Dicke von \fbox
-\setlength{\fboxsep}{0pt}   % Padding von \fbox
-
-
-
-
-\renewcommand{\footnoterule}{%stretche footnote-Linie über die ganze Länge
-  \kern -3pt
-  \hrule width \textwidth
-  \kern 2pt
-}
-
-\renewcommand\thechapter{ } %damit chapters nicht mit Zahlen bezeichnet werden
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}} %keine Nummerierung für die chapter-header
-\renewcommand{\sectionmark}[1]{\markright{#1}} %keine Nummerierung für die section-header
-
-
-
-
-
-
-\title{Alle Helden überall\\Stand ???? ????}
-\author{Fan-Spielvariante von Butterbrotbär,\\basierend auf den \enquote{Die Legenden von Andor}-Spielen von Michael Menzel,\\Christoph Kling, Dorothea Michels, Andreas Kälber und Matthias Miller\\sowie vielen fruchtvollen Diskussionen der fantastisch fantasievollen Fans\\Albus, Bennie, Bewahrer Melkart, Cardiodrone, Dagain, Fenn-Fan, Galaphil,\\GoldenerSchild, Kar éVarin, Legolas Grünblatt, namenloser Wanderer,\\Phoenixpower, Qurunatobra213, Ragnar, Steppenechse111777, Towa,\\und insbesondere Mivo, Orpheus und TroII.}
-\date{\vfill Alle Helden überall v??.?\\Dieses Dokument wurde erstellt mit \LaTeX{}.\\Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.\\Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=11151}.}
 
 
 
@@ -172,6 +149,8 @@
 
 
 \begin{document}
+
+\pagestyle{fancy}
 
 \hintergrund{hintergrund.jpg}
 
@@ -228,19 +207,52 @@
     \heldenfigurenlink{darh.jpg}{Wheat1}{beschwoererin}
 \end{titlepage}
 
+\setcounter{page}{2} %lasse bereits das Titelbild als Seite 1 zählen
 \thispagestyle{plain}
 
+\begin{center}
+    \vspace*{8em}
 
-\maketitle
+    \LARGE
+    Alle Helden überall
+
+    Stand ????
+
+    \vspace{2em}
+
+    \large
+    Fan-Spielvariante von Butterbrotbär,
+    
+    basierend auf den \enquote{Die Legenden von Andor}-Spielen von Michael Menzel,
+    
+    Christoph Kling, Dorothea Michels, Andreas Kälber und Matthias Miller
+    
+    sowie vielen fruchtvollen Diskussionen der fantastisch fantasievollen Fans
+    
+    Albus, Bennie, Bewahrer Melkart, Cardiodrone, Dagain, Fenn-Fan, Galaphil,
+    
+    GoldenerSchild, Kar éVarin, Legolas Grünblatt, namenloser Wanderer,
+    
+    Phoenixpower, Qurunatobra213, Ragnar, Steppenechse111777, Towa,
+    
+    und insbesondere Mivo, Orpheus und TroII.
+
+    \vfill 
+    
+    Alle Helden überall v??.?
+    
+    Dieses Dokument wurde erstellt mit \LaTeX{}.
+    
+    Für den Quelltext siehe \url{https://butterbrotbaer.github.io}.
+    
+    Für die neuste Version siehe \url{https://legenden-von-andor.de/forum/viewtopic.php?f=11&t=11151}.
+\end{center}
+
+\newpage
+
+
 
 \thispagestyle{plain}
-
-
-\setcounter{page}{3} %lasse bereits das Titelbild als Seite 1 zählen
-
-
-
-
 
 
 \begin{multicols*}{2}\raggedcolumns
@@ -366,7 +378,7 @@ Butterbrotbär
 
 
 
-\begin{nobgcolor}[color-DLvA]
+\begin{nobgcolor}[color-dlva]
 
 \section{Allgemein}
 
@@ -470,7 +482,7 @@ Ausnahme: In "Das ferne Land" gehen Sporne nicht zurück in den Vorrat. Sollten 
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -505,7 +517,7 @@ Es muss ein "Kram" mitspielen.
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -611,7 +623,7 @@ Die zweite Sonderfähigkeit jedes Helden wird im Laufe von Legende 11 aktiviert 
 \columnbreak
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -644,7 +656,7 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 \end{nobgcolor}
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{Die ewige Kälte (2022)}
 
 
@@ -658,7 +670,7 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -891,7 +903,7 @@ Kann eine Verbindung zwischen zwei Feldern von Helden nur mit genug Willenspunkt
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012):}
 
 
@@ -928,7 +940,7 @@ Helden, die ohne den großen Gegenstand "Bogen" fernkämpfen dürfen, dürfen Va
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Wolfskampf:}
@@ -942,7 +954,7 @@ Bewegt ein Wolf sich während eines Kampfs gegen den Fernkämpfer, darf der Fern
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -966,7 +978,7 @@ Der Fernkämpfer kann mit Varatans Helm nur seine bis zu 3 zuletzt geworfenen W�
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -985,7 +997,7 @@ Er darf Messer, Axt, Schwertgriff und Schwertklinge auch nutzen, wenn er angrenz
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Rekas Schlange Maro:}
@@ -1014,7 +1026,7 @@ Der Fernkämpfer kann mit Rekas Schlange nur seine beiden zuletzt geworfenen Wü
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Zwergentüren:}
@@ -1043,7 +1055,7 @@ Kämpft der Fernkämpfer als Einhornreiter, darf er weitere Würfel nur in umgek
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Askimar-Klinge:}}
@@ -1056,7 +1068,7 @@ Kämpft der Fernkämpfer als Einhornreiter, darf er weitere Würfel nur in umgek
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -1168,7 +1180,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{\fan{Die Legenden von Andor (2012)}}
 
 
@@ -1188,7 +1200,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014)}}
 
 
@@ -1203,7 +1215,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -1223,7 +1235,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{\fan{Alte Geister (2018)}}
 
 
@@ -1242,7 +1254,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{\fan{Düstere Zeiten (2020)}}
 
 \subsection{\fan{Schwarzes Einhorn:}}
@@ -1272,7 +1284,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Treues Reittier:}}
@@ -1292,7 +1304,7 @@ Der Reiter kann festgehaltene Helden (z.B. von Skeletten in "Die letzte Hoffnung
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -1426,7 +1438,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Feuerkrie
 
 \columnbreak
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{\fan{Alte Geister (2018)}}
 
 \subsection{\fan{Legende 2, Der Hexer aus Andor:}}
@@ -1440,7 +1452,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Feuerkrie
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Große Kräuterkunde:}}
@@ -1451,7 +1463,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Feuerkrie
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -1551,7 +1563,7 @@ Sie kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik)
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -1567,7 +1579,7 @@ Sie kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik)
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Teleport:}}
@@ -1582,7 +1594,7 @@ Sie kann keine mitbewegbaren Plättchen (z.B. Bauern) oder Figuren (z.B. Merrik)
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -1607,7 +1619,7 @@ Die Wassermagierin kann sich nicht von oder zur Quelle auf Feld 37 teleportieren
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Feuerteleport:}}
@@ -1643,7 +1655,7 @@ Die Wassermagierin kann sich nicht von oder zur Quelle auf Feld 37 teleportieren
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -1789,7 +1801,7 @@ Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -1808,7 +1820,7 @@ Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -1823,7 +1835,7 @@ Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014)}}
 
 
@@ -1850,7 +1862,7 @@ Der Seher kann keinen Gegnerwürfel gemeinsam mit seinen Heldenwürfeln werfen (
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -1893,7 +1905,7 @@ Es gibt keine Ereigniskarten. Der Seher kann seine zweite Sonderfähigkeit nicht
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -1914,7 +1926,7 @@ Mit Rekas Schlange darf der Seher, sofern er 2 oder mehr Würfel auf seiner Wür
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -1941,7 +1953,7 @@ Muss der Seher wegen Shans Fluch einen Würfel abgeben, muss er jeweils den näc
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 
@@ -1957,7 +1969,7 @@ Muss der Seher wegen Shans Fluch einen Würfel abgeben, muss er jeweils den näc
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Pilze:}}
@@ -2148,7 +2160,7 @@ Jeder Held kann eine Eisbrücke nutzen, egal wie viele Willenspunkte er hat, auc
 \columnbreak
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Eisbrücke:}
@@ -2189,7 +2201,7 @@ Eisbrücken dürfen zu Feld 83 gebaut werden.
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Sternenschild:}
@@ -2218,7 +2230,7 @@ Kreaturen können mit der Fackel von Cavern nicht entlang Eisbrücken versetzt w
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Eisbrücke:}
@@ -2241,7 +2253,7 @@ Eine Eisbrücke darf zwei Landfelder, zwei Meeresfelder oder ein Landfeld und ei
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -2280,7 +2292,7 @@ Spielt ihr mit der offiziellen Heldenkarte, legt am Anfang 6 Eisblitze bereit (s
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Spielvariante "Die Fluggors":}
@@ -2291,7 +2303,7 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -2308,7 +2320,7 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Eisbrücke:}}
@@ -2322,7 +2334,7 @@ In dieser Spielvariante ist Feld 83 nie zu einem anderen Feld angrenzend, auch n
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Eisbrücke:}}
@@ -2438,7 +2450,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Wolfskrie
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Geländekunde und Trollhass:}
@@ -2450,7 +2462,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Wolfskrie
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Geländekunde und Trollhass:}
@@ -2463,7 +2475,7 @@ Für seine \hyperref[bonusstaerke]{Bonusstärke} gelten Meerestrolle nicht als T
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Geländekunde und Trollhass:}}
@@ -2474,7 +2486,7 @@ Für seine \hyperref[bonusstaerke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020):}
 
 \subsection{Geländekunde und Trollhass:}
@@ -2488,7 +2500,7 @@ Für seine \hyperref[bonusstaerke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Geländekunde und Trollhass:}}
@@ -2502,7 +2514,7 @@ Für seine \hyperref[bonusstaerke]{Bonusstärke} gelten Meerestrolle nicht als T
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geländekunde und Trollhass:}}
@@ -2597,7 +2609,7 @@ Der Zwerg darf im Kampf, direkt nach seinem Würfeln, beliebig viele Willenspunk
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Bonus-Legende "Der Kampf um Cavern":}
@@ -2610,7 +2622,7 @@ Es muss ein "Kram" mitspielen.
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -2636,7 +2648,7 @@ Das gilt auch, wenn der Höhlenplättchen-Platz auf dem Höhlenfeld mit einem ro
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Weiße Ereigniskarte 11:}
@@ -2648,7 +2660,7 @@ Der Zwerg erhält das Zwergenseil auf Feld 71 umsonst,
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Legende 1, Schatten über Cavern:}
@@ -2672,7 +2684,7 @@ Spielt ihr mit Kram, erhält er am Anfang die Schildkrone.
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -2775,7 +2787,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Seekriege
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Diebischer Streifenmarder:}
@@ -2794,7 +2806,7 @@ Durch dieses Versetzen werden Effekte wie beim Stehenbleiben aktiviert (z.B. Wra
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018):}
 
 
@@ -2810,7 +2822,7 @@ Durch dieses Versetzen werden Effekte wie beim Stehenbleiben aktiviert (z.B. Wra
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -2917,7 +2929,7 @@ Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \hyperref[r
 
 \end{nobgcolor}
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -2940,7 +2952,7 @@ Leert der Krieger einen Nord-Brunnen, erhält er:
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Quellen:}}
@@ -2966,7 +2978,7 @@ Leert der Krieger einen Nord-Brunnen, erhält er:
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Legende 1, Der Angriff der Babaren:}
@@ -2980,7 +2992,7 @@ Ist auf einer Legendenkarte von "Krieger" die Rede, sind damit Barbaren-Krieger 
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -3003,7 +3015,7 @@ Leert der Krieger die Quelle auf Feld 37, erhält er nur das, was auf dem Quelle
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -3107,7 +3119,7 @@ Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \fan{Ritter
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{\fan{Die Legenden von Andor (2012)}}
 
 \subsection{\fan{Trank der Hexe und Runensteine:}}
@@ -3118,7 +3130,7 @@ Sprechen Regeln aus "Die letzte Hoffnung" vom Krieger, ist damit der \fan{Ritter
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -3231,7 +3243,7 @@ Spricht eine Regel oder Karte von der \hyperref[bogenschuetzin]{Bogenschützin},
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -3247,7 +3259,7 @@ Wählt der Tarus beim Leeren eines Nord-Brunnens 1 Stärkepunkt statt der Willen
 \columnbreak
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -3268,7 +3280,7 @@ Leert der Tarus die Quelle auf Feld 37, kann er keinen Stärkepunkt statt Willen
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Feuer:}}
@@ -3279,7 +3291,7 @@ Leert der Tarus die Quelle auf Feld 37, kann er keinen Stärkepunkt statt Willen
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -3407,7 +3419,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Legende 3, Die Tage des Widerstands:}
@@ -3427,7 +3439,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -3441,7 +3453,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Legende 2, Der Hexer aus Andor:}
@@ -3453,7 +3465,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Shans Fluch:}
@@ -3467,7 +3479,7 @@ Trägt der Fährtenleser das Horn aufgedeckt, darf er es am Anfang einer Kampfru
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Pilzvergiftung:}}
@@ -3636,7 +3648,7 @@ Der Bär kann nicht von einem \hyperref[reiter]{Reiter} mitbewegt werden.
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -3673,7 +3685,7 @@ Feld 0 von Cavern (Spielplan-Rückseite) darf er gefahrlos betreten.
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 
 \section{Der Sternenschild (2013)}
 
@@ -3686,7 +3698,7 @@ Feld 0 von Cavern (Spielplan-Rückseite) darf er gefahrlos betreten.
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014)}}
 
 
@@ -3743,7 +3755,7 @@ Feld 0 von Cavern (Spielplan-Rückseite) darf er gefahrlos betreten.
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -3818,7 +3830,7 @@ Nachdem der Hautwandler seine offizielle Hoffnungskarte aktivierte, kann er nich
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Bär:}
@@ -3876,7 +3888,7 @@ Auch der Bär wird von Maasavi festgehalten.
 
 \columnbreak
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -3962,7 +3974,7 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Waldfelder:}}
@@ -4003,7 +4015,7 @@ Hat der Bär 1 bis 4 Willenspunkte, darf er ein Feld mit Schattenplättchen betr
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -4131,7 +4143,7 @@ Hat die Heilerin 14 bis 20 Willenspunkte, darf sie im Kampf (nicht im \hyperref[
 
 \columnbreak
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 \subsection{Geister:}
@@ -4242,7 +4254,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Gebäude:}
@@ -4276,7 +4288,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Gebäude:}
@@ -4285,7 +4297,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 \end{bgcolor}
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Gebäude:}
@@ -4304,7 +4316,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Nahrung:}}
@@ -4340,7 +4352,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Rucksack:}
@@ -4355,7 +4367,7 @@ Anders als der \hyperref[halbskral]{Halbskral} wird der Weihnachts-Gor nicht von
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018):}
 
 \subsection{Tulgorischer Handel:}
@@ -4371,7 +4383,7 @@ Es gibt keine Ausrüstungstafel. \fan{Der Weihnachts-Gor beschert Gegenstände v
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -4392,7 +4404,7 @@ Es gibt keine Ausrüstungstafel. \fan{Der Weihnachts-Gor beschert Gegenstände v
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Gebäude:}}
@@ -4419,7 +4431,7 @@ Es gibt keine Ausrüstungstafel. \fan{Der Weihnachts-Gor beschert Gegenstände v
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Gebäude:}}
@@ -4532,7 +4544,7 @@ Die Bogenschützin ist eine \hyperref[fernkaempfer]{Fernkämpferin}.
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -4546,7 +4558,7 @@ Der Trank der Hexe kostet die Bogenschützin 1 Gold weniger.
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 \subsection{Zweite Sonderfähigkeit: Rekas Schülerin}
@@ -4699,7 +4711,7 @@ Spricht eine Regel oder Karte aus "Magische Helden" von der Hüterin, ist die Ta
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -4735,7 +4747,7 @@ Die Spiegelscherben von der offiziellen Hoffnungskarte können Wachtrolle nicht 
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -4847,7 +4859,7 @@ Spricht eine Regel oder Karte aus "Magische Helden" von der Hüterin, ist damit 
 
 \columnbreak
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -4858,7 +4870,7 @@ Spricht eine Regel oder Karte aus "Magische Helden" von der Hüterin, ist damit 
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -4890,7 +4902,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Alte Waffen:}}
@@ -4906,7 +4918,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -4920,7 +4932,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -4938,7 +4950,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Askimar-Klinge:}}
@@ -4952,7 +4964,7 @@ Für Kenvilars Tücke "auf die 1" wird auch der große weiße Würfel als 1 gewe
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Wurfmesser:}}
@@ -5069,7 +5081,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Bergkrieg
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 
 \section{Die Legenden von Andor (2012)}
 
@@ -5095,7 +5107,7 @@ Spricht eine Regel oder Karte vom \hyperref[krieger]{Krieger}, ist der Bergkrieg
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -5118,7 +5130,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf das Wolfssymbol v
 \columnbreak
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Legende 9, Die Mächte des Meeres:}
@@ -5135,7 +5147,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf das Wolfssymbol v
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Bewegungsplättchen:}}
@@ -5158,7 +5170,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf das Wolfssymbol v
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 
 \section{Die Bonus-Box (2017/2024)}
 
@@ -5173,7 +5185,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf das Wolfssymbol v
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Legende 2, Der Hexer aus Andor:}
@@ -5199,7 +5211,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf die Stunde der Ka
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Legende 2, Fremde Heimat:}
@@ -5210,7 +5222,7 @@ Wird der Zeitstein \fan{durch Würfeleffekt 4} rückwärts auf die Stunde der Ka
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -5306,7 +5318,7 @@ Sie darf auch den Runenwürfel der \hyperref[runenmeisterin]{Runenmeisterin} dre
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 
 \section{Die Legenden von Andor (2012)}
 
@@ -5331,7 +5343,7 @@ Einen Würfel eines anderen Helden, der diese Ereigniskarte aktivierte, kann sie
 \columnbreak
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 
@@ -5343,7 +5355,7 @@ Nutzt die Zauberin die Flöte selbst, darf sie den geworfenen Würfel auf die ge
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -5363,7 +5375,7 @@ Die Zauberin kann die großen schwarzen Würfel des Seeriesen\supercite{dridn10-
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 \subsection{Heldentafel:}
@@ -5443,7 +5455,7 @@ Ein mitteleportierter Held kann keine mitbewegbaren Plättchen (z.B. Bauern) ode
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Meres' Hilfe:}
@@ -5455,7 +5467,7 @@ Die Zauberin kann den großen schwarzen Würfel nicht drehen.
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Shans Fluch:}
@@ -5468,7 +5480,7 @@ Auch wenn die Zauberin durch Shans Fluch keinen Würfel mehr hat, darf sie im ge
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -5552,7 +5564,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist die Dun
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 
 \section{Die Legenden von Andor (2012)}
 
@@ -5568,7 +5580,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist die Dun
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 
@@ -5579,7 +5591,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist die Dun
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -5602,7 +5614,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist die Dun
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 \subsection{Zweite Sonderfähigkeit: Magischer Schatten}
@@ -5636,7 +5648,7 @@ Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Wille
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Legende 2, Der Hexer aus Andor:}
@@ -5650,7 +5662,7 @@ Können nicht genug Willenspunkte abgeben werden, gibt stattdessen niemand Wille
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -5759,7 +5771,7 @@ Endgegner überspringen den Halbskral nicht.\supercite{dz-begleitheft}
 \columnbreak
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014)}}
 
 
@@ -5778,7 +5790,7 @@ Endgegner überspringen den Halbskral nicht.\supercite{dz-begleitheft}
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 \subsection{Zweite Sonderfähigkeit: Rekas Pflanzenkunde}
@@ -5807,7 +5819,7 @@ Läuft der Halbskral entlang der Alten Zwergenstraße (egal in welche Richtung),
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 
@@ -5827,7 +5839,7 @@ Läuft der Halbskral entlang der Alten Zwergenstraße (egal in welche Richtung),
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Legende 2, Der Hexer aus Andor:}
@@ -5842,7 +5854,7 @@ Shron und seine Kreaturen gelten als Endgegner und überspringen den Halbskral n
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Pfeilplättchen:}
@@ -5865,7 +5877,7 @@ Tiefminen-Golems überspringen den Halbskral nicht.
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Höhle der Verwandlung:}}
@@ -5877,7 +5889,7 @@ Tiefminen-Golems überspringen den Halbskral nicht.
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Pfad:}}
@@ -6091,7 +6103,7 @@ Hat er all seine Heldenwürfel abgegeben, kann er bis zum Tagesende auch keinen 
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Umwandlungspulver (gelb):}
@@ -6131,7 +6143,7 @@ Der Steppennomade kann durch das Umwandlungspulver keinen Trank der Hexe erhalte
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -6166,7 +6178,7 @@ Der Steppennomade kann durch das Umwandlungspulver keinen Trank der Hexe erhalte
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -6218,7 +6230,7 @@ Das Schwächungspulver darf vor oder nach dem Einsatz von Nixenstaub genutzt wer
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -6309,7 +6321,7 @@ Bei seiner offiziellen Geschenkaufgabe darf der Steppennomade ausnahmsweise Pulv
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 
@@ -6330,7 +6342,7 @@ Der Steppennomade kann durch das Umwandlungspulver keine Gegenstände von der kl
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -6377,7 +6389,7 @@ Es gibt keine Ausrüstungstafel. \fan{Mit dem Umwandlungspulver darf der Steppen
 \columnbreak
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Bannpulver (blau):}
@@ -6399,7 +6411,7 @@ Es gibt keine Ausrüstungstafel. \fan{Mit dem Umwandlungspulver darf der Steppen
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 
@@ -6436,7 +6448,7 @@ Es gibt keine Ausrüstungstafel. \fan{Mit dem Umwandlungspulver darf der Steppen
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -6637,7 +6649,7 @@ Wird der Gegner nicht besiegt, ist er im nächsten Kampf nicht mehr geschwächt 
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Trolle:}
@@ -6662,7 +6674,7 @@ Der Bewahrer kann keine Trolle schwächen. \fan{Dies gilt nur für Legenden auf 
 
 \columnbreak
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Der Dieb Ken Dorr:}
@@ -6673,7 +6685,7 @@ Der Bewahrer kann keine Trolle schwächen. \fan{Dies gilt nur für Legenden auf 
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 \subsection{\fan{Skelette:}}
@@ -6685,7 +6697,7 @@ Der Bewahrer kann keine Trolle schwächen. \fan{Dies gilt nur für Legenden auf 
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Fluggors:}
@@ -6696,7 +6708,7 @@ Der Bewahrer kann keine Trolle schwächen. \fan{Dies gilt nur für Legenden auf 
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Maasavi:}
@@ -6708,7 +6720,7 @@ Der Bewahrer kann keine Maasavi schwächen.
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -6725,7 +6737,7 @@ Der Bewahrer kann keine Maasavi schwächen.
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 
@@ -6745,7 +6757,7 @@ Der Bewahrer kann keine Maasavi schwächen.
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -6979,7 +6991,7 @@ Spricht eine Regel oder Karte vom \hyperref[zwerg]{Zwerg}, ist die Runenmeisteri
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -7007,7 +7019,7 @@ Spricht eine Regel oder Karte vom \hyperref[zwerg]{Zwerg}, ist die Runenmeisteri
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Andorische Flöte:}
@@ -7023,7 +7035,7 @@ Spricht eine Regel oder Karte vom \hyperref[zwerg]{Zwerg}, ist die Runenmeisteri
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Segeln:}
@@ -7064,7 +7076,7 @@ Sie darf sich jede Stunde neu entscheiden, ob sie zum Segeln die aktuelle Windst
 \columnbreak
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -7118,7 +7130,7 @@ Die Genesungsaufgabe "2 Quellen leeren" ist auch erfüllt, wenn an einem Tag zwe
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -7147,7 +7159,7 @@ Die Runenmeisterin kann die Quelle auf Feld 37 nicht mit dem Brunnen-Symbol auff
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Shans Fluch:}
@@ -7156,7 +7168,7 @@ Die Runenmeisterin kann die Quelle auf Feld 37 nicht mit dem Brunnen-Symbol auff
 
 \end{bgcolor}
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Runen befragen:}}
@@ -7186,7 +7198,7 @@ Die Runenmeisterin kann die Quelle auf Feld 37 nicht mit dem Brunnen-Symbol auff
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -7297,7 +7309,7 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{\fan{Die Legenden von Andor (2012)}}
 
 \subsection{\fan{Ereigniskarte "Geheimer See" 5:}}
@@ -7311,7 +7323,7 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{\fan{Düstere Zeiten (2020)}}
 
 
@@ -7326,7 +7338,7 @@ Während die Feuerwächterin Feuer trägt, ist ihr großes Ablagefeld besetzt. \
 \columnbreak
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{Die ewige Kälte (2022)}
 
 \subsection{Brennholz:}
@@ -7370,7 +7382,7 @@ Steht die Feuerwächterin auf der Zeltstadt (Feld 401), der Pfahlbausiedlung (Fe
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
@@ -7487,7 +7499,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{\fan{Die Legenden von Andor (2012)}}
 
 \subsection{\fan{Bonus-Legende "Die Eskorte des Königs":}}
@@ -7513,7 +7525,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014):}}
 
 \subsection{\fan{Leuchtfeuer (blau):}}
@@ -7526,7 +7538,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{\fan{Die letzte Hoffnung (2016)}}
 
 
@@ -7550,7 +7562,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{\fan{Die Bonus-Box (2017/2024)}}
 
 \subsection{\fan{Bannfeuer (violett):}}
@@ -7572,7 +7584,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{\fan{Düstere Zeiten (2020)}}
 
 
@@ -7592,7 +7604,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 
@@ -7614,7 +7626,7 @@ Ein festgehaltener Held (z.B. von \fan{Skeletten in "Die letzte Hoffnung" oder} 
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 \subsection{Feuerzauber:}
@@ -7723,7 +7735,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist der Zei
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 
 \section{\fan{Die Legenden von Andor (2012)}}
 
@@ -7738,7 +7750,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist der Zei
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{\fan{Der Sternenschild (2013)}}
 
 
@@ -7765,7 +7777,7 @@ Spricht eine Regel oder Karte von der \hyperref[zauberin]{Zauberin}, ist der Zei
 \columnbreak
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -7885,7 +7897,7 @@ Der Knochen-Golem darf mehrmals pro Legende beschworen werden.
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -7905,7 +7917,7 @@ Wie Helden kann der Knochen-Golem die Rietburg erst betreten, nachdem sie von Kr
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Der Dieb Ken Dorr:}
@@ -7926,7 +7938,7 @@ Wie Helden kann der Knochen-Golem die Rietburg erst betreten, nachdem sie von Kr
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{\fan{Die Reise in den Norden (2014)}}
 
 
@@ -7974,7 +7986,7 @@ Wie Helden kann der Knochen-Golem die Rietburg erst betreten, nachdem sie von Kr
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -8022,7 +8034,7 @@ Wird der Knochen-Golem beim Sieg über einen Wachtroll beschworen, \fan{während
 
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 
@@ -8041,7 +8053,7 @@ Wird der Knochen-Golem beim Sieg über einen Wachtroll beschworen, \fan{während
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -8055,7 +8067,7 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Maasavi oder eine Zwergen
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 
@@ -8079,7 +8091,7 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Tiefminen-Golem beschwore
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 \subsection{\fan{Beschwörung:}}
@@ -8100,7 +8112,7 @@ Der Knochen-Golem kann nicht nach dem Sieg über einen Tiefminen-Golem beschwore
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 \subsection{\fan{Geister:}}
@@ -8236,7 +8248,7 @@ Manche Legenden sind ohne Spielvarianten kaum zu gewinnen, wenn ihr nur Helden m
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -8270,7 +8282,7 @@ Hat der Held kein großes Ablagefeld, erhält er auch kein rotes X.
 \columnbreak
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Sternenlicht:}
@@ -8295,7 +8307,7 @@ Tauscht ein Held mit dem Bruderschild mehr Stärkepunkte mit einem anderen Helde
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Zu viele Gegenstände auf dem Schiff:}
@@ -8329,7 +8341,7 @@ Orweyns Hammer wird auf zwei kleine rechteckige Ablagefelder gelegt und darf des
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -8352,7 +8364,7 @@ Tauscht ein Held mit dem Bruderschild mehr Stärkepunkte mit einem anderen Helde
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Eisplättchen:}
@@ -8365,7 +8377,7 @@ Tauscht ein Held mit dem Bruderschild mehr Stärkepunkte mit einem anderen Helde
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Eule:}
@@ -8393,7 +8405,7 @@ Die Spitzhacke wird auf zwei kleine rechteckige Ablagefelder gelegt und darf des
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{Die ewige Kälte (2022)}
 
 
@@ -8409,7 +8421,7 @@ Die Spitzhacke wird auf zwei kleine rechteckige Ablagefelder gelegt und darf des
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -8491,7 +8503,7 @@ Für das Tragen von Holzstämmen/Eisen zählt nur die Position des Stärkesteins
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -8516,7 +8528,7 @@ Andere Bonusstärke verändert den Kampfwert des verhexten Gors nicht.
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 \subsection{Wolfsstärke:}
@@ -8541,7 +8553,7 @@ Für den Stärketausch durch den Bruderschild zählen nur die Positionen der bei
 \end{nobgcolor}
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Legende 9, Die Mächte des Meeres:}
@@ -8561,7 +8573,7 @@ Für die Stärke der Taren zählt nur die Position des Stärkesteins, keine Bonu
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -8581,7 +8593,7 @@ Für den Stärketausch durch den Bruderschild zählen nur die Positionen der bei
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Eisplättchen:}
@@ -8683,7 +8695,7 @@ Sonderplättchen können nicht von anderen Helden getragen und nicht verschickt 
 \columnbreak
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -8708,7 +8720,7 @@ Taucht Varkur bei der Karte "Varkurs Versteck" in der Waffenkammer auf, können 
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -8722,7 +8734,7 @@ Wird der verhexte Held enttarnt, darf er von ihm getragene Gegenstände in Stär
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-BB]
+\begin{bgcolor}[color-bb]
 \section{Die Bonus-Box (2017/2024)}
 
 \subsection{Weiße Ereigniskarte 8:}
@@ -8739,7 +8751,7 @@ Ein Gegenstand darf eingetauscht werden.
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{Die ewige Kälte (2022)}
 
 \subsection{Händler:}
@@ -8862,7 +8874,7 @@ Besagt eine Aufgabe oder Regel, dass ein Held am Sieg über einen Gegner beteili
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 \subsection{Brücken:}
@@ -8915,7 +8927,7 @@ Helfer lösen keinen Alarm aus.
 \columnbreak
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 \subsection{Meeresfelder:}
@@ -8965,7 +8977,7 @@ Helfer können nicht segeln.
 
 
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -8986,7 +8998,7 @@ Steht ein Helfer auf der Brücke, während diese abgerissen wird, stellt ihn auf
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 \subsection{Gesperrte Felder:}
@@ -9012,7 +9024,7 @@ Helfer können nicht mit dem Takuri-Spiegel versetzt werden.
 \columnbreak
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{Düstere Zeiten (2020)}
 
 \subsection{Boot:}
@@ -9062,7 +9074,7 @@ Ausnahme: Der Knochen-Golem kann das Lager der Trolle nicht betreten.
 
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{Die ewige Kälte (2022)}
 
 \subsection{Eis und der große See Ava:}
@@ -9087,7 +9099,7 @@ Ausnahme: Der Knochen-Golem kann das Lager der Trolle nicht betreten.
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{Das ferne Land (2025)}
 
 
@@ -9213,7 +9225,7 @@ Wählt am Anfang eine (!) der Spielvarianten "Erschwerte Kämpfe"\supercite{ag-b
 
 
 
-\begin{bgcolor}[color-DLvA]
+\begin{bgcolor}[color-dlva]
 \section{Die Legenden von Andor (2012)}
 
 
@@ -9268,7 +9280,7 @@ Spielt ihr mit neutralen Zeitsteinen, werden alle neutralen Zeitsteine auf die 5
 
 
 
-\begin{bgcolor}[color-StSch]
+\begin{bgcolor}[color-stsch]
 \section{Der Sternenschild (2013)}
 
 
@@ -9294,7 +9306,7 @@ Es werden wie bei 4 Helden 4 weitere Pergamente eingewürfelt.
 
 
 
-\begin{bgcolor}[color-DRidN]
+\begin{bgcolor}[color-dridn]
 \section{Die Reise in den Norden (2014)}
 
 
@@ -9325,7 +9337,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt dieser die Zauberer, die ihr bekäm
 
 \columnbreak
 
-\begin{bgcolor}[color-DlH]
+\begin{bgcolor}[color-dlh]
 \section{Die letzte Hoffnung (2016)}
 
 
@@ -9424,7 +9436,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Borghorn.
 
 
 
-\begin{bgcolor}[color-AG]
+\begin{bgcolor}[color-ag]
 \section{Alte Geister (2018)}
 
 
@@ -9449,7 +9461,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er alle drei Zwergenstatuen.
 
 
 
-\begin{bgcolor}[color-DZ]
+\begin{bgcolor}[color-dz]
 \section{\fan{Düstere Zeiten (2020)}}
 
 \subsection{Erschwerte Kämpfe – Schwarzer Herold:}
@@ -9461,7 +9473,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 \end{bgcolor}
 
 
-\begin{bgcolor}[color-DeK]
+\begin{bgcolor}[color-dek]
 \section{\fan{Die ewige Kälte (2022)}}
 
 
@@ -9486,7 +9498,7 @@ Spielt ihr mit dem Schwarzen Herold, stärkt er Thogger, Shan, Kjall und Rudnar,
 
 
 
-\begin{bgcolor}[color-DfL]
+\begin{bgcolor}[color-dfl]
 \section{\fan{Das ferne Land (2025)}}
 
 
