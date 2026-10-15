@@ -25,4 +25,6 @@
             "tools":    ["lualatex","biber","lualatex","lualatex"],
         },
     ],
+    "ltex.language": "de-DE",
+    "ltex.languageToolHttpServerUri": "",
 }
