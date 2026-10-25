@@ -5,7 +5,7 @@
 
 \documentclass[10pt, a4paper, oneside]{book}
     \newcommand{\gend}[2]{#2} % Command für Gendern
-    \setlength{\parindent}{0pt} % keinen Indent bei Absatzanfang
+    \setlength{\parindent}{16pt} % Indent bei Absatzanfang
     % Command für Pu'Xif
         %\newcommand{\puxif}[1]{}
         \newcommand{\puxif}[1]{#1}
@@ -21,6 +21,8 @@
 
 \usepackage{environ} % für \NewEnviron
 
+\usepackage{eso-pic} % für \AddToShipoutPictureBG
+
 \usepackage{extramarks} %für \extramarks, \lastrightmark und xmark's
 
 \usepackage[left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm]{geometry}
@@ -28,6 +30,7 @@
 \usepackage{hyperref}
     \hypersetup{
         colorlinks=false,
+        pdfauthor={Butterbrotbaer},
         pdftitle={Das Erbe des Wunderkindes},
         pdfpagemode=FullScreen,
     }
@@ -46,15 +49,21 @@
     \titlespacing*{\chapter}{0pt}{0pt}{0pt}
     \titlespacing*{\section}{0pt}{0pt}{0pt}
 
+\usepackage{tocloft}
+    \cftpagenumbersoff{chapter} % keine Seitenzahlen im toc
+    \cftpagenumbersoff{section}
+    \makeatletter\renewcommand{\numberline}[1]{}\makeatother % keine Nummerierung im toc
+    \setlength{\cftsecindent}{0pt} % kein Einrücken im toc
 
+% Define some new commands.
+\newcommand{\az}[1]{#1 nach andorischer Zeitreichnung}
+\newcommand{\jdh}[1]{Im Jahre des Herrn #1}
+\newcommand{\trennzeichen}{*}
 
 % Define some commands to simply pass empty.
-\newcommand{\az}[1]{}
-\newcommand{\jdh}[1]{}
 \newcommand{\bildmitts}[2][]{}
 \newcommand{\sidenote}[2][]{}
 \newcommand{\st}[1]{}
-\newcommand{\trennzeichen}{}
 \newcommand{\nurvollversion}[1]{}
 
 % Define some commands to simply pass their argument.
@@ -73,7 +82,7 @@
 \renewcommand{\textit}[1]{#1}
 \renewcommand{\textsc}[1]{#1}
 \renewcommand{\texttt}[1]{#1}
-\renewcommand{\url}[1]{#1}
+\renewcommand{\url}[1]{\detokenize{#1}} % \detokenize, damit z.B. & einfach gedruckt wird
 
 
 
@@ -83,9 +92,29 @@
 \begin{document}
 
 \pagestyle{empty}
-\fontsize{1}{2}\selectfont % Make fontsize tinier than \tiny.
+\fontsize{5}{6}\selectfont % Make fontsize smol.
 
 
+
+% Titelseite
+\AddToShipoutPictureBG*{%
+    \includegraphics[width=\paperwidth,height=\paperheight]{%
+        das-erbe-des-wunderkindes/hintergrund/edw-cover-text.jpg%
+    }
+}
+\null
+\newpage
+
+
+
+Dies ist eine Version ohne Verzierungen, fixe Formatierung, Fußnoten oder Firlefanz. Für die Vollversion siehe https://legenden-von-andor.de/forum/viewtopic.php?f=11\&t=10516 oder https://butterbrotbaer.github.io\#das-erbe-des-wunderkindes.
+\newpage
+
+
+
+\tableofcontents
+
+\include{das-erbe-des-wunderkindes/geschichten/vorwort}
 
 \include{das-erbe-des-wunderkindes/geschichten/2021-tion-erzaehlt-von-mutter-natur}
 
