@@ -46,8 +46,8 @@
     \renewcommand{\sectionmark}[1]{\markright{#1}} % keine Nummerierung für die section-header
     \titleformat{\chapter}{\normalsize}{}{0pt}{}
     \titleformat{\section}{\normalsize}{}{0pt}{}
-    \titlespacing*{\chapter}{0pt}{0pt}{0pt}
-    \titlespacing*{\section}{0pt}{0pt}{0pt}
+    \titlespacing*{\chapter}{0pt}{0pt}{12pt}
+    \titlespacing*{\section}{0pt}{0pt}{12pt}
 
 \usepackage{tocloft}
     \cftpagenumbersoff{chapter} % keine Seitenzahlen im toc
@@ -56,7 +56,7 @@
     \setlength{\cftsecindent}{0pt} % kein Einrücken im toc
 
 % Define some new commands.
-\newcommand{\az}[1]{#1 nach andorischer Zeitreichnung}
+\newcommand{\az}[1]{#1 nach andorischer Zeitrechnung}
 \newcommand{\jdh}[1]{Im Jahre des Herrn #1}
 \newcommand{\trennzeichen}{*}
 
